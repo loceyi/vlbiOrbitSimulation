@@ -1,9 +1,7 @@
 #Base on ICRS of IERS,
 #input:a,e,i,Omega, omega,E output:
-import numpy
+#角度单位为弧度
 from numpy import *
-from matplotlib import pyplot
-from mpl_toolkits.mplot3d import Axes3D
 def orbitelementtorv (a,e,i,Omega,omega,f):
 
     P=mat([[cos(Omega)*cos(omega)-sin(Omega)*sin(omega)*cos(i)],
