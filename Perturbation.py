@@ -57,7 +57,7 @@ def test():
     import pylab as pl
     P1[:, 5] = P1[:, 5] % (2 * pi)
     pl.plot(t, P1[:, 5])
-    pl.show()
+    # pl.show()
 
 
 
@@ -69,16 +69,19 @@ if __name__ == "__main__":
 
 
 
-from skyfield.api import load
+import de405
+from jplephem import Ephemeris
 
-planets = load('de421.bsp')
-earth, mars = planets['earth'], planets['mars']
-
-ts = load.timescale()
-t = ts.now()
-astrometric = earth.at(t).observe(mars)
-ra, dec, distance = astrometric.radec()
-
-print(ra)
-print(dec)
-print(distance)
+eph = Ephemeris(de405)
+j=2444391.5
+k = eph.position('sun', j)  # 1980.06.01
+d=sqrt(k[0]**2+k[1]**2+k[2]**3)
+print(d)
+# print(k)
+# barycenter = eph.position('earthmoon', j)
+# moonvector = eph.position('moon', j)
+# print(moonvector)
+# earth = barycenter - moonvector * eph.earth_share
+# moon = barycenter + moonvector * eph.moon_share
+# print(earth)
+# print(moon)
