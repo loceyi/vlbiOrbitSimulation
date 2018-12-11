@@ -51,13 +51,5 @@ def test():
 
 
 if __name__ == "__main__":
-    # r = orbitelementtorv(7000, 0, 0, 0, 0, 0)
-    # print(r)
-    # l1 = [1,2,3]
-    # l2 = list(range(3))
-    # l3 = list('456')
-    # mtx1 = np.array([l1, l2, l3], dtype=int32);
-    # print(mtx1, type(mtx1))
-    # print(mtx1 * 3)
-    # print(mtx1[1,1:2] * 3 )
+
     test()

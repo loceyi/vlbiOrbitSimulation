@@ -49,11 +49,9 @@ def d_lunar_solar(orbit_element,t):
     return np.array([0, 0, 0,d_RAAN,d_Perigee,n])
 
 
-
-t = np.arange(0, 36000, 0.01)
-P1 = odeint(d_earth_nonsphericfigure, (7000,0,0,0,0,0),t)  # (0.,1.,0.)是point的初值
-
-def test():
+def test_ode_solve():
+    t = np.arange(0, 36000, 0.01)
+    P1 = odeint(d_earth_nonsphericfigure, (7000,0,0,0,0,0),t)  # (0.,1.,0.)是point的初值
     import pylab as pl
     P1[:, 5] = P1[:, 5] % (2 * pi)
     pl.plot(t, P1[:, 5])
@@ -63,25 +61,36 @@ def test():
 
 if __name__ == "__main__":
 
-    test()
+    test_ode_solve()
 
 
 
 
+def ephemeris(celestial_body,Julian_date):
+    '''
 
-import de405
-from jplephem import Ephemeris
+    :param celestial_body:  earthmoon   mercury    pluto   venus
+                            jupiter     moon       saturn
+                            librations  neptune    sun
+                            mars        nutations  uranus
+    :param Julian_date:儒略日
+    :return:天体的位置（km）,速度（km/day）
+    '''
+    import de405
+    from jplephem import Ephemeris
+    import numpy as np
+    eph = Ephemeris(de405)
+    position, velocity = eph.position_and_velocity(celestial_body, Julian_date)  # 1980.06.01
+    velocity=velocity/86400
+    return np.array([position,velocity])
 
-eph = Ephemeris(de405)
-j=2444391.5
-k = eph.position('sun', j)  # 1980.06.01
-d=sqrt(k[0]**2+k[1]**2+k[2]**3)
-print(d)
-# print(k)
-# barycenter = eph.position('earthmoon', j)
-# moonvector = eph.position('moon', j)
-# print(moonvector)
-# earth = barycenter - moonvector * eph.earth_share
-# moon = barycenter + moonvector * eph.moon_share
-# print(earth)
-# print(moon)
+def test_ephemeris():
+    k=ephemeris('moon', 2444391.5)
+    print('position=',k[0,:])
+    print('velocity=', k[1, :])
+
+
+if __name__ == "__main__":
+
+    test_ephemeris()
+
