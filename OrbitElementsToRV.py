@@ -3,7 +3,7 @@
 #input:a,e,i,Omega, omega,E output:
 
 from numpy import mat,cos,sin,array
-from math import radians
+from math import radians,sqrt
 # import numpy as np
 #
 # class MyOrbit:
@@ -24,6 +24,8 @@ def orbit_element_to_rv (orbit_element):
     :return: r,velocity
 
     '''
+
+    mu=398600 #km^3/s^(-2)
     semi_major_axis=orbit_element[0]
     Eccentricity=orbit_element[1]
     Inclination=radians(orbit_element[2])
@@ -33,18 +35,23 @@ def orbit_element_to_rv (orbit_element):
     P_row_1=[cos(RAAN) * cos(Perigee) - sin(RAAN) * sin(Perigee) * cos(Inclination)]
     P_row_2=[sin(RAAN) * cos(Perigee) + cos(RAAN) * sin(Perigee) * cos(Inclination)]
     P_row_3=[sin(Perigee) * sin(Inclination)]
-    P=mat([P_row_1, P_row_2, P_row_3])
+    P=array([P_row_1, P_row_2, P_row_3])
     Q_row_1=[-cos(RAAN) * sin(Perigee) - sin(RAAN) * cos(Perigee) * cos(Inclination)]
     Q_row_2=[sin(RAAN) * sin(Perigee) + cos(RAAN) * cos(Perigee) * cos(Inclination)]
     Q_row_3=[cos(Perigee) * sin(Inclination)]
-    Q=mat([ Q_row_1,Q_row_2 ,Q_row_3 ])
+    Q=array([ Q_row_1,Q_row_2 ,Q_row_3 ])
     d= semi_major_axis * (1 - Eccentricity * Eccentricity) / (1 + Eccentricity * cos(True_Anomaly))
     r= d * cos(True_Anomaly) * P + d * sin(True_Anomaly) * Q
+    p= semi_major_axis*(1-Eccentricity**2)
+    h= sqrt(float(p)*mu)
+    v = -h/p*sin(True_Anomaly)*P+h/p*(Eccentricity+cos(True_Anomaly))*Q
 
-    return r
+
+
+    return array([r,v])
 
 def test():
-    a=array([7000,0,0,0,0,360],dtype=float)
+    a=array([6300,0,0,0,0,0])
     b=orbit_element_to_rv(a)
     print(b)
 
