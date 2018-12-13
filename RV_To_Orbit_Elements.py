@@ -1,13 +1,14 @@
+#2018/12/13与matlab程序对比，没有计算错误
 import numpy as np
 import math
 
 
 def rv_to_orbit_element (R,V):
     '''
-    :param orbit_element: semi_major_axis, Eccentricity,
+    :param r km ,velocity km/s
+    :return: orbit_element: semi_major_axis km, Eccentricity,
            Inclination, RAAN, Perigee, True_Anomaly
-           输入时要求半长轴单位为km,其余角度单位为弧度
-    :return: r,velocity
+           半长轴输出单位为km,其余角度输出单位为角度
 
     '''
     mu = 398600
@@ -18,14 +19,14 @@ def rv_to_orbit_element (R,V):
     vr = (R.dot(V))/r
     Eccentricity_vector = 1/mu*((v**2-mu/r)*R-r*vr*V)
     Eccentricity = np.sqrt(Eccentricity_vector.dot(Eccentricity_vector))
-    semi_major_axis = 1/(2/r-(v**2)/mu)
+    semi_major_axis = h**2/mu/(1 - Eccentricity**2)
     Inclination = np.arccos(H_vector[2]/h)
 
     #Calculate the node line N
 
     N = np.cross([0,0,1],H_vector)
     n = np.sqrt(N.dot(N))
-    eps = 1.e-10
+    eps = 1.e-9
 
     #Calculate the right ascension the ascending node(RAAN)
 
@@ -37,7 +38,8 @@ def rv_to_orbit_element (R,V):
             RAAN = 2*math.pi - RAAN
 
     else:
-        RAAN=0
+
+        RAAN = np.nan
 
     #Calculate the argument of perigee
 
@@ -46,17 +48,17 @@ def rv_to_orbit_element (R,V):
 
             Perigee = np.arccos((N.dot(Eccentricity_vector))/n/Eccentricity)
 
-            if Eccentricity_vector < 0:
+            if Eccentricity_vector[2] < 0:
 
                Perigee = 2*math.pi - Perigee
 
         else:
 
-            Perigee = 0
+            Perigee = np.nan
 
     else:
 
-        Perigee = 0
+        Perigee = np.nan
 
     #Calculate the true anomaly
 
@@ -69,22 +71,18 @@ def rv_to_orbit_element (R,V):
             TA = 2*math.pi - TA
     else:
 
-        cp = np.cross(N,R)
+        TA=np.nan
 
-        if cp[2] >= 0 :
+    Inclination=math.degrees(Inclination)
+    RAAN=math.degrees(RAAN)
+    Perigee=math.degrees(Perigee)
+    True_anomaly=math.degrees(TA)
 
-            TA = np.cos((N.dot(R))/n/r)
-
-        else:
-
-            TA = 2*math.pi - np.cos((N.dot(R))/n/r)
-
-
-    return np.array([semi_major_axis,Eccentricity,Inclination,RAAN,Perigee,TA])
+    return np.array([semi_major_axis,Eccentricity,Inclination,RAAN,Perigee,True_anomaly])
 
 def test():
-    R=np.array([6300,0,0])
-    V=np.array([0,7.95,0])
+    R=np.array([4.86711880e+03,  2.77837913e+03,  3.33434849e+02])
+    V=np.array([-4.35455694e+00,  7.98629140e+00,  1.52013651e+00])
     b=rv_to_orbit_element(R,V)
     print(b)
 

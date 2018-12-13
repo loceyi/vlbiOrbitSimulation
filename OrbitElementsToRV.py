@@ -1,9 +1,9 @@
-#
+
 #Base on ICRS of IERS,
 #input:a,e,i,Omega, omega,E output:
 
 from numpy import mat,cos,sin,array
-from math import radians,sqrt
+from math import radians,sqrt,pi
 # import numpy as np
 #
 # class MyOrbit:
@@ -32,26 +32,30 @@ def orbit_element_to_rv (orbit_element):
     RAAN=radians(orbit_element[3])
     Perigee=radians(orbit_element[4])
     True_Anomaly=radians(orbit_element[5])
-    P_row_1=[cos(RAAN) * cos(Perigee) - sin(RAAN) * sin(Perigee) * cos(Inclination)]
-    P_row_2=[sin(RAAN) * cos(Perigee) + cos(RAAN) * sin(Perigee) * cos(Inclination)]
-    P_row_3=[sin(Perigee) * sin(Inclination)]
-    P=array([P_row_1, P_row_2, P_row_3])
-    Q_row_1=[-cos(RAAN) * sin(Perigee) - sin(RAAN) * cos(Perigee) * cos(Inclination)]
-    Q_row_2=[sin(RAAN) * sin(Perigee) + cos(RAAN) * cos(Perigee) * cos(Inclination)]
-    Q_row_3=[cos(Perigee) * sin(Inclination)]
-    Q=array([ Q_row_1,Q_row_2 ,Q_row_3 ])
-    d= semi_major_axis * (1 - Eccentricity * Eccentricity) / (1 + Eccentricity * cos(True_Anomaly))
-    r= d * cos(True_Anomaly) * P + d * sin(True_Anomaly) * Q
-    p= semi_major_axis*(1-Eccentricity**2)
-    h= sqrt(float(p)*mu)
-    v = -h/p*sin(True_Anomaly)*P+h/p*(Eccentricity+cos(True_Anomaly))*Q
+    PQ_row_1_1=-sin(RAAN)*cos(Inclination)*sin(Perigee)+cos(RAAN)*cos(Perigee)
+    PQ_row_1_2=-sin(RAAN)*cos(Inclination)*cos(Perigee)-cos(RAAN)*sin(Perigee)
+    PQ_row_1_3=sin(RAAN) * sin(Inclination)
+    PQ_row_2_1= cos(RAAN)*cos(Inclination)*sin(Perigee)+sin(RAAN)*cos(Perigee)
+    PQ_row_2_2=cos(RAAN)*cos(Inclination)*cos(Perigee)-sin(RAAN)*sin(Perigee)
+    PQ_row_2_3=-cos(RAAN)*sin(Inclination)
+    PQ_row_3_1 = sin(Inclination)*sin(Perigee)
+    PQ_row_3_2 = sin(Inclination)*cos(Perigee)
+    PQ_row_3_3 = cos(Inclination)
+    PQ=array([[PQ_row_1_1,PQ_row_1_2,PQ_row_1_3],[PQ_row_2_1,PQ_row_2_2,PQ_row_2_3],[PQ_row_3_1,PQ_row_3_2,PQ_row_3_3]])
+    p = semi_major_axis * (1 - Eccentricity ** 2)
+    h = sqrt(float(p) * mu)
+    r_1= h**2/mu/(1+Eccentricity*cos(True_Anomaly))*array([cos(True_Anomaly),sin(True_Anomaly),0])
+    r=PQ.dot(r_1)
+    v_1=mu/h*array([-sin(True_Anomaly),Eccentricity+cos(True_Anomaly),0])
 
+    v = PQ.dot(v_1)
 
 
     return array([r,v])
 
 def test():
-    a=array([6300,0,0,0,0,0])
+
+    a=array([7000,0.2,10,10,10,10])
     b=orbit_element_to_rv(a)
     print(b)
 
