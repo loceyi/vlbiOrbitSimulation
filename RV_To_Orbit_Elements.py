@@ -81,8 +81,8 @@ def rv_to_orbit_element (R,V):
     return np.array([semi_major_axis,Eccentricity,Inclination,RAAN,Perigee,True_anomaly])
 
 def test():
-    R=np.array([4.86711880e+03,  2.77837913e+03,  3.33434849e+02])
-    V=np.array([-4.35455694e+00,  7.98629140e+00,  1.52013651e+00])
+    R=np.array([3.88010168e+03,  3.51920601e+03,  1.97989899e+03])
+    V=np.array([-6.27798813e+00,  3.73775249e+00,  5.65953683e+00])
     b=rv_to_orbit_element(R,V)
     print(b)
 
