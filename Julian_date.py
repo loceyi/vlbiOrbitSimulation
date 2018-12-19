@@ -69,9 +69,9 @@ def Julian_date(month,day,year,hour,minute,second):
     return Julian_date
 
 def test():
-    month=1
+    month=12
     day=1
-    year=2000
+    year=2018
     hour=12
     minute=0
     second=0
@@ -83,5 +83,10 @@ def test():
 if __name__ == "__main__":
 
     test()
+
+
+
+
+
 
 

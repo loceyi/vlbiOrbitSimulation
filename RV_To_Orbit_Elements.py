@@ -3,15 +3,15 @@ import numpy as np
 import math
 
 
-def rv_to_orbit_element (R,V):
+def rv_to_orbit_element (R,V,mu):
     '''
     :param r km ,velocity km/s
     :return: orbit_element: semi_major_axis km, Eccentricity,
            Inclination, RAAN, Perigee, True_Anomaly
-           半长轴输出单位为km,其余角度输出单位为角度
+           半长轴输出单位为km,其余角度输出单位为弧度
 
     '''
-    mu = 398600
+
     H_vector = np.cross(R,V)
     h = np.sqrt(H_vector.dot(H_vector))
     r = np.sqrt(R.dot(R))
@@ -73,17 +73,18 @@ def rv_to_orbit_element (R,V):
 
         TA=np.nan
 
-    Inclination=math.degrees(Inclination)
-    RAAN=math.degrees(RAAN)
-    Perigee=math.degrees(Perigee)
-    True_anomaly=math.degrees(TA)
+
+    True_anomaly=TA
 
     return np.array([semi_major_axis,Eccentricity,Inclination,RAAN,Perigee,True_anomaly])
 
 def test():
-    R=np.array([3.88010168e+03,  3.51920601e+03,  1.97989899e+03])
-    V=np.array([-6.27798813e+00,  3.73775249e+00,  5.65953683e+00])
-    b=rv_to_orbit_element(R,V)
+    G = 6.67259e-11  # kg m/s^2·m2/kg2=m^3/kg/s^2
+    M_sun = 1.9891e30  # kg
+    mu = 398600 + G * M_sun / (1e9)  # m^3/s^2
+    R=np.array([4.95640052e+07, 1.31548319e+08, 5.70407354e+07])
+    V=np.array([-27.65588466 ,  9.0320182 ,   3.91534451])
+    b=rv_to_orbit_element(R,V,mu)
     print(b)
 
 
