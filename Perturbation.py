@@ -85,7 +85,7 @@ def pertubation(orbit_element,t):
     C2_sun=C1_sun*(sin(RAAN-RAAN_sun)*cos(u_sun)-sin(u_sun)*cos(Inclination_sun)*cos(RAAN-RAAN_sun))
     C_sun=C2_sun+cos(Inclination)*sin(Inclination_sun)*sin(u_sun)
     d_semi_major_axis_solar=0
-    d_Eccentricity_solar=-(15*K_sun/2/n)*Eccentricity*sqrt(1-Eccentricity**2)*\
+    d_Eccentricity_solar=-(15*K_sun/2/n)*Eccentricity*sqrt(1-Eccentricity**2)* \
                          (A_sun*B_sun*cos(2*Perigee)-(1/2)*(A_sun**2-B_sun**2)*sin(2*Perigee))
 
     d_Inclination_solar=3*K_sun*C_sun/4/n/sqrt(1-Eccentricity**2)*(A_sun*(2+3*Eccentricity**2+\
@@ -156,7 +156,7 @@ def test_ode_solve():
     P1 = odeint(pertubation, (7000,1e-2,1e-2,1e-2,1e-2,1e-2),t)  # (0.,1.,0.)是point的初值
     import pylab as pl
     P1[:, 5] = P1[:, 5] % (2 * pi)
-    pl.plot(t, P1[:, 5])
+    pl.plot(t, P1[:, 0])
     pl.show()
 
 
