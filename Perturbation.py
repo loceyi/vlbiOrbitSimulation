@@ -146,7 +146,7 @@ def pertubation(orbit_element,t):
     d_Mean_anomaly=n
 
 
-    return np.array([d_semi_major_axis,d_Eccentricity, d_Inclination,d_RAAN,d_Perigee,d_Mean_anomaly])
+    return np.array([d_semi_major_axis_earth_nonsphericfigure,d_Eccentricity, d_Inclination_earth_nonsphericfigure,d_RAAN_earth_nonsphericfigure,d_Perigee_earth_nonsphericfigure,d_Mean_anomaly])
 
 
 
@@ -156,7 +156,7 @@ def test_ode_solve():
     P1 = odeint(pertubation, (7000,1e-2,1e-2,1e-2,1e-2,1e-2),t)  # (0.,1.,0.)是point的初值
     import pylab as pl
     P1[:, 5] = P1[:, 5] % (2 * pi)
-    pl.plot(t, P1[:, 0])
+    pl.plot(t, P1[:, 4])
     pl.show()
 
 

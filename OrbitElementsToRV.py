@@ -3,7 +3,7 @@
 #input:a,e,i,Omega, omega,E output:
 
 from numpy import mat,cos,sin,array
-from math import radians,sqrt,pi
+from math import radians,sqrt
 # import numpy as np
 #
 # class MyOrbit:
@@ -16,7 +16,7 @@ from math import radians,sqrt,pi
 #             self.var_a = a
 
 
-def orbit_element_to_rv (orbit_element):
+def orbit_element_to_rv(orbit_element):
     '''
     :param orbit_element: semi_major_axis, Eccentricity,
            Inclination, RAAN, Perigee, True_Anomaly
@@ -51,7 +51,7 @@ def orbit_element_to_rv (orbit_element):
     v = PQ.dot(v_1)
 
 
-    return array([r,v])
+    return array(r),array(v)
 
 def test():
 
