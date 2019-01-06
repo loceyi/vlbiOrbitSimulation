@@ -1,7 +1,10 @@
 
 from OrbitElementsToRV import orbit_element_to_rv
-from numpy import array
-def Visiblity_for_celestial_body (direction_vector,orbit_element,start_time,end_time):
+from numpy import array,sqrt,arccos,pi
+from ephemeris_position_ECRF import ephemeris_sun_lunar_ECRF
+from math import  degrees
+
+def Visiblity_for_celestial_body (direction_vector,orbit_element,time):
     '''
   
   :param direction_vector: 需要观测天区方向矢量，在ICRF地心坐标系下，严格来说是ECRF
@@ -11,11 +14,83 @@ def Visiblity_for_celestial_body (direction_vector,orbit_element,start_time,end_
   :return: 可观测时间段
 
     '''
-
+    R_earth=6371 #km
+    R_sun=6.955*(10**5) #km
+    R_moon=3476.28/2  #km
     r,v=orbit_element_to_rv(orbit_element)
 
+    Distance_sat_EarthCenter=sqrt(r.dot(r))
 
-    #获得太阳和月亮在ECRF下的坐标
+    Position_satellite_ECRF=r
+
+    # 获得太阳和月亮在ECRF下的坐标
+    Position_sun_ECRF, Position_moon_ECRF = ephemeris_sun_lunar_ECRF(time)
+
+    #卫星——目标天区矢量和卫星——地心矢量夹角
+
+    x = Position_satellite_ECRF*(-1) #化为指向地心的矢量
+    y = direction_vector-Position_satellite_ECRF #卫星指向目标天区的矢量
+    # 两个向量
+    Lx = sqrt(x.dot(x))
+    Ly = sqrt(y.dot(y))
+    # 相当于勾股定理，求得斜线的长度
+    cos_angle = x.dot(y) / (Lx * Ly)
+    # 求得cos_sita的值再反过来计算，绝对长度乘以cos角度为矢量长度，初中知识。。
+    angle_arc = arccos(cos_angle)
+    angle_degree =degrees(angle_arc)
+    # 变为角度
+
+
+
+
+    #判断地球是否挡住了卫星的观测天区
+    if angle_degree=
+
+
+
+
+
+    # 卫星——目标天区矢量和卫星——日心矢量夹角
+
+    x = Position_satellite_ECRF * (-1)  # 化为指向地心的矢量
+    y = direction_vector - Position_satellite_ECRF  # 卫星指向目标天区的矢量
+    # 两个向量
+    Lx = sqrt(x.dot(x))
+    Ly = sqrt(y.dot(y))
+    # 相当于勾股定理，求得斜线的长度
+    cos_angle = x.dot(y) / (Lx * Ly)
+    # 求得cos_sita的值再反过来计算，绝对长度乘以cos角度为矢量长度，初中知识。。
+    angle_arc = arccos(cos_angle)
+    angle_degree = degrees(angle_arc)
+    # 变为角度
+
+    # 卫星——目标天区矢量和卫星——月心矢量夹角
+
+    x = Position_satellite_ECRF * (-1)  # 化为指向地心的矢量
+    y = direction_vector - Position_satellite_ECRF  # 卫星指向目标天区的矢量
+    # 两个向量
+    Lx = sqrt(x.dot(x))
+    Ly = sqrt(y.dot(y))
+    # 相当于勾股定理，求得斜线的长度
+    cos_angle = x.dot(y) / (Lx * Ly)
+    # 求得cos_sita的值再反过来计算，绝对长度乘以cos角度为矢量长度，初中知识。。
+    angle_arc = arccos(cos_angle)
+    angle_degree = degrees(angle_arc)
+    # 变为角度
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -35,35 +110,4 @@ if __name__ == "__main__":
     test()
 
 
-def sun_lunar_position (time):
-    '''
 
-    :param time:需求计算的某个时刻
-    :return: 太阳和月球在ECRF坐标下的位置
-
-    '''
-    from Ephemeris import ephemeris
-    import numpy as np
-    import de405
-    from jplephem import Ephemeris
-    Sun_state = ephemeris('sun', time)  # 太阳星历
-    barycenter_statement = ephemeris('earthmoon', time)
-
-    eph = Ephemeris(de405)
-    Position_sun = Sun_state[0, :]
-    Moon_state = ephemeris('moon', time)  # 本身就是相对地球的
-    Position_moon = Moon_state[0, :]
-    Earth_state = barycenter_statement - Moon_state * eph.earth_share
-    Position_earth = Earth_state[0, :]
-    Velocity_earth = Earth_state[1, :]
-
-    # 太阳引力摄动
-
-    G = 6.67259 * 10e-11
-    M_sun = 1.9885 * 10e30
-    R_sun_earth = Position_sun - Position_earth  # 地心ICRF参考系下太阳的位置矢量
-    V_sun_earth = Velocity_sun - Velocity_earth  # 地心ICRF参考系下太阳的速度矢量
-    r_sun = np.sqrt(R_sun_earth[0] ** 2 + R_sun_earth[1] ** 2 + R_sun_earth[2] ** 2)
-    K_sun = G * M_sun / (r_sun ** 3)  # r_sun为日地距
-
-    return sun_postion,moon_position

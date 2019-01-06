@@ -20,7 +20,7 @@ def ephemeris_position_ICRF(celestial_body,Julian_date):
     return np.array(position)
 
 
-def ephemeris_sun_lunar_ECRF():
+def ephemeris_sun_lunar_ECRF(Julian_date):
 
     # import Julian_date
     # month = 6
@@ -34,13 +34,13 @@ def ephemeris_sun_lunar_ECRF():
     # print('position=',k[0,:])
     # print('velocity=', k[1, :])
 
-    barycenter_position = ephemeris_position_ICRF('earthmoon', 2444391.5)
+    barycenter_position = ephemeris_position_ICRF('earthmoon', Julian_date)
 
     import de405
     from jplephem import Ephemeris
     eph = Ephemeris(de405)
-    Position_sun = ephemeris_position_ICRF('sun', 2444391.5)
-    Position_moon_ECRF = ephemeris_position_ICRF('moon', 2444391.5)  # 本身就是相对地球的
+    Position_sun = ephemeris_position_ICRF('sun', Julian_date)
+    Position_moon_ECRF = ephemeris_position_ICRF('moon', Julian_date)  # 本身就是相对地球的
     Position_earth = barycenter_position - Position_moon_ECRF * eph.earth_share
     Position_sun_ECRF=Position_sun-Position_earth
 
@@ -55,7 +55,7 @@ def ephemeris_sun_lunar_ECRF():
 
 
 if __name__ == "__main__":
-
-    a,b=ephemeris_sun_lunar_ECRF()
+    Julian_date=2444391.5
+    a,b=ephemeris_sun_lunar_ECRF(Julian_date)
     print(a,b)
 
