@@ -4,7 +4,6 @@
     <list default="true" id="2922b152-4010-4ace-9865-d6192257d594" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visibility_for_Star.py" beforeDir="false" afterPath="$PROJECT_DIR$/Visibility_for_Star.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ephemeris_position_ECRF.py" beforeDir="false" afterPath="$PROJECT_DIR$/ephemeris_position_ECRF.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Visibility_for_Star.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+            <state relative-caret-position="765">
+              <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
               <folding>
                 <element signature="e#1#50#0" expanded="true" />
               </folding>
@@ -29,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Ephemeris.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-180">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="903">
+              <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -38,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ephemeris_position_ECRF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
+            <state relative-caret-position="1029">
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
             </state>
           </provider>
         </entry>
@@ -47,7 +46,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Perturbation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="709">
+            <state relative-caret-position="819">
               <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
               <folding>
                 <element signature="e#24#42#0" expanded="true" />
@@ -59,7 +58,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OrbitElementsToRV.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-950">
+            <state relative-caret-position="84">
               <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
               <folding>
                 <element signature="e#61#96#0" expanded="true" />
@@ -139,7 +138,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ephemeris_position_ECRF">
+  <component name="RunManager" selected="Python.Visibility_for_Star">
     <configuration name="Ephemeris" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VLBIOrbit-Simulation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -268,9 +267,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Visibility_for_Star" />
         <item itemvalue="Python.ephemeris_position_ECRF" />
         <item itemvalue="Python.Ephemeris_ position" />
-        <item itemvalue="Python.Visibility_for_Star" />
         <item itemvalue="Python.Perturbation" />
         <item itemvalue="Python.Ephemeris" />
       </list>
@@ -350,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1546660017414</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="2019/1/6">
+      <created>1546742040055</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1546742040055</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -395,7 +401,8 @@
     <MESSAGE value="2018/12/17" />
     <MESSAGE value="2018/12/19" />
     <MESSAGE value="2019/1/5" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019/1/5" />
+    <MESSAGE value="2019/1/6" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019/1/6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -487,9 +494,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Visibility_for_Star.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
+          <folding>
+            <element signature="e#1#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Ephemeris.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="903">
+          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ephemeris_position_ECRF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1029">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Perturbation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
+        <state relative-caret-position="819">
           <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
           <folding>
             <element signature="e#24#42#0" expanded="true" />
@@ -499,34 +530,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OrbitElementsToRV.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-950">
+        <state relative-caret-position="84">
           <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
           <folding>
             <element signature="e#61#96#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Ephemeris.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ephemeris_position_ECRF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Visibility_for_Star.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding>
-            <element signature="e#1#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
