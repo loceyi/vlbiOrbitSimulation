@@ -63,12 +63,12 @@ def Visibility_for_celestial_body (direction_vector,orbit_element,time):
     if angle_degree_earth_target >= angle_degree_earth_occupied :
 
 
-        Visibility=1
+        Visibility_earth_sat=1
 
 
     else :
 
-        Visibility=0
+        Visibility_earth_sat=0
 
 
 
@@ -110,12 +110,12 @@ def Visibility_for_celestial_body (direction_vector,orbit_element,time):
     # 判断地球是否挡住了卫星的观测天区
     if angle_degree_sun_target >= angle_degree_sun_occupied:
 
-        Visibility = 1
+        Visibility_sun_sat = 1
 
 
     else:
 
-        Visibility = 0
+        Visibility_sun_sat = 0
 
 
 
@@ -152,12 +152,15 @@ def Visibility_for_celestial_body (direction_vector,orbit_element,time):
     # 判断地球是否挡住了卫星的观测天区
     if angle_degree_moon_target >= angle_degree_moon_occupied:
 
-        Visibility = 1
+        Visibility_moon_target = 1
 
 
     else:
 
-        Visibility = 0
+        Visibility_moon_target= 0
+
+
+
 
 
 
@@ -168,7 +171,7 @@ def Visibility_for_celestial_body (direction_vector,orbit_element,time):
 def test():
 
     a=array([7000,0.2,45,20,30,0])
-    time=2444391.5
+    time=2444395.5
     direction_vector=array([1,1,1])
     Visibility=Visibility_for_celestial_body(direction_vector, a, time)
     print(Visibility)
