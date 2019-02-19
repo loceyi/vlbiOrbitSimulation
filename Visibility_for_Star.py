@@ -25,7 +25,7 @@ def Visibility_for_celestial_body (direction_vector,orbit_element,time):
 
     # 获得太阳和月亮在ECRF下的坐标
     Position_sun_ECRF, Position_moon_ECRF = ephemeris_sun_lunar_ECRF(time)
-    vector_target=direction_vector #卫星指向目标天区的矢量
+    vector_target=direction_vector #卫星指向目标天区的方向矢量
 
 
 
@@ -63,12 +63,12 @@ def Visibility_for_celestial_body (direction_vector,orbit_element,time):
     if angle_degree_earth_target >= angle_degree_earth_occupied :
 
 
-        Visibility_earth_sat=1
+        Visibility_earth_target=1
 
 
     else :
 
-        Visibility_earth_sat=0
+        Visibility_earth_target=0
 
 
 
@@ -107,15 +107,15 @@ def Visibility_for_celestial_body (direction_vector,orbit_element,time):
     angle_degree_sun_occupied = degrees(angle_arc)
     # 变为角度
 
-    # 判断地球是否挡住了卫星的观测天区
+    # 判断太阳是否挡住了卫星的观测天区
     if angle_degree_sun_target >= angle_degree_sun_occupied:
 
-        Visibility_sun_sat = 1
+        Visibility_sun_target = 1
 
 
     else:
 
-        Visibility_sun_sat = 0
+        Visibility_sun_target = 0
 
 
 
@@ -149,7 +149,7 @@ def Visibility_for_celestial_body (direction_vector,orbit_element,time):
     angle_degree_moon_occupied = degrees(angle_arc)
     # 变为角度
 
-    # 判断地球是否挡住了卫星的观测天区
+    # 判断月亮是否挡住了卫星的观测天区
     if angle_degree_moon_target >= angle_degree_moon_occupied:
 
         Visibility_moon_target = 1
@@ -159,19 +159,23 @@ def Visibility_for_celestial_body (direction_vector,orbit_element,time):
 
         Visibility_moon_target= 0
 
+    if 0 in (Visibility_moon_target, Visibility_earth_target, Visibility_sun_target):
+
+        Visibility_result=0
+
+    else:
+
+        Visibility_result=1
 
 
-
-
-
-    return Visibility
+    return Visibility_result
 
 
 
 def test():
 
     a=array([7000,0.2,45,20,30,0])
-    time=2444395.5
+    time=2444395.7
     direction_vector=array([1,1,1])
     Visibility=Visibility_for_celestial_body(direction_vector, a, time)
     print(Visibility)

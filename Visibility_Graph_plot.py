@@ -9,9 +9,9 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 #from 2019年1月15日9：00到12:00
-month = 2
+month = 3
 day = 15
-year = 2018
+year = 2017
 hour = 9
 minute = 0
 second = 0
@@ -25,7 +25,7 @@ for i in range(0,length): #0~59,没有60
     time[i] = Julian_date(month, day, year, hour, minute, second)
 
     a = array([7000, 0.2, 45, 20, 30, 0])
-    direction_vector = array([0, -0.3, 0.5])
+    direction_vector = array([1, 1, 0.1])
     Visibility[i] = Visibility_for_celestial_body(direction_vector, a, time[i])
 
 
