@@ -1,5 +1,7 @@
 
 import numpy as np
+from inspect import isfunction
+import os
 #解stiff differential equation
 # %     Numerical solution of a stiff (or differential algebraic) system of
 # # %     first order ordinary differential equations:
@@ -102,13 +104,14 @@ import numpy as np
 # # % -------------------------------------------------------------------------
 
 class radau:    #定义类，并起一个名字
-
-    def __init__(self,OdeFcn,tspan,y0,options,varagin):    #构造函数，类接收外部传入参数全靠构造函数
-        self.OdeFcn = OdeFcn
-        self.tspan = tspan
-        self.y0 = y0
-        self.options=options
-        self.varagin=varagin
+    #OdeFcn传入一个函数,self是类特有的属性
+    def __init__(self,OdeFcn,tspan,y0,*options_varagin):    #构造函数，类接收外部传入参数全靠构造函数,外加一个可变参数
+        self.OdeFcn = OdeFcn#必须是函数类型
+        self.tspan = tspan#必须是array类型
+        self.y0 = y0#y0必须是array类型
+        self.options=options_varagin[0]
+        self.varagin=options_varagin[1]
+        self.nargin=3+len(options_varagin)
 
     def radau_main(self):    #类的方法
         Solver_Name = 'radau'
@@ -176,6 +179,54 @@ class radau:    #定义类，并起一个名字
                            ['Vitu'],      ['Vitd'],
                            ['hhou'],      ['hhod'],
                            ['Gustafsson']])
+
+
+        if  not(isfunction(self.OdeFcn)) :
+
+            print('First input argument must be a valid function')
+            os._exit(0)
+
+
+        elif not isinstance(self.tspan,np.ndarray) or len(self.tspan)<2:
+
+            print('Third input argument must be in ndarray type')
+            os._exit(0)
+
+        elif not isinstance(self.y0,np.ndarray):
+
+            print('Initial conditions argument must be in ndarray type')
+            os._exit(0)
+
+        #  OdeFcn tspan y options are all good.
+
+        Arg_In=self.nargin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
