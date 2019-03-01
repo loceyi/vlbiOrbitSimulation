@@ -109,7 +109,7 @@ class radau:    #定义类，并起一个名字
         self.OdeFcn = OdeFcn#必须是函数类型
         self.tspan = tspan#必须是array类型
         self.y0 = y0#y0必须是array类型
-        self.options=options_varagin[0]
+        self.options=options_varagin[0]#options必须是字典类型
         self.varagin=options_varagin[1]
         self.nargin=3+len(options_varagin)
 
@@ -132,7 +132,7 @@ class radau:    #定义类，并起一个名字
         NbrInd1Def = 0
         NbrInd2Def = 0
         NbrInd3Def = 0
-        JacFcnDef = []; # Implicit solver parameters
+        JacFcnDef = []; # Implicit solver parameters 空列表
         JacRecomputeDef = 1e-3
         Start_NewtDef = False
         MaxNbrNewtonDef = 7
@@ -150,35 +150,33 @@ class radau:    #定义类，并起一个名字
         hhodDef = 0.8
         GustafssonDef = True
 
-        OpDefault=np.array([[AbsTolDef],   [RelTolDef],       [InitialStepDef],
-                           [MaxStepDef],   [MaxNbrStepDef],
-                           [MassFcnDef],   [EventsFcnDef],    [RefineDef],
-                           [OutputFcnDef], [OutputSelDef],    [ComplexDef],
-                           [NbrInd1Def],   [NbrInd2Def],      [NbrInd3Def],
-                           [JacFcnDef],    [JacRecomputeDef],
-                           [Start_NewtDef],[MaxNbrNewtonDef],
-                           [NbrStgDef],    [MinNbrStgDef],    [MaxNbrStgDef],
-                           [SafeDef],
-                           [Quot1Def],     [Quot2Def],
-                           [FacLDef],      [FacRDef]
-                           [VituDef],      [VitdDef]
-                           [hhouDef],      [hhodDef]
-                           [GustafssonDef]])
+        OpDefault=[AbsTolDef,   RelTolDef,       InitialStepDef,\
+                           MaxStepDef,   MaxNbrStepDef,\
+                           MassFcnDef,   EventsFcnDef,    RefineDef,\
+                           OutputFcnDef, OutputSelDef,    ComplexDef,\
+                           NbrInd1Def,   NbrInd2Def,      NbrInd3Def,\
+                           JacFcnDef,    JacRecomputeDef,\
+                           Start_NewtDef,MaxNbrNewtonDef,\
+                           NbrStgDef,    MinNbrStgDef,    MaxNbrStgDef,\
+                           SafeDef,\
+                           Quot1Def,     Quot2Def,\
+                           FacLDef,      FacRDef,\
+                           VituDef,      VitdDef,\
+                           hhouDef,      hhodDef,\
+                           GustafssonDef]
 
-        OpNames=np.array([['AbsTol'],     ['RelTol'],       ['InitialStep'],
-                           ['MaxStep'],   ['MaxNbrStep'],
-                           ['MassFcn'],   ['EventsFcn'],    ['Refine'],
-                           ['OutputFcn'], ['OutputSel'],    ['Complex'],
-                           ['NbrInd1'],   ['NbrInd2Def'],   ['NbrInd3'],
-                           ['JacFcn'],    ['JacRecompute'],
-                           ['Start_Newt'],['MaxNbrNewton'],
-                           ['NbrStg'],    ['MinNbrStg'],    ['MaxNbrStg'],
-                           ['Safe'],
-                           ['Quot1'],     ['Quot2'],
-                           ['FacL'],      ['FacR'],
-                           ['Vitu'],      ['Vitd'],
-                           ['hhou'],      ['hhod'],
-                           ['Gustafsson']])
+        OpNames=['AbsTol','RelTol','InitialStep','MaxStep','MaxNbrStep',
+                 'MassFcn','EventsFcn','Refine',
+                 'OutputFcn','OutputSel','Complex',
+                 'NbrInd1','NbrInd2','NbrInd3',
+                 'JacFcn','JacRecompute',
+                 'Start_Newt','MaxNbrNewton',
+                 'NbrStg','MinNbrStg','MaxNbrStg',
+                 'Safe',
+                 'Quot1','Quot2',
+                 'FacL','FacR',
+                 'Vitu','Vitd',
+                 'hhou','hhod','Gustafsson']
 
 
         if  not(isfunction(self.OdeFcn)) :
@@ -211,8 +209,12 @@ class radau:    #定义类，并起一个名字
 
         for n in range(1,OpNames.shape[0]+1):
 
+            Op_dict[OpNames[n-1]]=rdpget(options,OpNames[n-1],OpDefault[n-1])
 
-            
+
+
+
+
 
 
 
