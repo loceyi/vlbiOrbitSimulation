@@ -199,7 +199,23 @@ class radau:    #定义类，并起一个名字
 
         #  OdeFcn tspan y options are all good.
 
-        Arg_In=self.nargin
+        #用字典去代替matlab中的一维结构数组
+
+        if self.nargin<4:
+
+            options_dict={}
+
+        Arg_dict={'In':self.nargin}
+
+        Op_dict={}
+
+        for n in range(1,OpNames.shape[0]+1):
+
+
+            
+
+
+
 
 
 
