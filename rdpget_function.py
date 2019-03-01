@@ -76,6 +76,42 @@ def rdpget(options,name,default,*flag):
              'hhou', 'hhod', 'Gustafsson']
 
     names=[string.lower() for string in Names]#all elements into lower case
+    lowName=name.lower()
+
+    #编写python中的strmatch
+    j=[]
+    count = 0
+    for each_char in names:
+        count += 1
+        if lowName in each_char:
+
+            j.append(count)
+
+        else:
+
+            pass
+
+
+
+    if len(j)==0:
+
+
+        print(Fcn_Name,'Invalid name input which does not exist in the known set parameters')
+
+        os._exit(0)
+
+
+    elif len(j)>1:
+
+        k=
+
+
+
+
+
+
+
+
 
 
 

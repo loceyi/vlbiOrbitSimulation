@@ -2,6 +2,7 @@
 import numpy as np
 from inspect import isfunction
 import os
+from rdpget_function import rdpget
 #解stiff differential equation
 # %     Numerical solution of a stiff (or differential algebraic) system of
 # # %     first order ordinary differential equations:
@@ -209,7 +210,7 @@ class radau:    #定义类，并起一个名字
 
         for n in range(1,OpNames.shape[0]+1):
 
-            Op_dict[OpNames[n-1]]=rdpget(options,OpNames[n-1],OpDefault[n-1])
+            Op_dict[OpNames[n-1]]=rdpget(self.options,OpNames[n-1],OpDefault[n-1])
 
 
 
