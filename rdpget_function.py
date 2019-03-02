@@ -20,10 +20,10 @@ def rdpget(options,name,default,*flag):
 
     '''
 
-    :param options: 输入必须是字典类型
+    :param options: 输入必须是字典类型,而且如果options中的key没有给对应value时，则对应value位置要为空列表[]
     :param name: 需要提取value的key的名字
     :param default: 默认值，如果options中没有对应key的value，这给这个name一个值
-    :param flag:
+    :param flag:如果有多个参数输入会自动存储为元组,即使只有一个输入也是存为元组
     :return:
     '''
 
@@ -33,7 +33,7 @@ def rdpget(options,name,default,*flag):
 
     nargin=3+len(flag)
 
-    if nargin==4 and flag=='fast' :#快速模式，不进行这些错误判断
+    if nargin==4 and flag[0]=='fast' :#快速模式，不进行这些错误判断
 
 
         o=getknownfield(options,name,default)
@@ -103,34 +103,68 @@ def rdpget(options,name,default,*flag):
 
     elif len(j)>1:
 
-        k=
+        #code of strmatch(exact) in matlab
+
+
+        k = []
+        count = 0
+        for each_char in names:
+            count += 1
+            if lowName == each_char:
+
+                k.append(count)
+
+            else:
+
+                pass
+
+        if len(k)== 1:
+
+            j=k
+
+
+        else:
+            #Pay attention to the difference with matlab: in python Names[0]is the first element,
+            #but in matlab Names[1] is the first element,what contains in j is the order from 1 to n
+            #so we need to  use j-1 to get the right position expression in Names
+            #matches=Names[j[0]-1]
+
+
+            print(Fcn_Name,':there are same properties names in Names ')
+
+            os._exit(0)
+
+    fieldnames_options=list(options.keys())#All the keys in options, and store it in fieldnames_options
+                                           #in the form of list
+
+
+    if Names[j[0]-1] in fieldnames_options:
+
+        o= options[Names[j[0]-1]]
+
+        if isinstance(o,list):
+
+            if len(o)==0:
+
+                o=default
+
+            else:
+
+                pass
+
+        else:
+
+
+            pass
+
+    else:
+
+
+        o=default
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    return Julian_date
+    return o
 
 
 def getknownfield(s,f,d):
@@ -161,17 +195,16 @@ def getknownfield(s,f,d):
 
     else:
 
-        pass
+        v=d
+
+
+    return v
 
 
 
 
-
-
-
-
-def test():
-    s={'a':[],'b':2}
+def test1():
+    s={'a':3,'b':2}
     f='a'
     d=0
     jd=getknownfield(s,f,d)
@@ -181,4 +214,23 @@ def test():
 
 if __name__ == "__main__":
 
-    test()
+    test1()
+
+
+
+
+
+
+def test2():
+    options={'RelTol':3,'AbsTol':2}
+    name='AbsTol'
+    default=0
+    flag='fast'
+    jd=rdpget(options, name, default, *flag)
+    print(jd)
+
+
+
+if __name__ == "__main__":
+
+    test2()
