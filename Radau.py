@@ -105,16 +105,20 @@ from rdpget_function import rdpget
 # # % -------------------------------------------------------------------------
 
 class radau:    #定义类，并起一个名字
+
     #OdeFcn传入一个函数,self是类特有的属性
-    def __init__(self,OdeFcn,tspan,y0,*options_varagin):    #构造函数，类接收外部传入参数全靠构造函数,外加一个可变参数
+    def __init__(self,OdeFcn,tspan,y0,*options_varagin):
+
+        #构造函数，类接收外部传入参数全靠构造函数,外加一个可变参数
         self.OdeFcn = OdeFcn#必须是函数类型
         self.tspan = tspan#必须是array类型
         self.y0 = y0#y0必须是array类型
-        self.options=options_varagin[0]#options必须是字典类型
+        self.options=options_varagin[0]#options必须是字典类型，对应的key value设置为列表类型
         self.varagin=options_varagin[1]
         self.nargin=3+len(options_varagin)
-
     def radau_main(self):    #类的方法
+
+
         Solver_Name = 'radau'
         Ny = len(self.y0)
         # ---------------------------
@@ -211,6 +215,69 @@ class radau:    #定义类，并起一个名字
         for n in range(1,OpNames.shape[0]+1):
 
             Op_dict[OpNames[n-1]]=rdpget(self.options,OpNames[n-1],OpDefault[n-1])
+
+
+        #####--------------AbsTol
+
+        ##Judgement of AbsTol, AbsTol should be of length 1 or length of input y0
+
+
+        if not(len(Op_dict['AbsTol'])==1) and not(len(Op_dict['AbsTol'])==Ny):
+
+
+            print(Solver_Name, ': AbsTol vector must be of length 1 or',Ny)
+
+        ##getting each data in AbsTol when its length is 1 or Ny
+        for data in Op_dict['AbsTol'] :
+
+            if not(isinstance(data,int)) and not(isinstance(data,float)):
+
+
+                print(Solver_Name, ': Wrong data type in AbsTol ,AbsTol must be a positive number')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+            if data <=0 :
+
+                print(Solver_Name,': Absolute tolerance are too small.')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+        #Extend Op_dict_AbsTol from list to matrix
+        Op_dict_AbsTol_matrix=[]
+        for i in range(1,Ny+1):
+
+            b=Op_dict['AbsTol']
+
+            Op_dict_AbsTol_matrix.extend(b)
+
+
+
+        Op_dict['AbsTol']=np.array(Op_dict_AbsTol_matrix)
+
+
+
+
+
+
+
+
+        #Judgement of RelTol
+
+
+
+
+
+
+
 
 
 

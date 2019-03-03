@@ -20,7 +20,7 @@ def rdpget(options,name,default,*flag):
 
     '''
 
-    :param options: 输入必须是字典类型,而且如果options中的key没有给对应value时，则对应value位置要为空列表[]
+    :param options: 输入必须是字典类型,而且如果options中的key value必须为列表形式，不过可以是空列表
     :param name: 需要提取value的key的名字
     :param default: 默认值，如果options中没有对应key的value，这给这个name一个值
     :param flag:如果有多个参数输入会自动存储为元组,即使只有一个输入也是存为元组
@@ -173,22 +173,20 @@ def getknownfield(s,f,d):
     if f in s:
 
         v=s[f]
-        #判断v是否是空列表，v可能是数，或者空列表
-        if isinstance(v,list):
-
-            if len(v)==0 :
-
-                v=d
-
-            else:
-
-                pass
+        #判断v是否是空列表，v可能为空列表,或者单元素或者多元素列表
 
 
+        if len(v)==0 :
+
+            v=d
 
         else:
 
             pass
+
+
+
+
 
         return v
 
@@ -198,13 +196,13 @@ def getknownfield(s,f,d):
         v=d
 
 
-    return v
+        return v
 
 
 
 
 def test1():
-    s={'a':3,'b':2}
+    s={'a':[3],'b':[2]}
     f='a'
     d=0
     jd=getknownfield(s,f,d)
@@ -222,11 +220,11 @@ if __name__ == "__main__":
 
 
 def test2():
-    options={'RelTol':3,'AbsTol':2}
-    name='AbsTol'
+    options={'RelTol':[4],'AbsTol':[2]}
+    name='RelTol'
     default=0
     flag='fast'
-    jd=rdpget(options, name, default, *flag)
+    jd=rdpget(options, name, default, flag)
     print(jd)
 
 
