@@ -227,6 +227,8 @@ class radau:    #定义类，并起一个名字
 
             print(Solver_Name, ': AbsTol vector must be of length 1 or',Ny)
 
+            os._exit(0)
+
         ##getting each data in AbsTol when its length is 1 or Ny
         for data in Op_dict['AbsTol'] :
 
@@ -251,7 +253,7 @@ class radau:    #定义类，并起一个名字
 
                 pass
 
-        #Extend Op_dict_AbsTol from list to matrix
+        #Extend Op_dict_AbsTol from list to matrix,like Op.AbsTol = Op.AbsTol + zeros(size(y0)) in matlab
         Op_dict_AbsTol_matrix=[]
         for i in range(1,Ny+1):
 
@@ -265,12 +267,201 @@ class radau:    #定义类，并起一个名字
 
 
 
+        ###---------RelTol
+
+
+
+
+        ##Judgement of RelTol, RelTol should be of length 1 or length of input y0
+
+        if not (len(Op_dict['RelTol']) == 1) and not (len(Op_dict['RelTol']) == Ny):
+            print(Solver_Name, ': RelTol vector must be of length 1 or', Ny)
+            os._exit(0)
+
+        ##getting each data in AbsTol when its length is 1 or Ny
+        for data in Op_dict['RelTol']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong data type in RelTol ,RelTol must be a positive number')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+            if data <= 10*np.spacing(1):
+
+                print(Solver_Name, ': Relative  tolerance are too small.')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+        # Extend Op_dict_AbsTol from list to matrix,like Op.RelTol = Op.RelTol + zeros(size(y0)) in matlab
+        Op_dict_RelTol_matrix = []
+        for i in range(1, Ny + 1):
+            b = Op_dict['RelTol']
+
+            Op_dict_RelTol_matrix.extend(b)
+
+        Op_dict['RelTol'] = np.array(Op_dict_RelTol_matrix)
+
+
+
+        ###-----------Initial Step Size
+
+        for data in Op_dict['InitialStep']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': WWrong input "InitialStep" must be a number')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+
+
+        ##-----------Maximal Step Size
+
+
+
+        for data in Op_dict['MaxStep']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': WWrong input "MaxStep" must be a number')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+
+
+        ##----------Maximal Number of Steps
+
+
+
+
+        for data in Op_dict['MaxNbrStep']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': WWrong input "MaxStep" must be a number')
+
+                os._exit(0)
+
+            elif data <=0:
+
+                print(Solver_Name,': Wrong input "MaxNbrStep" ,elements in MaxNbrStep must be > 0')
+
+                os._exit(0)
+
+
+        ##-----------------Mass (原代码中省略)
+
+
+
+        ##-----------------Events
+
+
+
+        if len(Op_dict['EventsFcn'])==0:
+
+            EventsExist=0
+
+        else:
+
+            EventsExist=1
+
+
+        ##------------------Refine
+
+
+        if len(Op_dict['Refine'])!=0:
+
+            for data in Op_dict['Refine']:
+
+                if not (isinstance(data, int)) and not (isinstance(data, float)):
+                    print(Solver_Name, ': WWrong input "Refine"" must be a number')
+
+                    os._exit(0)
+
+
+
+
+        ##-------------------OutPutFcn
+
+        #列表中可以存函数地址
+
+        if len(Op_dict['OutputFcn'])!=0:
+
+            for data in Op_dict['OutputFcn']:
+
+                if not isfunction(data):
+
+                    print(Solver_Name, ': OutputFcn must be valid functions')
+
+                    os._exit(0)
 
 
 
 
 
-        #Judgement of RelTol
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -202,9 +202,9 @@ def getknownfield(s,f,d):
 
 
 def test1():
-    s={'a':[3],'b':[2]}
+    s={'a':[],'b':[2]}
     f='a'
-    d=0
+    d=[0]
     jd=getknownfield(s,f,d)
     print(jd)
 
@@ -221,8 +221,8 @@ if __name__ == "__main__":
 
 def test2():
     options={'RelTol':[4],'AbsTol':[2]}
-    name='RelTol'
-    default=0
+    name='AbsTol'
+    default=[0]
     flag='fast'
     jd=rdpget(options, name, default, flag)
     print(jd)
