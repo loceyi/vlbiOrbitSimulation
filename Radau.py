@@ -357,7 +357,7 @@ class radau:    #定义类，并起一个名字
 
             if not (isinstance(data, int)) and not (isinstance(data, float)):
 
-                print(Solver_Name, ': WWrong input "MaxStep" must be a number')
+                print(Solver_Name, ': Wrong input "MaxStep" must be a number')
 
                 os._exit(0)
 
@@ -393,7 +393,7 @@ class radau:    #定义类，并起一个名字
             for data in Op_dict['Refine']:
 
                 if not (isinstance(data, int)) and not (isinstance(data, float)):
-                    print(Solver_Name, ': WWrong input "Refine"" must be a number')
+                    print(Solver_Name, ': Wrong input "Refine"" must be a number')
 
                     os._exit(0)
 
@@ -403,7 +403,7 @@ class radau:    #定义类，并起一个名字
         ##-------------------OutPutFcn
 
         #列表中可以存函数地址
-
+        Op_dict_outputfcn_str=[]
         if len(Op_dict['OutputFcn'])!=0:
 
             for data in Op_dict['OutputFcn']:
@@ -413,6 +413,252 @@ class radau:    #定义类，并起一个名字
                     print(Solver_Name, ': OutputFcn must be valid functions')
 
                     os._exit(0)
+
+                else:
+
+                    Op_dict_outputfcn_str.append(str(data.__name__)) #name前后都是由两个下划线组成的
+
+
+            Op_dict['OutputFcn']=Op_dict_outputfcn_str
+            #like  Op.OutputFcn = func2str(Op.OutputFcn) in matlab
+            #把原本存的函数地址全部替换为函数名字符串
+
+
+
+        ##---------------OutputSel
+
+
+        if len(Op_dict['OutputSel'])!=0:
+
+            IndComp=[]
+            for c in range(1,Ny+1):
+
+                IndComp.append(c)
+
+            for n in range(0,len(Op_dict['OutputSel'])):
+
+
+                if Op_dict['OutputSel'][n] not in IndComp:
+
+
+                    print(Solver_Name,': OutputSel must be an integer in 1 .. ',Ny)
+
+                    os._exit(0)
+
+                else:
+
+                    pass
+
+        else:
+
+
+            pass
+
+
+
+        ##--------------Complex
+
+        #Complex中必须是bool类型
+
+
+        for data in Op_dict['Complex']:
+
+            if not isinstance(data,bool):
+
+                print(Solver_Name, ': Complex must be in the type ''bool')
+
+                os._exit(0)
+
+        #相当于Op.RealXY = ~Op.Complex
+        Op_dict['RealXY']= []
+
+        for data in Op_dict['Complex']:
+
+
+            Op_dict['RealXY'].append(not(data))
+
+
+
+
+        ##----------------Index1 Index2 Index3
+
+
+        counter=0 #Set counter to see if all the elements in Op_dict['NbrInd1'] are zero
+        for data in Op_dict['NbrInd1']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "NbrInd1" must be a number')
+
+                os._exit(0)
+
+            elif data <0:
+
+                print(Solver_Name,': Wrong input "NbrInd1" ,elements in NbrInd1 must be > 0')
+
+                os._exit(0)
+
+            elif data==0:
+
+                counter=counter+1
+
+        if counter == len(Op_dict['NbrInd1']):
+
+            Op_dict['NbrInd1']=[Ny] #一个数也存成list
+
+
+
+        for data in Op_dict['NbrInd2']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "NbrInd2" must be a number')
+
+                os._exit(0)
+
+            elif data <0:
+
+                print(Solver_Name,': Wrong input "NbrInd2" ,elements in NbrInd1 must be > 0')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+        for data in Op_dict['NbrInd3']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "NbrInd3" must be a number')
+
+                os._exit(0)
+
+            elif data < 0:
+
+                print(Solver_Name, ': Wrong input "NbrInd3" ,elements in NbrInd1 must be > 0')
+
+                os._exit(0)
+
+            else:
+
+                pass
+        if len(Op_dict['NbrInd2'])==len(Op_dict['NbrInd3']):
+
+
+            if len(Op_dict['NbrInd1'])==1:
+
+                Op_dict_NbrInd1=Op_dict['NbrInd1']*len(Op_dict['NbrInd2'])
+
+                temporary_parameter=[Op_dict_NbrInd1[i]+Op_dict['NbrInd2'][i]+Op_dict['NbrInd3'][i]
+                                     for i in range(0,len(Op_dict['NbrInd2']))]
+
+            elif len(Op_dict['NbrInd1'])==len(Op_dict['NbrInd2']):
+
+                temporary_parameter = [Op_dict['NbrInd1'][i] + Op_dict['NbrInd2'][i] + Op_dict['NbrInd3'][i]
+                                       for i in range(0, len(Op_dict['NbrInd2']))]
+
+            else:
+
+                print(Solver_Name,':NbrInd1 dimension must agree with Ind2,3')
+
+                os._exit(0)
+
+            counter =0
+            for i in range(0,len(temporary_parameter)):
+
+
+                if temporary_parameter[i] ==Ny:
+
+                    pass
+
+
+                else:
+
+                    print(Solver_Name,': Curious input for NbrInd1 + NbrInd2 + NbrInd3 ~= Ny')
+
+                    os._exit(0)
+
+        else:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
