@@ -106,6 +106,20 @@ from rdpget_function import rdpget
 
 class radau:    #定义类，并起一个名字
 
+
+
+    ##--------------------Declaration of global variables
+
+    global T
+    global TI
+    global ValP
+    global C
+    global Dd
+
+
+
+
+
     #OdeFcn传入一个函数,self是类特有的属性
     def __init__(self,OdeFcn,tspan,y0,*options_varagin):
 
@@ -123,37 +137,37 @@ class radau:    #定义类，并起一个名字
         Ny = len(self.y0)
         # ---------------------------
         # Default options values
-        AbsTolDef = 1e-6 # General parameters
-        RelTolDef = 1e-3
-        InitialStepDef = 1e-2
-        MaxStepDef = self.tspan[-1] - self.tspan(0)
-        MaxNbrStepDef = float('inf')
+        AbsTolDef = [1e-6] # General parameters
+        RelTolDef = [1e-3]
+        InitialStepDef = [1e-2]
+        MaxStepDef = [self.tspan[-1] - self.tspan(0)]
+        MaxNbrStepDef = [float('inf')]
         MassFcnDef = []
         EventsFcnDef = []
-        RefineDef = 1
+        RefineDef = [1]
         OutputFcnDef = []
         OutputSelDef = np.linspace(1,Ny,num=Ny,endpoint=True,retstep=False,dtype=float)
-        ComplexDef = False
-        NbrInd1Def = 0
-        NbrInd2Def = 0
-        NbrInd3Def = 0
-        JacFcnDef = []; # Implicit solver parameters 空列表
-        JacRecomputeDef = 1e-3
-        Start_NewtDef = False
-        MaxNbrNewtonDef = 7
-        NbrStgDef = 3
-        MinNbrStgDef = 3# 1 3 5 7
-        MaxNbrStgDef = 7 # 1 3 5 7
-        SafeDef = 0.9
-        Quot1Def = 1
-        Quot2Def = 1.2
-        FacLDef = 0.2
-        FacRDef = 8.0
-        VituDef = 0.002
-        VitdDef = 0.8
-        hhouDef = 1.2
-        hhodDef = 0.8
-        GustafssonDef = True
+        ComplexDef = [False]
+        NbrInd1Def = [0]
+        NbrInd2Def = [0]
+        NbrInd3Def = [0]
+        JacFcnDef = []   # Implicit solver parameters 空列表
+        JacRecomputeDef = [1e-3]
+        Start_NewtDef = [False]
+        MaxNbrNewtonDef = [7]
+        NbrStgDef = [3]
+        MinNbrStgDef = [3]  # 1 3 5 7
+        MaxNbrStgDef = [7]  # 1 3 5 7
+        SafeDef = [0.9]
+        Quot1Def = [1]
+        Quot2Def = [1.2]
+        FacLDef = [0.2]
+        FacRDef = [8.0]
+        VituDef = [0.002]
+        VitdDef = [0.8]
+        hhouDef = [1.2]
+        hhodDef = [0.8]
+        GustafssonDef = [True]
 
         OpDefault=[AbsTolDef,   RelTolDef,       InitialStepDef,\
                            MaxStepDef,   MaxNbrStepDef,\
@@ -212,7 +226,7 @@ class radau:    #定义类，并起一个名字
 
         Op_dict={}
 
-        for n in range(1,OpNames.shape[0]+1):
+        for n in range(1,len(OpNames)+1):
 
             Op_dict[OpNames[n-1]]=rdpget(self.options,OpNames[n-1],OpDefault[n-1])
 
@@ -564,83 +578,702 @@ class radau:    #定义类，并起一个名字
 
                 os._exit(0)
 
-            counter =0
-            for i in range(0,len(temporary_parameter)):
 
 
-                if temporary_parameter[i] ==Ny:
+        else:
+
+            if len(Op_dict['NbrInd2'])==1:
+
+
+                if len(Op_dict['NbrInd1'])==1:
+
+
+                    Op_dict_NbrInd1 = Op_dict['NbrInd1'] * len(Op_dict['NbrInd3'])
+                    Op_dict_NbrInd2 = Op_dict['NbrInd2'] * len(Op_dict['NbrInd3'])
+
+                    temporary_parameter = [Op_dict_NbrInd1[i] + Op_dict_NbrInd2[i] +
+                                           Op_dict['NbrInd3'][i]
+                                           for i in range(0, len(Op_dict['NbrInd3']))]
+
+                else:
+
+                    if len(Op_dict['NbrInd1'])==len(Op_dict['NbrInd3']):
+
+
+
+                        Op_dict_NbrInd2 = Op_dict['NbrInd2'] * len(Op_dict['NbrInd3'])
+
+                        temporary_parameter = [Op_dict['NbrInd1'][i] + Op_dict_NbrInd2[i] +
+                                               Op_dict['NbrInd3'][i]
+                                               for i in range(0, len(Op_dict['NbrInd3']))]
+
+
+                    else:
+
+                        print(Solver_Name, ':NbrInd1 dimension must agree with Ind3 when Ind2=1 and '
+                                           'Ind3!=1')
+
+                        os._exit(0)
+
+
+            else:
+
+                if len(Op_dict['NbrInd3'])==1:
+
+                    if len(Op_dict['NbrInd1']) == 1:
+
+                        Op_dict_NbrInd1 = Op_dict['NbrInd1'] * len(Op_dict['NbrInd2'])
+                        Op_dict_NbrInd3 = Op_dict['NbrInd3'] * len(Op_dict['NbrInd2'])
+
+                        temporary_parameter = [Op_dict_NbrInd1[i] + Op_dict_NbrInd3[i] +
+                                               Op_dict['NbrInd2'][i]
+                                               for i in range(0, len(Op_dict['NbrInd2']))]
+
+                    else:
+
+                        if len(Op_dict['NbrInd1']) == len(Op_dict['NbrInd2']):
+
+                            Op_dict_NbrInd3 = Op_dict['NbrInd3'] * len(Op_dict['NbrInd2'])
+
+                            temporary_parameter = [Op_dict['NbrInd1'][i] + Op_dict_NbrInd3[i] +
+                                                   Op_dict['NbrInd2'][i]
+                                                   for i in range(0, len(Op_dict['NbrInd2']))]
+
+
+                        else:
+
+                            print(Solver_Name, ':NbrInd1 dimension must agree with Ind2 when Ind3=1 and '
+                                               'Ind2!=1')
+
+                            os._exit(0)
+
+                else:
+
+                    print(Solver_Name, ':NbrInd2 dimension must agree with Ind3 when they are not zero')
+
+                    os._exit(0)
+
+        counter = 0
+        for i in range(0, len(temporary_parameter)):
+
+            if temporary_parameter[i] == Ny:
+
+                pass
+
+
+            else:
+
+                print(Solver_Name, ': Curious input for NbrInd1 + NbrInd2 + NbrInd3 ~= Ny')
+
+                os._exit(0)
+
+
+
+
+        ##--------------Jacobian
+
+
+        if len(Op_dict['JacFcn'])==0:
+
+            Op_dict['JacAnalytic']=False
+
+        else:
+
+            Op_dict['JacAnalytic']=True
+
+
+        ##---------------JacRecompute
+
+
+        for data in Op_dict['JacRecompute']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "JacRecompute" must be numeric {0.001}')
+
+                os._exit(0)
+
+            elif abs(data) >= 1 :
+
+                print(Solver_Name,': Curious input for "JacRecompute" ',data)
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+
+        ##-------------------Start_Newt
+        #Predict: switch for starting values of newton iterations.
+
+
+        if len(Op_dict['Start_Newt']) >0:
+
+
+
+            for data in Op_dict['Start_Newt']:
+
+                if not isinstance(data,bool):
+
+                    print(Solver_Name, ': Start_Newt must be logical')
+
+                    os._exit(0)
+
+                else:
 
                     pass
 
 
-                else:
+        else:
 
-                    print(Solver_Name,': Curious input for NbrInd1 + NbrInd2 + NbrInd3 ~= Ny')
+            pass
 
-                    os._exit(0)
+
+
+
+
+        ##------------Maximal Number of Newton Iteration
+
+
+
+        for data in Op_dict['MaxNbrNewton']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "MaxNbrNewton" must be a positive number >= 4')
+
+                os._exit(0)
+
+            elif data < 4 :
+
+                print(Solver_Name,': Wrong input "MaxNbrNewton" ',data,', must be > =4')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+
+
+
+        ##--------------Number of Stages (Min Initial Max)
+
+
+        Stage=[1,3,5,7]
+
+        for data in Op_dict['NbrStg']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "NbrStg" must be in [ 1 3 5 7]')
+
+                os._exit(0)
+
+            elif data not in Stage :
+
+                print(Solver_Name,': Wrong input "NbrStg" must be in [ 1 3 5 7]')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+        for data in Op_dict['MinNbrStg']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "MinNbrStg" must be in [ 1 3 5 7]')
+
+                os._exit(0)
+
+            elif data not in Stage:
+
+                print(Solver_Name,': Wrong input "MinNbrStg" must be in [ 1 3 5 7]')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+
+        for data in Op_dict['MaxNbrStg']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "MaxNbrStg" must be in [ 1 3 5 7]')
+
+                os._exit(0)
+
+            elif data not in Stage :
+
+                print(Solver_Name,': Wrong input "MaxNbrStg" must be in [ 1 3 5 7]')
+
+                os._exit(0)
+
+            else:
+
+                pass
+        counter =0
+        for data in Op_dict['MinNbrStg']:
+
+            if data > Op_dict['MaxNbrStg'][counter]:
+
+                print(Solver_Name, ':  Wrong input MaxNbrStg >= MinNbrStg please')
+
+                os._exit(0)
+
+            else:
+
+                counter=counter+1
+
+
+        counter=0
+        for data in Op_dict['NbrStg']:
+
+            if data > Op_dict['MaxNbrStg'][counter] or data < Op_dict['MinNbrStg'][counter]:
+
+                print(Solver_Name, ':   Curious input for "NbrStg"')
+
+                os._exit(0)
+
+            else:
+
+                counter=counter+1
+
+
+        ##------------Safe Safety factor in step size prediction
+
+
+
+        for data in Op_dict['Safe']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ':  Wrong input "Safe" must be a positive number')
+
+                os._exit(0)
+
+            elif data<=0.001 or data>=1:
+
+                print(Solver_Name,':  Curious input for Safe,',data,' must be in 0.001~1')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+        #  --------------- QUOT1 AND QUOT2: IF QUOT1 < HNEW / HOLD < QUOT2, STEPSIZE = CONST.
+        # work(5: 6) = [quot1;quot2], parameters for step size selection
+        # if quot1 < hnew / hold < quot2, then the step size is not changed.
+        # this saves, together with a large work(3), LU-decompositions and
+        # computing time for large systems. for small systems one may have
+        # quot1 = 1, quot2 = 1.2, for large full systems quot1 = 0.99, quot2 =
+        # 2 might be good.defaults quot1 = 1, quot2 = 1.2.
+
+
+
+
+        for data in Op_dict['Quot1']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ':   Wrong input "Quot1"  must be numeric')
+
+                os._exit(0)
+
+            elif data >1:
+
+                print(Solver_Name,': Curious input for Quot1 = ', data, ' must be in <= 1')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+
+        for data in Op_dict['Quot2']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ':   Wrong input "Quot2"  must be numeric')
+
+                os._exit(0)
+
+            elif data >1:
+
+                print(Solver_Name,': Curious input for Quot2 = ', data, ' must be in <= 1')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+
+
+        ##------------FacL, Facr : parameters for step size selection
+
+
+        for data in Op_dict['FacL']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "FacL" must be numeric default 0.2')
+
+                os._exit(0)
+
+            elif data >1:
+
+                print(Solver_Name,': Curious input for "FacL" default 0.2')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+        for data in Op_dict['FacR']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "FacR" must be numeric default 8')
+
+                os._exit(0)
+
+            elif data < 1:
+
+                print(Solver_Name, ': Curious input for "FacR" default 8')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+
+
+        ##-------------Vitu Vitd Hhou Hhod parameters for order selection strategy
+
+        for data in Op_dict['Vitu']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "Vitu" must be numeric default 0.002')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+        for data in Op_dict['Vitd']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "Vitd" must be numeric default 0.8')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+        for data in Op_dict['hhou']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "hhou" must be numeric default 1.2')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+
+
+        for data in Op_dict['hhod']:
+
+            if not (isinstance(data, int)) and not (isinstance(data, float)):
+
+                print(Solver_Name, ': Wrong input "Vitu" must be numeric default 0.8')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+
+        ##------------Gustafsson
+
+        for data in Op_dict['Gustafsson']:
+
+            if not isinstance(data, bool):
+
+                print(Solver_Name, ': Wrong input "Gustafsson" must be logical')
+
+                os._exit(0)
+
+            else:
+
+                pass
+
+
+
+        solver54=['radausolver',self.OdeFcn,self.tspan,self.y0,Op_dict]
+
+
+
+        if Arg_dict['In']>3:
+
+            solver54=[solver54,self.varagin]
+
+
+
+        ###------------------------------------------------------------------------------------
+        ###Tests on outputs
+        ###------------------------------------------------------------------------------------
+
+
+        y=self.y0
+        varargout=radau.radausolver(y,Op_dict)
+
+
+
+        OutputNbr=len(varargout)
+
+
+        if len(OutputNbr)==0:
+
+            Op_dict['Stats']=False
+
+            if len(Op_dict['OutputFcn'])==0:
+
+                Op_dict['OutputFcn']=rdpget(self.options,'OutputFcn','odeplot')
+
+            else:
+
+                pass
+
+
+        elif OutputNbr==2:
+
+            Op_dict['Stats'] = False
+
+        elif OutputNbr==3:
+
+            Op_dict['Stats'] = True
+
+
+        elif OutputNbr==5:
+
+            Op_dict['Stats'] = False
+
+            if not EventsExist:
+
+                print(Solver_Name,': Events not set, too much output')
+
+                os._exit(0)
+
+
+            else:
+
+                pass
+
+
+        elif OutputNbr==6:
+
+            Op_dict['Stats'] = True
+
+            if not EventsExist:
+
+                print(Solver_Name, ': Events and Stats must be set for 6 outputs')
+
+                os._exit(0)
+
+
+            else:
+
+                pass
+
 
         else:
 
+            print(Solver_Name, ': Outputs number not correct')
 
+            os._exit(0)
 
 
 
+        solverradau=['radausolver',self.OdeFcn,self.tspan,self.y0,Op_dict]
 
+        if Arg_dict['In']>3:
 
 
+            solverradau=[solverradau,self.varagin]
 
 
+        else:
 
+            pass
 
 
+        if OutputNbr ==0:
 
+            varargout=[]
 
 
+        else:
 
+            pass
 
 
+        return varargout
 
 
 
 
+    def radausolver(self,y,Op_dict):
 
+        global T
+        global TI
+        global ValP
+        global C
+        global Dd
 
 
 
 
+        Solver_Name='radausolver'
 
+        ##----------------Input Parameters
 
 
+        #Time Properties
 
+        tspan=self.tspan
 
+        ntspan=len(tspan)
 
+        t=tspan[0]
 
+        tfinal=tspan[ntspan-1]
 
+        PosNeg=np.sign(tfinal-t)
 
+        #Number of equations, y is a column vector
 
+        Ny=len(y)
 
+        #Options parameters
 
+        #--General options
 
+        RelTol=Op_dict['RelTol']
+        AbsTol=Op_dict['AbsTol']
+        h=Op_dict['InitialStep']
+        hmax=Op_dict['MaxStep']
+        MassFcn=Op_dict['MassFcn']
+        EventsFcn=Op_dict['EventsFcn']
+        OutputFcn=Op_dict['OutputFcn']
+        OutputSel=Op_dict['OutputSel']
 
 
 
+        RealYN=[]  #RealYN = ~Op.Complex
+        for data in Op_dict['Complex']:
 
+            RealYN.append(not(data))
 
+        NbrInd1=Op_dict['NbrInd1']
+        NbrInd2=Op_dict['NbrInd2']
+        NbrInd3=Op_dict['NbrInd3']
+        Refine=Op_dict['Refine']
+        MaxNbrStep=Op_dict['MaxNbrStep']
 
+        #--Parameters for implicit procedure
 
+        MaxNbrNewton=Op_dict['MaxNbrNewton']
+        Start_Newt=Op_dict['Start_Newt']
+        JacFcn=Op_dict['JacFcn']
+        JacAnalytic=Op_dict['JacAnalytic']
+        Thet=Op_dict['JacRecompute']
+        Safe=Op_dict['Safe']
+        Quot1=Op_dict['Quot1']
+        Quot2=Op_dict['Quot2']
 
+        FacL=[]
+        for data in Op_dict['FacL']:
 
+            FacL.append(1/data)
 
+        FacR = []
+        for data in Op_dict['FacR']:
+            FacR.append(1 / data)
 
 
+        #--Order selection parameters
 
+        NbrStg=Op_dict['NbrStg']
+        MinNbrStg=Op_dict['MinNbrStg']
+        MaxNbrStg=Op_dict['MaxNbrStg']
+        Vitu=Op_dict['Vitu']
+        Vitd=Op_dict['Vitd']
+        hhou=Op_dict['hhou']
+        hhod=Op_dict['hhod']
+        Gustafsson=Op_dict['Gustafsson']
 
+        #--Initialisation of Stat parameters
 
+        Stat={}
 
+        Stat['FcnNbr']=0
+        Stat['JacNbr'] = 0
+        Stat['DecompNbr'] = 0
+        Stat['SolveNbr'] = 0
+        Stat['StepNbr'] = 0
+        Stat['AccptNbr'] = 0
+        Stat['StepRejNbr'] = 0
+        Stat['NewRejNbr'] = 0
 
+        #Initialisation of Dyn parameters
 
+        Dyn={}
 
+        Dyn['Jac_t']=[]
+        Dyn['Jac_Step'] = []
+        Dyn['haccept_t'] = []
+        Dyn['haccept_Step'] = []
+        Dyn['haccept'] = []
+        Dyn['hreject_t'] = []
+        Dyn['hreject_Step'] = []
+        Dyn['hreject'] = []
+        Dyn['Newt_t'] = []
+        Dyn['Newt_Step'] = []
+        Dyn['NewtNbr'] = []
+        Dyn['NbrStg_t'] = [t]
+        Dyn['NbrStg_Step'] = [0]
+        Dyn['NbrStg'] = [NbrStg]
 
+        StatsExist=False
 
 
 
@@ -677,84 +1310,6 @@ class radau:    #定义类，并起一个名字
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    def radausolver(self):
-        print("我的年龄：%s"%self.age)
 
 
     def ntrprad(self):
