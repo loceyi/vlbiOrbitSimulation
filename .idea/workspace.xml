@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2922b152-4010-4ace-9865-d6192257d594" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Radau.py" beforeDir="false" afterPath="$PROJECT_DIR$/Radau.py" afterDir="false" />
     </list>
@@ -41,7 +40,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Julian_date.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
+            <state relative-caret-position="1722">
               <caret line="82" column="26" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
             </state>
           </provider>
@@ -50,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo_gui_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
+            <state relative-caret-position="3045">
               <caret line="149" selection-start-line="149" selection-end-line="149" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
@@ -74,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Radau.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="1277" column="8" selection-start-line="1277" selection-start-column="8" selection-end-line="1277" selection-end-column="8" />
+            <state relative-caret-position="377">
+              <caret line="1407" column="87" selection-start-line="1407" selection-start-column="87" selection-end-line="1407" selection-end-column="87" />
               <folding>
                 <element signature="e#1#19#0" expanded="true" />
               </folding>
@@ -106,6 +105,7 @@
       <find>varagin</find>
       <find>EventsExist</find>
       <find>Complex</find>
+      <find>__nam</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -497,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551672112563</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="2019/3/7/Happy birthday to myself!">
+      <created>1551945539724</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1551945539724</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -517,7 +524,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3250444" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40497336" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -555,7 +562,8 @@
     <MESSAGE value="2019/3/2/morning" />
     <MESSAGE value="2019/3/3/" />
     <MESSAGE value="2019/3/4/" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019/3/4/" />
+    <MESSAGE value="2019/3/7/Happy birthday to myself!" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019/3/7/Happy birthday to myself!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -695,19 +703,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Perturbation.py">
+    <entry file="file://$PROJECT_DIR$/Julian_date.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#24#42#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1722">
+          <caret line="82" column="26" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo_gui_demo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
+        <state relative-caret-position="3045">
           <caret line="149" selection-start-line="149" selection-end-line="149" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
@@ -715,10 +720,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Julian_date.py">
+    <entry file="file://$PROJECT_DIR$/Perturbation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="82" column="26" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+        <state relative-caret-position="315">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#24#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -731,8 +739,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Radau.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="1277" column="8" selection-start-line="1277" selection-start-column="8" selection-end-line="1277" selection-end-column="8" />
+        <state relative-caret-position="377">
+          <caret line="1407" column="87" selection-start-line="1407" selection-start-column="87" selection-end-line="1407" selection-end-column="87" />
           <folding>
             <element signature="e#1#19#0" expanded="true" />
           </folding>

@@ -3,6 +3,7 @@ import numpy as np
 from inspect import isfunction
 import os
 from rdpget_function import rdpget
+from scipy import sparse
 #解stiff differential equation
 # %     Numerical solution of a stiff (or differential algebraic) system of
 # # %     first order ordinary differential equations:
@@ -221,8 +222,8 @@ class radau:    #定义类，并起一个名字
         if self.nargin<4:
 
             options_dict={}
-
-        Arg_dict={'In':self.nargin}
+        Arg_In=self.nargin>4
+        Arg_dict={'In':Arg_In}
 
         Op_dict={}
 
@@ -431,7 +432,9 @@ class radau:    #定义类，并起一个名字
                 else:
 
                     Op_dict_outputfcn_str.append(str(data.__name__)) #name前后都是由两个下划线组成的
+        else:
 
+            pass
 
             Op_dict['OutputFcn']=Op_dict_outputfcn_str
             #like  Op.OutputFcn = func2str(Op.OutputFcn) in matlab
@@ -1042,7 +1045,7 @@ class radau:    #定义类，并起一个名字
 
 
 
-        if Arg_dict['In']>3:
+        if Arg_dict['In']:
 
             solver54=[solver54,self.varagin]
 
@@ -1125,7 +1128,7 @@ class radau:    #定义类，并起一个名字
 
         solverradau=['radausolver',self.OdeFcn,self.tspan,self.y0,Op_dict]
 
-        if Arg_dict['In']>3:
+        if Arg_dict['In']:
 
 
             solverradau=[solverradau,self.varagin]
@@ -1191,9 +1194,9 @@ class radau:    #定义类，并起一个名字
         AbsTol=Op_dict['AbsTol']
         h=Op_dict['InitialStep']
         hmax=Op_dict['MaxStep']
-        MassFcn=Op_dict['MassFcn']
-        EventsFcn=Op_dict['EventsFcn']
-        OutputFcn=Op_dict['OutputFcn']
+        MassFcn=Op_dict['MassFcn'][0]#都先默认最多包含一个函数
+        EventsFcn=Op_dict['EventsFcn'][0]
+        OutputFcn=Op_dict['OutputFcn'][0]
         OutputSel=Op_dict['OutputSel']
 
 
@@ -1213,7 +1216,7 @@ class radau:    #定义类，并起一个名字
 
         MaxNbrNewton=Op_dict['MaxNbrNewton']
         Start_Newt=Op_dict['Start_Newt']
-        JacFcn=Op_dict['JacFcn']
+        JacFcn=Op_dict['JacFcn'][0]##############################
         JacAnalytic=Op_dict['JacAnalytic']
         Thet=Op_dict['JacRecompute']
         Safe=Op_dict['Safe']
@@ -1274,23 +1277,135 @@ class radau:    #定义类，并起一个名字
         Dyn['NbrStg'] = [NbrStg]
 
         StatsExist=False
+        nargout=3###############################################################
+
+        if nargout==3 or nargout ==6:
+
+            StatsExist=True
+            Dyn['haccept_t'] = []
+            Dyn['haccept_Step'] = []
+            Dyn['haccept'] = []
+            Dyn['hreject_t'] = []
+            Dyn['hreject_Step'] = []
+            Dyn['hreject'] = []
+
+        else:
+
+
+            pass
+
+        #----------Arguments
+
+        Arg={}
+        Arg['In']=(abs(self.nargin)>4)
 
 
 
+        if isfunction(self.OdeFcn):
+
+            OdeError=str(self.OdeFcn.__name__)
+
+        else:
+
+            OdeError=self.OdeFcn
+
+
+        Arg['Ode']=abs(nargin(self.OdeFcn))>2######################################
+
+        if Arg['Ode'] and not(Arg['In']):#########################
+
+            print(Solver_Name,':  ',OdeError,', parameters are missing')
+
+            os._exit(0)
+
+
+        else:
+
+            pass
+
+        ##--------------------MassFcn with arguments or not
+        #先默认MassFcn最多包含一个函数
+
+        if len(MassFcn) ==0:
+            data=[]
+            for i in range(1,Ny+1):
+
+                data.append(1)
 
 
 
+            row = list(range(1,Ny+1))
+            col = list(range(1,Ny+1))
+            c = sparse.coo_matrix((data, (row, col)), shape=(Ny+1,Ny+1))
 
 
+        else:
+
+            if nargin(MassFcn)==0:#############################
+
+                Mass=MassFcn()
+
+            else:
+
+                if isfunction(MassFcn):
 
 
+                    MassError=str(MassFcn.__name__)
+
+                else:
+
+                    MassError=MassFcn
+
+                if not(Arg['In']) :
+
+                    print(Solver_Name, ':  ',MassError, ', parameters are missing')
+
+                    os._exit(0)
+
+                else:
+
+                    Mass=MassFcn(self.varagin)
 
 
+        ##-----------------------JacFcn with arguments or not
+        #默认JacFcn最多含一个函数
 
 
+        if len(JacFcn)!=0:
 
 
+            if isfunction(JacFcn):
 
+                JacError=str(JacFcn.__name__)
+
+            else:
+
+
+                JacError=JacFcn
+
+            Arg['Jac']=(abs(nargin(JacFcn))>2)######################################
+
+            if Arg['Jac']:
+
+                if Arg['Jac'] and not(Arg['In']):
+
+                    print(Solver_Name,':  ',JacError,', parameters are missing')
+
+                else:
+
+                    pass
+
+            else:
+
+                pass
+
+
+        else:
+
+            pass
+
+
+        ##----------------------------------------set the output flag and output buffer
 
 
 
