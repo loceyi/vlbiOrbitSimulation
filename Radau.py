@@ -116,6 +116,26 @@ class radau:    #定义类，并起一个名字
     global ValP
     global C
     global Dd
+    global T_1
+    global TI_1
+    global C1
+    global ValP1
+    global Dd1
+    global T_3
+    global TI_3
+    global C3
+    global ValP3
+    global Dd3
+    global T_5
+    global TI_5
+    global C5
+    global ValP5
+    global Dd5
+    global T_7
+    global TI_7
+    global C7
+    global ValP7
+    global Dd7
 
 
 
@@ -145,8 +165,8 @@ class radau:    #定义类，并起一个名字
         MaxNbrStepDef = [float('inf')]
         MassFcnDef = []
         EventsFcnDef = []
-        RefineDef = [1]
-        OutputFcnDef = []
+        RefineDef = [1]###############默认为一个数
+        OutputFcnDef = []###########默认只放一个函数
         OutputSelDef = np.linspace(1,Ny,num=Ny,endpoint=True,retstep=False,dtype=float)
         ComplexDef = [False]
         NbrInd1Def = [0]
@@ -157,8 +177,8 @@ class radau:    #定义类，并起一个名字
         Start_NewtDef = [False]
         MaxNbrNewtonDef = [7]
         NbrStgDef = [3]
-        MinNbrStgDef = [3]  # 1 3 5 7
-        MaxNbrStgDef = [7]  # 1 3 5 7
+        MinNbrStgDef = [3]  # 1 3 5 7 #默认为一个数
+        MaxNbrStgDef = [7]  # 1 3 5 7#默认为一个数
         SafeDef = [0.9]
         Quot1Def = [1]
         Quot2Def = [1.2]
@@ -1410,6 +1430,103 @@ class radau:    #定义类，并起一个名字
 
 
 
+        if ntspan==2:
+
+
+
+            if Refine[0]<=1:
+
+                Outflag=1
+                nBuffer=100
+                nout=0
+                tout=np.zeros([nBuffer,1])
+                yout=np.zeros([nBuffer,Ny])
+
+            else:
+
+                Outflag=2
+                nBuffer=10*Refine[0]
+                nout=0
+                tout=np.zeros([nBuffer,1])
+                yout=np.zeros([nBuffer,Ny])
+
+
+        else:
+
+
+            Outflag=3
+            nout=0
+            nout3=0
+            tout=np.zeros([ntspan,1])
+            yout=np.zeros([ntspan,Ny])
+
+            if Refine[0]>1:
+
+                Refine[0]=1
+
+                print('Warning！',Solver_Name,': Refine set equal 1, because length(tspan) > 2 ')
+
+            else:
+
+                pass
+
+
+
+        OutputFcnExist=False
+
+        if not len(OutputFcn)==0:
+
+            OutputFcnExist=True
+
+            #Initialize the OutputFcn
+
+            OutputFcnArg=[OutputFcn,[t,tfinal],y[OutputSel],'init']
+
+            OutputFcnResult=OutputFcn[0]([t,tfinal],y[OutputSel],'init')
+
+        else:
+
+            pass
+
+        #Initialiation of internal constants
+
+        UnExpStepRej=False
+        UnExpNewRej=False
+        Keep=False
+        ChangeNbr=0
+        ChangeFlag=False
+        Theta=0
+        Thetat=0  #Change orderparameter
+        Variab=((MaxNbrStg[0]-MinNbrSt[0])!=0)
+
+
+        InitNbrStg=True
+        radau.Coertv(NbrStg,NbrStg,RealYN,InitNbrStg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1459,16 +1576,136 @@ class radau:    #定义类，并起一个名字
         print("我的职业：%s"%self.profession)
 
 
-    def Coertv(self):
-        print("我的职业：%s"%self.profession)
+    def Coertv(MinNbrStg,MaxNbrStg,RealYN,Init):
+
+        '''
+
+        :param MaxNbrStg:
+        :param RealYN:
+        :param Init:
+        :return:
+        '''
 
 
-    def Coertv1(self):
-        print("我的职业：%s"%self.profession)
+        global T
+        global TI
+        global C
+        global ValP
+        global Dd
+        global T_1
+        global TI_1
+        global C1
+        global ValP1
+        global Dd1
+        global T_3
+        global TI_3
+        global C3
+        global ValP3
+        global Dd3
+        global T_5
+        global TI_5
+        global C5
+        global ValP5
+        global Dd5
+        global T_7
+        global TI_7
+        global C7
+        global ValP7
+        global Dd7
+
+        Fcn_Name='Coertv'
+
+
+        if Init:
+            for NbrStg in range(MinNbrStg[0],MaxNbrStg[0]+1):
+
+                if NbrStg==1:
+
+                    radau.Coertv1(RealYN)
+
+                elif NbrStg==3:
+
+                    radau.Coertv3(RealYN)
+
+                elif NbrStg==5:
+
+                    radau.Coertv5(RealYN)
+
+                elif NbrStg==7:
+
+                    radau.Coertv7(RealYN)
+
+
+
+        else:
+
+            if MinNbrStg[0]!= MaxNbrStg[0]:
+
+                print(Fcn_Name, 'Th Number of steps is wrong')
+
+            else:
+
+                pass
+
+            NbrStg=MinNbrStg[0]
+
+            if NbrStg==1:
+
+                T = T_1
+                TI = TI_1
+                ValP = ValP1
+                C = C1
+                Dd = Dd1
+
+            elif NbrStg==3:
+
+                T = T_3
+                TI = TI_3
+                ValP = ValP3
+                C = C3
+                Dd = Dd3
+
+            elif NbrStg==5:
+
+                T = T_5
+                TI = TI_5
+                ValP = ValP5
+                C = C5
+                Dd = Dd5
+
+            elif NbrStg==7:
+
+                T = T_7
+                TI = TI_7
+                ValP = ValP7
+                C = C7
+                Dd = Dd7
+
+        return
+
+
+
+
+
+
+    def Coertv1(RealYN):
+        # Implict Euler'method
+        global T_1
+        global TI_1
+        global C1
+        global ValP1
+        global Dd1
+
+        C1 = 1
+        T_1 = 1
+        TI_1 = 1
+        ValP1 = 1
+        Dd1 = -1
+
 
 
     def Coertv3(self):
-        print("我的职业：%s"%self.profession)
+
 
 
     def Coertv5(self):
