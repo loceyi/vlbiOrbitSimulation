@@ -4,6 +4,7 @@ from inspect import isfunction
 import os
 from rdpget_function import rdpget
 from scipy import sparse
+import math
 #解stiff differential equation
 # %     Numerical solution of a stiff (or differential algebraic) system of
 # # %     first order ordinary differential equations:
@@ -1576,7 +1577,7 @@ class radau:    #定义类，并起一个名字
         print("我的职业：%s"%self.profession)
 
 
-    def Coertv(MinNbrStg,MaxNbrStg,RealYN,Init):
+    def Coertv(self,MinNbrStg,MaxNbrStg,RealYN,Init):
 
         '''
 
@@ -1688,7 +1689,7 @@ class radau:    #定义类，并起一个名字
 
 
 
-    def Coertv1(RealYN):
+    def Coertv1(self,RealYN):
         # Implict Euler'method
         global T_1
         global TI_1
@@ -1704,7 +1705,82 @@ class radau:    #定义类，并起一个名字
 
 
 
-    def Coertv3(self):
+    def Coertv3(self,RealYN):
+
+        '''
+
+        :param RealYN:
+        :return:
+        '''
+
+        global T_3
+        global TI_3
+        global C3
+        global ValP3
+        global Dd3
+        global Ta3
+        global TIa3
+
+        Sq6=np.sqrt(6)
+        C3=[(4.0 - Sq6)/10.0,(4.0 + Sq6)/10.0,1]
+
+        Dd=[-(13 + 7*Sq6)/3,(-13 + 7*Sq6)/3,-1.0/3]
+        Dd3=Dd[:]
+
+        if RealYN:
+
+            T3=np.array([[9.1232394870892942792e-02,-0.14125529502095420843,-3.0029194105147424492e-02]
+                            ,[0.24171793270710701896,0.20412935229379993199,0.38294211275726193779]
+                            ,[0.96604818261509293619,1,0]])
+
+            TI3=np.array([[4.3255798900631553510,0.33919925181580986954,0.54177053993587487119]
+                             ,[-4.1787185915519047273,-0.32768282076106238708,0.47662355450055045196]
+                             ,[-0.50287263494578687595,2.5719269498556054292,-0.59603920482822492497]])
+
+            ST9=math.pow(9,1/3)
+
+            ValP=[(6.0+ST9*(ST9-1))/30.0,(12.0-ST9*(ST9-1))/60.0,ST9*(ST9+1)*np.sqrt(3.0)/60.0]
+            Cno=math.pow(ValP[1],2)+math.pow(ValP[2],2)
+            ValP3=[1.0/ValP[0],ValP[1]/Cno,ValP[2]/Cno]
+
+        else:
+
+            CP3 = np.array([[1,C3[0],C3[0]**2],
+                            [1,C3[1],C3[1]**2],
+                            [1,C3[2],C3[2]**2]])
+
+            CQ3 = np.array([[C3[0],math.pow(C3[0],2)/2,math.pow(C3[0],3)/3],
+                   [C3[1],math.pow(C3[1],2)/2,math.pow(C3[1],3)/3],
+                   [C3[2],math.pow(C3[2],2)/2,math.pow(C3[2],3)/3]])
+
+            A3=np.dot(CQ3,np.linalg.inv(CP3))
+
+            D3,T3= np.linalg.eig(A3)
+            D3=np.array([[D3[0],0,0],[0,D3[1],0],[0,0,D3[2]]])
+            D3=np.dot(np.eye(3,dtype=float),np.linalg.inv(D3))
+            TI3=np.dot(np.linalg.inv(T3),np.eye(3,dtype=float))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
