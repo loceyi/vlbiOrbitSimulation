@@ -1759,26 +1759,15 @@ class radau:    #定义类，并起一个名字
             D3=np.array([[D3[0],0,0],[0,D3[1],0],[0,0,D3[2]]])
             D3=np.dot(np.eye(3,dtype=float),np.linalg.inv(D3))
             TI3=np.dot(np.linalg.inv(T3),np.eye(3,dtype=float))
+            ValP3=[D3[0,0],D3[1,1],D3[2,2]]
 
+        T_3=np.array([[T3[0,0], T3[1,0], T3[2,0]],
+                      [T3[0,1], T3[1,1], T3[2,1]],
+                      [T3[0,2], T3[1,2], T3[2,2]]])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        TI_3=np.array([[TI3[0,0], TI3[1,0], TI3[2,0]],
+                      [TI3[0,1], TI3[1,1], TI3[2,1]],
+                      [TI3[0,2], TI3[1,2], TI3[2,2]]])
 
 
 
