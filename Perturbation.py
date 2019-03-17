@@ -4,11 +4,12 @@ from scipy.integrate import odeint
 from math import sqrt,cos,pi,sin
 from math import radians
 from Ephemeris import ephemeris
+import scipy.integrate as spi
 
 
 
 
-def pertubation(orbit_element,t):
+def pertubation(t,orbit_element):
     '''
     :param Orbit_Elements: 轨道六根数,单位为弧度
     :param t: 时间
@@ -146,17 +147,39 @@ def pertubation(orbit_element,t):
     d_Mean_anomaly=n
 
 
-    return np.array([d_semi_major_axis_earth_nonsphericfigure,d_Eccentricity, d_Inclination_earth_nonsphericfigure,d_RAAN_earth_nonsphericfigure,d_Perigee_earth_nonsphericfigure,d_Mean_anomaly])
+    return np.array([d_semi_major_axis,d_Eccentricity, d_Inclination,d_RAAN,d_Perigee,d_Mean_anomaly])
 
 
 
 
 def test_ode_solve():
-    t = np.arange(1, 36000, 1)
-    P1 = odeint(pertubation, (7000,1e-2,1e-2,1e-2,1e-2,1e-2),t)  # (0.,1.,0.)是point的初值
+    # t = np.arange(1, 36000, 1)
+    #P1 = odeint(pertubation, (7000,0.1,0.2,0.2,0.2,0.3),t)  # (0.,1.,0.)是point的初值
+
+    orbit_element=[7000,0.1,0.2,0.2,0.2,0.3]
+    t_start = 1
+    t_end = 15000
+    t_step = 1000
+    ode = spi.ode(pertubation)
+
+    # BDF method suited to stiff systems of ODEs
+    ode.set_integrator('vode', nsteps=500, method='bdf')
+    ode.set_initial_value(orbit_element, t_start)
+
+    ts = []
+    ys = []
+
+    while ode.successful() and ode.t < t_end:
+        ode.integrate(ode.t + t_step)
+        ts.append(ode.t)
+        ys.append(ode.y)
+
+    t = np.vstack(ts)
+    a, e, i,h,j,k = np.vstack(ys).T
     import pylab as pl
-    P1[:, 5] = P1[:, 5] % (2 * pi)
-    pl.plot(t, P1[:, 4])
+
+    ys[:, 5] = ys[:, 5] % (2 * pi)
+    pl.plot(ts, ys[:, 4])
     pl.show()
 
 

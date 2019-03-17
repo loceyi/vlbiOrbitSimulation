@@ -1211,10 +1211,10 @@ class radau:    #定义类，并起一个名字
 
         #--General options
 
-        RelTol=Op_dict['RelTol']
-        AbsTol=Op_dict['AbsTol']
-        h=Op_dict['InitialStep']
-        hmax=Op_dict['MaxStep']
+        RelTol=Op_dict['RelTol'][0]#默认只有1个参数
+        AbsTol=Op_dict['AbsTol'][0]#默认只有1个参数
+        h=Op_dict['InitialStep'][0]#默认只包含一个函数
+        hmax=Op_dict['MaxStep'][0]#默认只包含一个函数
         MassFcn=Op_dict['MassFcn'][0]#都先默认最多包含一个函数
         EventsFcn=Op_dict['EventsFcn'][0]
         OutputFcn=Op_dict['OutputFcn'][0]
@@ -1227,15 +1227,15 @@ class radau:    #定义类，并起一个名字
 
             RealYN.append(not(data))
 
-        NbrInd1=Op_dict['NbrInd1']
-        NbrInd2=Op_dict['NbrInd2']
-        NbrInd3=Op_dict['NbrInd3']
+        NbrInd1=Op_dict['NbrInd1'][0]#默认为一个函数
+        NbrInd2=Op_dict['NbrInd2'][0]#默认为一个函数
+        NbrInd3=Op_dict['NbrInd3'][0]#默认为一个函数
         Refine=Op_dict['Refine']
         MaxNbrStep=Op_dict['MaxNbrStep']
 
         #--Parameters for implicit procedure
 
-        MaxNbrNewton=Op_dict['MaxNbrNewton']
+        MaxNbrNewton=Op_dict['MaxNbrNewton'][0]#默认一个参数
         Start_Newt=Op_dict['Start_Newt']
         JacFcn=Op_dict['JacFcn'][0]##############################
         JacAnalytic=Op_dict['JacAnalytic']
@@ -1256,7 +1256,7 @@ class radau:    #定义类，并起一个名字
 
         #--Order selection parameters
 
-        NbrStg=Op_dict['NbrStg']
+        NbrStg=Op_dict['NbrStg'][0]#默认为一个参数
         MinNbrStg=Op_dict['MinNbrStg']
         MaxNbrStg=Op_dict['MaxNbrStg']
         Vitu=Op_dict['Vitu']
@@ -1498,11 +1498,124 @@ class radau:    #定义类，并起一个名字
         ChangeFlag=False
         Theta=0
         Thetat=0  #Change orderparameter
-        Variab=((MaxNbrStg[0]-MinNbrSt[0])!=0)
+        Variab=((MaxNbrStg[0]-MinNbrStg[0])!=0)
 
 
         InitNbrStg=True
+        radau.Coertv(MinNbrStg, MaxNbrStg, RealYN, InitNbrStg)
+        InitNbrStg = False
         radau.Coertv(NbrStg,NbrStg,RealYN,InitNbrStg)
+
+
+
+
+        if NbrStg== 1:
+
+            Nit=MaxNbrNewton-3
+
+        elif NbrStg==3:
+
+            Nit=MaxNbrNewton
+
+        elif NbrStg==5:
+
+            Nit=MaxNbrNewton+5
+
+        elif NbrStg==7:
+
+            Nit=MaxNbrNewton+10
+
+
+
+        #Integration step, step min, step max
+
+        hmaxn=min(abs(hmax),abs(tspan[-1]-tspan[0]))
+
+        if abs(h) <= 10*2.22044604925031e-16:
+
+            h=1e-6
+
+        else:
+
+            pass
+
+        h= PosNeg*min(abs(h),hmaxn)
+        h_old=h
+        hmin=abs(16*2.22044604925031e-16*(abs(t)+1))
+
+        hmin=min(hmin,hmax)
+        hopt=h
+
+
+        if ((t+h*1.001-tfinal)*PosNeg) >= 0:
+
+            h=tfinal-t
+
+            Last=True
+
+        else:
+
+            Last=False
+
+
+        #Initialize
+
+        FacConv=1
+
+        N_Sing=0
+        Reject=False
+        First=True
+
+        #Change tolerances
+
+        ExpmNs=(NbrStg+1)/(2*NbrStg)
+        QuotTol=AbsTol/RelTol
+        RelTol1=0.1*(RelTol**ExpmNs)
+        AbsTol1=RelTol1*QuotTol
+        y=np.array(y)
+        Scal=AbsTol1+RelTol1*abs(y) #Scal是矢量
+        hhfac=h
+
+        if NbrInd2 >0:
+
+            Scal[NbrInd1:NbrInd1+NbrInd2-1]= Scal[NbrInd1:NbrInd1+NbrInd2-1]/hhfac
+
+        else:
+
+            pass
+
+        if NbrInd3 > 0:
+
+            Scal[NbrInd1 + NbrInd2: NbrInd1 + NbrInd2 + NbrInd3-1] = ...
+            Scal[NbrInd1 + NbrInd2: NbrInd1 + NbrInd2 + NbrInd3-1]/ hhfac ^ 2
+
+        else:
+
+            pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
