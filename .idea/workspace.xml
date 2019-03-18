@@ -49,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo_gui_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3045">
+            <state relative-caret-position="471">
               <caret line="149" selection-start-line="149" selection-end-line="149" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
@@ -61,22 +61,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Perturbation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="180" column="39" lean-forward="true" selection-start-line="180" selection-start-column="39" selection-end-line="180" selection-end-column="39" />
+            <state relative-caret-position="210">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#24#42#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Radau.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1785">
-              <caret line="12" column="32" lean-forward="true" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-              <folding>
-                <element signature="e#1#19#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -593,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552814124697</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="2019/3/18">
+      <created>1552882220427</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1552882220428</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView">
@@ -607,6 +602,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25416997" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -614,7 +610,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3250444" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.669627" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.64298403" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
@@ -630,7 +626,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2018/12/12" />
     <MESSAGE value="2018/12/13matlab对照修改版" />
     <MESSAGE value="2018/12/17" />
     <MESSAGE value="2018/12/19" />
@@ -655,17 +650,11 @@
     <MESSAGE value="2019/3/14" />
     <MESSAGE value="2019/3/15/Happy lunar birthday!" />
     <MESSAGE value="2019/3/17" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019/3/17" />
+    <MESSAGE value="2019/3/18" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019/3/18" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Perturbation.py</url>
-          <line>184</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -822,16 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo_gui_demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3045">
-          <caret line="149" selection-start-line="149" selection-end-line="149" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rdpget_function.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4137">
@@ -839,10 +818,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/demo_gui_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Radau.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1785">
-          <caret line="12" column="32" lean-forward="true" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+        <state relative-caret-position="231">
+          <caret line="11" column="71" lean-forward="true" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="71" />
           <folding>
             <element signature="e#1#19#0" expanded="true" />
           </folding>
@@ -851,8 +840,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Perturbation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="180" column="39" lean-forward="true" selection-start-line="180" selection-start-column="39" selection-end-line="180" selection-end-column="39" />
+        <state relative-caret-position="210">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#24#42#0" expanded="true" />
           </folding>

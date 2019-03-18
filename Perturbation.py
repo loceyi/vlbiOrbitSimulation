@@ -91,7 +91,7 @@ def pertubation(t,orbit_element):
                          (A_sun*B_sun*cos(2*Perigee)-(1/2)*(A_sun**2-B_sun**2)*sin(2*Perigee))
 
     d_Inclination_solar=3*K_sun*C_sun/4/n/sqrt(1-Eccentricity**2)*(A_sun*(2+3*Eccentricity**2+\
-                        5*Eccentricity**2*cos(2*Perigee))+5*B_sun*Eccentricity**2*sin(2*Perigee))
+                        5*Eccentricity**2*cos(2*Perigee))+5*(B_sun*Eccentricity**2)*sin(2*Perigee))
     d_RAAN_solar = 3*K_sun*C_sun/4/n/sqrt(1-Eccentricity**2)/sin(Inclination)*(B_sun*(2+3*Eccentricity**2+\
                     5*Eccentricity**2*cos(2*Perigee))+5*A_sun*Eccentricity**2*sin(2*Perigee))
     d_Perigee_solar = 3*K_sun/2/n*sqrt(1-Eccentricity**2)*((5*A_sun*B_sun*sin(Perigee*2)+\
@@ -148,17 +148,36 @@ def pertubation(t,orbit_element):
     d_Mean_anomaly=n
 
 
-    return np.array([d_semi_major_axis,d_Eccentricity_earth_nonsphericfigure, d_Inclination
-                        ,d_RAAN,d_Perigee,d_Mean_anomaly])
+    semi_major_axis_earth_nonsphericfigure=1
+    semi_major_axis_lunar_solar=0
+    Eccentricity_earth_nonsphericfigure=1
+    Eccentricity_lunar_solar=0
+    Inclination_earth_nonsphericfigure=1
+    Inclination_solar_solar=0
+    RAAN_earth_nonsphericfigure=1
+    RAAN_lunar_solar=0
+    Perigee_earth_nonsphericfigure=1
+    Perigee_lunar_solar=0
+
+
+
+
+
+
+
+
+
+    return np.array([d_semi_major_axis,d_Eccentricity_earth_nonsphericfigure, d_Inclination_earth_nonsphericfigure
+                        ,d_RAAN_earth_nonsphericfigure,d_Perigee_earth_nonsphericfigure,d_Mean_anomaly])
 
 
 
 
 def test_ode_solve():
     # t = np.arange(1, 36000, 1)
-    #P1 = odeint(pertubation, (7000,0.5,0.2,0.2,0.2,0.3),t)  # (0.,1.,0.)是point的初值
+    # P1 = odeint(pertubation, (7000,0.5,0.2,0.2,0.2,0.3),t)  # (0.,1.,0.)是point的初值
 
-    orbit_element=[7000,0.5,0.5,0.5,0.5,0.5]
+    orbit_element=[6878,0.010,pi/4,pi/4,pi/4,0]
     t_start = 0
     t_end = 15000
     t_step = 100
@@ -177,15 +196,36 @@ def test_ode_solve():
     #     ts.append(ode.t)
     #     ys.append(ode.integrate(ode.t+t_step))
 
-    ol = solve_ivp(pertubation, [0, 3600], orbit_element,method='RK45',t_eval= np.arange(1, 3600, 2))
+    ol = solve_ivp(pertubation, [0, 36000], orbit_element,method='Radau',t_eval= np.arange(0, 36000, 1))
     #P1 = odeint(pertubation, (7000,0 )
-    print(ol.t)
-    print(ol.y)
     a=ol.y
     import pylab as pl
+    ts=np.arange(0, 36000, 1)
+    a[5, :] = a[5, :] % (2 * pi)
 
-    ys[:, 5] = ys[:, 5] % (2 * pi)
-    pl.plot(ts, ys[:, 4])
+    pl.figure(1)
+    pl.subplot(231)
+    pl.plot(ts, a[0, :])
+
+
+    pl.subplot(232)
+    pl.plot(ts, a[1, :])
+
+
+    pl.subplot(233)
+    pl.plot(ts, a[2, :])
+
+
+    pl.subplot(234)
+    pl.plot(ts, a[3, :])
+
+
+    pl.subplot(235)
+    pl.plot(ts, a[4, :])
+
+
+    pl.subplot(236)
+    pl.plot(ts, a[5, :])
     pl.show()
 
 
