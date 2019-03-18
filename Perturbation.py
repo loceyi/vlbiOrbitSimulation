@@ -5,6 +5,7 @@ from math import sqrt,cos,pi,sin
 from math import radians
 from Ephemeris import ephemeris
 import scipy.integrate as spi
+from scipy.integrate import solve_ivp
 
 
 
@@ -147,35 +148,40 @@ def pertubation(t,orbit_element):
     d_Mean_anomaly=n
 
 
-    return np.array([d_semi_major_axis,d_Eccentricity, d_Inclination,d_RAAN,d_Perigee,d_Mean_anomaly])
+    return np.array([d_semi_major_axis,d_Eccentricity_earth_nonsphericfigure, d_Inclination
+                        ,d_RAAN,d_Perigee,d_Mean_anomaly])
 
 
 
 
 def test_ode_solve():
     # t = np.arange(1, 36000, 1)
-    #P1 = odeint(pertubation, (7000,0.1,0.2,0.2,0.2,0.3),t)  # (0.,1.,0.)是point的初值
+    #P1 = odeint(pertubation, (7000,0.5,0.2,0.2,0.2,0.3),t)  # (0.,1.,0.)是point的初值
 
-    orbit_element=[7000,0.1,0.2,0.2,0.2,0.3]
-    t_start = 1
+    orbit_element=[7000,0.5,0.5,0.5,0.5,0.5]
+    t_start = 0
     t_end = 15000
-    t_step = 1000
-    ode = spi.ode(pertubation)
+    t_step = 100
+    # ode = spi.ode(pertubation,jac=None).set_integrator('vode',nsteps=10000,method='bdf').set_initial_value(orbit_element, t_start)
+    #
+    # # BDF method suited to stiff systems of ODEs
+    #
+    #
+    #
+    # ts = []
+    # ys = []
+    #
+    # while ode.successful() and ode.t < t_end:
+    #     print(ode.t + t_step, ode.integrate(ode.t + t_step))
+    #     ode.integrate(ode.t + t_step)
+    #     ts.append(ode.t)
+    #     ys.append(ode.integrate(ode.t+t_step))
 
-    # BDF method suited to stiff systems of ODEs
-    ode.set_integrator('vode', nsteps=500, method='bdf')
-    ode.set_initial_value(orbit_element, t_start)
-
-    ts = []
-    ys = []
-
-    while ode.successful() and ode.t < t_end:
-        ode.integrate(ode.t + t_step)
-        ts.append(ode.t)
-        ys.append(ode.y)
-
-    t = np.vstack(ts)
-    a, e, i,h,j,k = np.vstack(ys).T
+    ol = solve_ivp(pertubation, [0, 3600], orbit_element,method='RK45',t_eval= np.arange(1, 3600, 2))
+    #P1 = odeint(pertubation, (7000,0 )
+    print(ol.t)
+    print(ol.y)
+    a=ol.y
     import pylab as pl
 
     ys[:, 5] = ys[:, 5] % (2 * pi)
