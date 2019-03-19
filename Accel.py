@@ -24,9 +24,11 @@
 # %--------------------------------------------------------------------------
 
 
-
+import Global_parameters
 import numpy as np
-def Accel(t,Y,AuxParam):
+from IERS import IERS
+from timediff import timediff
+def Accel(t,y):
     '''
 
     :param t:
@@ -35,17 +37,32 @@ def Accel(t,Y,AuxParam):
     :return:
     '''
 
-    
+    MJD_UTC=Global_parameters.AuxParam['Mjd_UTC']+t/86400
+    # JD = MJD_UTC + 2400000.5
 
-    return np.array(state)
+    x_pole, y_pole, UT1_UTC, LOD, dpsi, deps, dx_pole, dy_pole, TAI_UTC = IERS(Global_parameters.eopdata
+                                                                               , MJD_UTC, 'l')
+
+    UT1_TAI, UTC_GPS, UT1_GPS, TT_UTC, GPS_UTC = timediff(UT1_UTC, TAI_UTC)
+
+    JD = MJD_UTC + 2400000.5
 
 
-def test_ephemeris():
+
+
+
+
+    return
+
+
+def test_Accel():
+
+    Accel()
 
 
 
 
 if __name__ == "__main__":
 
-    test_ephemeris()
+    test_Accel()
 
