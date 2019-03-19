@@ -7,7 +7,7 @@ from Ephemeris import ephemeris
 import scipy.integrate as spi
 from scipy.integrate import solve_ivp
 
-
+# ！！！！！！！！！！！！！！：10e-10=10^(-9)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 def pertubation(t,orbit_element):
@@ -62,8 +62,8 @@ def pertubation(t,orbit_element):
 
     # 太阳引力摄动
 
-    G=6.67259*10e-11
-    M_sun=1.9885*10e30
+    G=6.67259*1e-11 #N·m²/kg²
+    M_sun=1.9885*1e30 #kg
     R_sun_earth= Position_sun-Position_earth #地心ICRF参考系下太阳的位置矢量
     V_sun_earth= Velocity_sun-Velocity_earth #地心ICRF参考系下太阳的速度矢量
     r_sun=np.sqrt(R_sun_earth[0]**2+R_sun_earth[1]**2+R_sun_earth[2]**2)
@@ -87,8 +87,7 @@ def pertubation(t,orbit_element):
     C2_sun=C1_sun*(sin(RAAN-RAAN_sun)*cos(u_sun)-sin(u_sun)*cos(Inclination_sun)*cos(RAAN-RAAN_sun))
     C_sun=C2_sun+cos(Inclination)*sin(Inclination_sun)*sin(u_sun)
     d_semi_major_axis_solar=0
-    d_Eccentricity_solar=-(15*K_sun/2/n)*Eccentricity*sqrt(1-Eccentricity**2)* \
-                         (A_sun*B_sun*cos(2*Perigee)-(1/2)*(A_sun**2-B_sun**2)*sin(2*Perigee))
+    d_Eccentricity_solar=-(15*K_sun/2/n)*Eccentricity*sqrt(1-Eccentricity**2)*(A_sun*B_sun*cos(2*Perigee)-(1/2)*(A_sun**2-B_sun**2)*sin(2*Perigee))
 
     d_Inclination_solar=3*K_sun*C_sun/4/n/sqrt(1-Eccentricity**2)*(A_sun*(2+3*Eccentricity**2+\
                         5*Eccentricity**2*cos(2*Perigee))+5*(B_sun*Eccentricity**2)*sin(2*Perigee))
@@ -105,7 +104,7 @@ def pertubation(t,orbit_element):
     # 月球引力摄动
 
 
-    M_moon=7.349*10e22 #kg
+    M_moon=7.349*1e22 #kg
     R_moon_earth= Position_moon #地心ICRF参考系下太阳的位置矢量
     V_moon_earth= Velocity_moon #地心ICRF参考系下太阳的速度矢量
     r_moon=np.sqrt(R_moon_earth.dot(R_moon_earth))
@@ -167,8 +166,8 @@ def pertubation(t,orbit_element):
 
 
 
-    return np.array([d_semi_major_axis,d_Eccentricity_earth_nonsphericfigure, d_Inclination_earth_nonsphericfigure
-                        ,d_RAAN_earth_nonsphericfigure,d_Perigee_earth_nonsphericfigure,d_Mean_anomaly])
+    return np.array([d_semi_major_axis,d_Eccentricity, d_Inclination
+                        ,d_RAAN,d_Perigee,d_Mean_anomaly])
 
 
 
@@ -196,12 +195,14 @@ def test_ode_solve():
     #     ts.append(ode.t)
     #     ys.append(ode.integrate(ode.t+t_step))
 
-    ol = solve_ivp(pertubation, [0, 36000], orbit_element,method='Radau',t_eval= np.arange(0, 36000, 1))
+    ol = solve_ivp(pertubation, [0, 10], orbit_element,method='Radau',t_eval= np.arange(0, 10, 1))
     #P1 = odeint(pertubation, (7000,0 )
     a=ol.y
     import pylab as pl
-    ts=np.arange(0, 36000, 1)
+    ts=np.arange(0, 10, 1)
     a[5, :] = a[5, :] % (2 * pi)
+    a[3, :] = a[3, :] % (2 * pi)
+    a[4, :] = a[4, :] % (2 * pi)
 
     pl.figure(1)
     pl.subplot(231)
