@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2922b152-4010-4ace-9865-d6192257d594" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Accel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Const.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HPOP.py" afterDir="false" />
+    <list default="true" id="2922b152-4010-4ace-9865-d6192257d594" name="Default Changelist" comment="2019/3/19">
+      <change afterPath="$PROJECT_DIR$/Load_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/array_compare.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Perturbation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Perturbation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HPOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/HPOP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Julian_date.py" beforeDir="false" afterPath="$PROJECT_DIR$/Julian_date.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrbitElementsToRV.py" beforeDir="false" afterPath="$PROJECT_DIR$/OrbitElementsToRV.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,21 +18,9 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Visibility_Graph_plot.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#33#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo_gui_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3129">
+            <state relative-caret-position="3045">
               <caret line="149" selection-start-line="149" selection-end-line="149" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
@@ -43,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Perturbation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3011">
-              <caret line="170" selection-start-line="170" selection-end-line="170" />
+            <state relative-caret-position="210">
+              <caret line="178" column="47" selection-start-line="178" selection-start-column="47" selection-end-line="178" selection-end-column="47" />
               <folding>
                 <element signature="e#24#42#0" expanded="true" />
               </folding>
@@ -55,7 +44,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Accel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-117">
+            <state relative-caret-position="210">
               <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
             </state>
           </provider>
@@ -64,8 +53,32 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HPOP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="134">
+              <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Julian_date.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="144" column="53" lean-forward="true" selection-start-line="144" selection-start-column="53" selection-end-line="144" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OrbitElementsToRV.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="79">
+              <caret line="54" selection-start-line="54" selection-end-line="54" />
+              <folding>
+                <element signature="e#61#96#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -73,7 +86,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Const.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-222">
+            <state relative-caret-position="2520">
               <caret line="120" column="28" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="28" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -144,23 +157,25 @@
         <option value="$PROJECT_DIR$/demo_gui_demo.py" />
         <option value="$PROJECT_DIR$/Visibility_for_Star.py" />
         <option value="$PROJECT_DIR$/Visibility_Graph_plot.py" />
-        <option value="$PROJECT_DIR$/OrbitElementsToRV.py" />
-        <option value="$PROJECT_DIR$/Julian_date.py" />
         <option value="$PROJECT_DIR$/rdpget_function.py" />
         <option value="$PROJECT_DIR$/Coertv.py" />
         <option value="$PROJECT_DIR$/Radau.py" />
         <option value="$PROJECT_DIR$/Perturbation.py" />
         <option value="$PROJECT_DIR$/Accel.py" />
         <option value="$PROJECT_DIR$/Const.py" />
+        <option value="$PROJECT_DIR$/Load_data.py" />
+        <option value="$PROJECT_DIR$/OrbitElementsToRV.py" />
+        <option value="$PROJECT_DIR$/Julian_date.py" />
+        <option value="$PROJECT_DIR$/array_compare.py" />
         <option value="$PROJECT_DIR$/HPOP.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="948" />
-    <option name="y" value="15" />
+    <option name="x" value="-108" />
+    <option name="y" value="103" />
     <option name="width" value="981" />
-    <option name="height" value="1014" />
+    <option name="height" value="1013" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -239,6 +254,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Julian_date" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="VLBIOrbit-Simulation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Julian_date.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="OrbitElementsToRV" type="PythonConfigurationType" factoryName="Python">
       <module name="VLBIOrbit-Simulation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -302,34 +338,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="rdpget_function" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="VLBIOrbit-Simulation" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rdpget_function.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.HPOP" />
+        <item itemvalue="Python.Julian_date" />
         <item itemvalue="Python.Const" />
         <item itemvalue="Python.Perturbation" />
         <item itemvalue="Python.Radau" />
-        <item itemvalue="Python.rdpget_function" />
       </list>
     </recent_temporary>
   </component>
@@ -610,7 +625,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552901882333</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="2019/3/19">
+      <created>1552967854526</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1552967854527</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView">
@@ -648,7 +670,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2018/12/13matlab对照修改版" />
     <MESSAGE value="2018/12/17" />
     <MESSAGE value="2018/12/19" />
     <MESSAGE value="2019/1/5" />
@@ -673,7 +694,8 @@
     <MESSAGE value="2019/3/15/Happy lunar birthday!" />
     <MESSAGE value="2019/3/17" />
     <MESSAGE value="2019/3/18" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019/3/18" />
+    <MESSAGE value="2019/3/19" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019/3/19" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -682,6 +704,11 @@
           <url>file://$PROJECT_DIR$/Perturbation.py</url>
           <line>149</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/HPOP.py</url>
+          <line>108</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -755,16 +782,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OrbitElementsToRV.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-299">
-          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
-          <folding>
-            <element signature="e#61#96#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/ANAdonda/Lib/site-packages/IPython/core/interactiveshell.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1772">
@@ -792,16 +809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Radau.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="71" lean-forward="true" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="71" />
-          <folding>
-            <element signature="e#1#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Visibility_for_Star.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
@@ -809,13 +816,6 @@
           <folding>
             <element signature="e#1#50#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Julian_date.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-399">
-          <caret line="2" column="51" lean-forward="true" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -861,6 +861,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Visibility_Graph_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo_gui_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3045">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Ephemeris.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1323">
@@ -870,7 +890,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Const.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-222">
+        <state relative-caret-position="2520">
           <caret line="120" column="28" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="28" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -878,47 +898,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo_gui_demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3129">
-          <caret line="149" selection-start-line="149" selection-end-line="149" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Visibility_Graph_plot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Perturbation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3011">
-          <caret line="170" selection-start-line="170" selection-end-line="170" />
+        <state relative-caret-position="210">
+          <caret line="178" column="47" selection-start-line="178" selection-start-column="47" selection-end-line="178" selection-end-column="47" />
           <folding>
             <element signature="e#24#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Load_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OrbitElementsToRV.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+          <folding>
+            <element signature="e#61#96#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Radau.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8421">
+          <caret line="11" column="71" lean-forward="true" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="71" />
+          <folding>
+            <element signature="e#1#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Accel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-117">
+        <state relative-caret-position="210">
           <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-2009539318/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="3724" column="8" selection-start-line="3724" selection-start-column="8" selection-end-line="3724" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Julian_date.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="144" column="53" lean-forward="true" selection-start-line="144" selection-start-column="53" selection-end-line="144" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/array_compare.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HPOP.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="134">
+          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

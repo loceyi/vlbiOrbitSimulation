@@ -21,7 +21,7 @@ def orbit_element_to_rv(orbit_element):
     :param orbit_element: semi_major_axis, Eccentricity,
            Inclination, RAAN, Perigee, True_Anomaly
            输入时要求半长轴单位为km,其余角度单位为度
-    :return: r,velocity
+    :return: r,velocity km,km/s
 
     '''
 
