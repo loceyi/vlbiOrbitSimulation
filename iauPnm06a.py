@@ -54,15 +54,31 @@
 # %   SOFA release 2012-03-01
 # %
 from iauPfw06 import iauPfw06
+from iauNut06a import iauNut06a
+from iauFw2m import iauFw2m
 def iauPnm06a(date1, date2):
 
     # % Fukushima-Williams angles for frame bias and precession
-    [gamb, phib, psib, epsa] = iauPfw06(date1, date2)
+    gamb, phib, psib, epsa= iauPfw06(date1, date2)
 
     # % Nutation components
-    [dp, de] = iauNut06a(date1, date2);
+    dp, de= iauNut06a(date1, date2)
 
     # % Equinox based nutation x precession x bias matrix
-    rnpb = iauFw2m(gamb, phib, psib + dp, epsa + de);
+    rnpb = iauFw2m(gamb, phib, psib + dp, epsa + de)
 
     return rnpb
+
+
+def test():
+    date1=2450123.7
+    date2=0
+    rnpb=iauPnm06a(date1, date2)
+    print('rbpb',rnpb)
+
+
+
+
+if __name__ == "__main__":
+
+    test()

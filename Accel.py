@@ -32,6 +32,7 @@ from invjday import invjday
 from iauCal2jd import iauCal2jd
 from iauPom00 import iauPom00
 from iauSp00 import iauSp00
+from iauPnm06a import iauPnm06a
 def Accel(t,y):
     '''
 
@@ -67,6 +68,11 @@ def Accel(t,y):
     #Form bias-precession-nutation matrix
 
     NPB = iauPnm06a(DJMJD0, TT)
+
+    #% Form Earth rotation matrix
+
+    gast = iauGst06(DJMJD0, UT1, DJMJD0, TT, NPB)
+    Theta = iauRz(gast, eye(3))
 
 
 

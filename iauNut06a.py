@@ -76,7 +76,7 @@
 # %   SOFA release 2012-03-01
 # %
 from Const import Const
-
+from iauNut00a import iauNut00a
 def iauNut06a(date1, date2):
 
     const=Const()
@@ -87,7 +87,7 @@ def iauNut06a(date1, date2):
     fj2 = -2.7774e-6 * t
 
     # % Obtain IAU 2000A nutation.
-    [dp, de] = iauNut00a(date1, date2)
+    dp, de = iauNut00a(date1, date2)
 
     # % Apply P03 adjustments (Wallace & Capitaine, 2006, Eqs.5).
     dpsi = dp + dp * (0.4697e-6 + fj2)
@@ -95,3 +95,17 @@ def iauNut06a(date1, date2):
 
 
     return dpsi, deps
+
+
+def test():
+    date1=2450123.7
+    date2=0
+    dpsi, deps=iauNut06a(date1, date2)
+    print('dpsi',dpsi,'deps',deps)
+
+
+
+
+if __name__ == "__main__":
+
+    test()
