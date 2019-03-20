@@ -28,6 +28,10 @@ import Global_parameters
 import numpy as np
 from IERS import IERS
 from timediff import timediff
+from invjday import invjday
+from iauCal2jd import iauCal2jd
+from iauPom00 import iauPom00
+from iauSp00 import iauSp00
 def Accel(t,y):
     '''
 
@@ -47,6 +51,27 @@ def Accel(t,y):
 
     JD = MJD_UTC + 2400000.5
 
+    year, month, day, hour, minute, sec = invjday(JD)
+
+    DJMJD0, DATE = iauCal2jd(year, month, day)
+
+    TIME = (60 * (60 * hour + minute) + sec) / 86400
+    UTC = DATE + TIME
+    TT = UTC + TT_UTC / 86400
+    TUT = TIME + UT1_UTC / 86400
+    UT1 = DATE + TUT
+
+    #Polar motion matrix (TIRS->ITRS, IERS 2003)
+    Pi = iauPom00(x_pole, y_pole, iauSp00(DJMJD0, TT))
+
+    #Form bias-precession-nutation matrix
+
+    NPB = iauPnm06a(DJMJD0, TT)
+
+
+
+
+
 
 
 
@@ -55,7 +80,7 @@ def Accel(t,y):
     return
 
 
-def test_Accel():
+def test():
 
     Accel()
 
@@ -64,5 +89,5 @@ def test_Accel():
 
 if __name__ == "__main__":
 
-    test_Accel()
+    test()
 

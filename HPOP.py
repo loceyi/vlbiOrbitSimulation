@@ -20,7 +20,7 @@ def HPOP():
     hour=21
     minute=55
     second=28.000
-    t_start_jd=Julian_date(month,day,year,hour,minute,second)
+    t_start_jd=Julian_date(year,month,day,hour,minute,second)
 
 
     orbit_element = np.array([6878, 0.010, 45, 45, 45, 0]) #输入角度单位为度°

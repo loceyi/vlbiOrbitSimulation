@@ -1,6 +1,6 @@
 from math import floor
 
-def Julian_date(month,day,year,hour,minute,second):
+def Julian_date(year,month,day,hour,minute,second):
     '''
 
     :param month: calendar month[1~12]
@@ -136,13 +136,13 @@ def Mjd(month, day, year, hour, minute, second):
     return Mjd
 
 def test():
-    month=12
-    day=1
-    year=2018
-    hour=12
-    minute=0
-    second=0
-    jd=Julian_date(month,day,year,hour,minute,second)
+    month=4
+    day=24
+    year=2015
+    hour=21
+    minute=55
+    second=28
+    jd=Julian_date(year,month,day,hour,minute,second)
     print(jd)
 
 
