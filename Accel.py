@@ -33,7 +33,13 @@ from iauCal2jd import iauCal2jd
 from iauPom00 import iauPom00
 from iauSp00 import iauSp00
 from iauPnm06a import iauPnm06a
-def Accel(t,y):
+from iauGst06 import iauGst06
+from iauRz import iauRz
+from Mjday_TDB import Mjday_TDB
+from JPL_Eph_DE405 import JPL_Eph_DE405
+from AccelPointMass import AccelPointMass
+from Const import Const
+def Accel(t,Y):
     '''
 
     :param t:
@@ -41,7 +47,7 @@ def Accel(t,y):
     :param AuxParam: 一定要是字典格式
     :return:
     '''
-
+    const=Const()
     MJD_UTC=Global_parameters.AuxParam['Mjd_UTC']+t/86400
     # JD = MJD_UTC + 2400000.5
 
@@ -58,7 +64,8 @@ def Accel(t,y):
 
     TIME = (60 * (60 * hour + minute) + sec) / 86400
     UTC = DATE + TIME
-    TT = UTC + TT_UTC / 86400
+    TT = UTC + TT_UTC / 86400   #Terrestrial Time (TT) Terrestrial Time (TT)
+                                # used to be known as Terrestrial Dynamical Time (TDT)
     TUT = TIME + UT1_UTC / 86400
     UT1 = DATE + TUT
 
@@ -72,7 +79,36 @@ def Accel(t,y):
     #% Form Earth rotation matrix
 
     gast = iauGst06(DJMJD0, UT1, DJMJD0, TT, NPB)
-    Theta = iauRz(gast, eye(3))
+
+    Theta = iauRz(gast, np.eye(3))
+
+    #ICRS to ITRS transformation
+
+    E = np.dot(np.dot(Pi, Theta),NPB)
+
+    # % Difference between ephemeris time and universal time
+    # % JD = MJD_UTC+2400000.5;
+    # % [year, month, day, hour, minute, sec] = invjday(JD);
+    # % days = finddays(year, month, day, hour, minute, sec);
+    # % ET_UT = ETminUT(year+days/365.25);
+    # % MJD_ET = MJD_UTC+ET_UT/86400;
+    # % [r_Mercury,r_Venus,r_Earth,r_Mars,r_Jupiter,r_Saturn,r_Uranus, ...
+    # %  r_Neptune,r_Pluto,r_Moon,r_Sun,r_SunSSB] = JPL_Eph_DE436(MJD_ET);
+    MJD_TDB = Mjday_TDB(TT)
+    JD = MJD_TDB + 2400000.5
+    r_Mercury, r_Venus, r_Earth, r_Mars, r_Jupiter, r_Saturn, r_Uranus, \
+    r_Neptune, r_Pluto, r_Moon, r_Sun, r_SunSSB = JPL_Eph_DE405(JD)
+
+    a=np.array([0,0,0])#Initial Value
+    #Luni-solar perturbations
+    norm_r=np.sqrt(Y[0]**2+Y[1]**2+Y[2]**2)
+    r=Y[0:4]
+    mu=398600*1e9#m^3/s^2
+    a=-mu*r/(norm_r**3)
+
+    if Global_parameters.AuxParam['sun']:
+
+        a = a + AccelPointMass(Y[0:3],r_Sun,const['GM_Sun'])
 
 
 
@@ -83,7 +119,16 @@ def Accel(t,y):
 
 
 
-    return
+
+
+
+
+
+
+
+
+    return np.array([Y[3],Y[4], Y[5]
+                    ,a[0],a[1],a[2]])
 
 
 def test():

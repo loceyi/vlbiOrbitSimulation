@@ -7,7 +7,7 @@ def ephemeris(celestial_body,Julian_date):
                             librations  neptune    sun
                             mars        nutations  uranus
     :param Julian_date:儒略日
-    :return:天体的位置（km）,速度（km/day）
+    :return:天体的位置（km）,速度（km/s）
     '''
     import de405
     from jplephem import Ephemeris

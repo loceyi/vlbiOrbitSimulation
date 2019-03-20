@@ -27,7 +27,7 @@ def HPOP():
 
     r0,v0 = orbit_element_to_rv(orbit_element)
 
-    Y0=[r0[0],r0[1],r0[2],v0[0],v0[1],v0[2]]
+    Y0=np.array([r0[0]*1e3,r0[1]*1e3,r0[2]*1e3,v0[0]*1e3,v0[1]*1e3,v0[2]*1e3]) #Y0单位为m,m/s
 
     Mjd_UTC=t_start_jd-2400000.5
 
@@ -111,12 +111,10 @@ def HPOP():
     # Eph(:, 1) = t;
     # Eph(:, 2: 7) = yout;
 
-    # ol = solve_ivp(Accel, [0, 10], Y0, method='Radau', t_eval=np.arange(0, 10, 1))
-    # # P1 = odeint(pertubation, (7000,0 )
-    # a = ol.y
-    t=1
-    y=1
-    Accel(t,y)
+    ol = solve_ivp(Accel, [0, 1000], Y0, method='Radau', t_eval=np.arange(0, 100, 1))
+
+    a = ol.y
+
 
 
 

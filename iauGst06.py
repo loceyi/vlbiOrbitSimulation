@@ -68,6 +68,9 @@
 # %
 from iauBpn2xy  import iauBpn2xy
 from iauS06 import iauS06
+from iauEra00 import iauEra00
+from iauAnp import iauAnp
+from iauEors import iauEors
 def iauGst06(uta, utb, tta, ttb, rnpb):
 
     # % Extract CIP coordinates.
@@ -77,8 +80,27 @@ def iauGst06(uta, utb, tta, ttb, rnpb):
     s = iauS06(tta, ttb, x, y)
 
     # % Greenwich apparent sidereal time.
+
     era = iauEra00(uta, utb)
     eors = iauEors(rnpb, s)
     gst = iauAnp(era - eors)
 
     return gst
+
+
+def test():
+    from numpy import array
+    uta=1
+    utb=1
+    tta=1
+    ttb=1
+    rnpb=array([[1,2,3],[4,5,6],[7,8,9]])
+    gst=iauGst06(uta, utb, tta, ttb, rnpb)
+    print('gst',gst)
+
+
+
+
+if __name__ == "__main__":
+
+    test()
