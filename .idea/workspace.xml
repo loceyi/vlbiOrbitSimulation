@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2922b152-4010-4ace-9865-d6192257d594" name="Default Changelist" comment="">
+    <list default="true" id="2922b152-4010-4ace-9865-d6192257d594" name="Default Changelist" comment="2019/3/21/Eve/Work on Accel">
+      <change afterPath="$PROJECT_DIR$/Animation_planet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Accel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Accel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AccelSolrad.py" beforeDir="false" afterPath="$PROJECT_DIR$/AccelSolrad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shadow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shadow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_lambda.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_lambda.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HPOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/HPOP.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,34 +18,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Global_parameters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="126">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#3#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Accel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
-              <folding>
-                <element signature="e#915#939#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AccelSolrad.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
-              <folding>
-                <element signature="e#1003#1038#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/Shadow.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="387">
-              <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
+              <caret line="129" selection-start-line="129" selection-end-line="129" />
               <folding>
                 <element signature="e#572#595#0" expanded="true" />
               </folding>
@@ -67,7 +42,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/get_lambda.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
+            <state relative-caret-position="1155">
               <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
             </state>
           </provider>
@@ -76,7 +51,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Perturbation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4116">
+            <state relative-caret-position="2179">
               <caret line="202" column="26" selection-start-line="202" selection-start-column="26" selection-end-line="202" selection-end-column="26" />
               <folding>
                 <element signature="e#24#42#0" expanded="true" />
@@ -88,10 +63,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HPOP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
+            <state relative-caret-position="231">
+              <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Animation_planet.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="5" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="5" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#0#31#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,7 +84,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Const.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
+            <state relative-caret-position="-798">
               <caret line="2" selection-start-line="2" selection-end-line="2" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -151,7 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Radau.py" />
         <option value="$PROJECT_DIR$/Const.py" />
         <option value="$PROJECT_DIR$/Load_data.py" />
         <option value="$PROJECT_DIR$/array_compare.py" />
@@ -195,13 +178,14 @@
         <option value="$PROJECT_DIR$/test_variable_space.py" />
         <option value="$PROJECT_DIR$/Global_parameters.py" />
         <option value="$PROJECT_DIR$/AccelPointMass.py" />
-        <option value="$PROJECT_DIR$/HPOP.py" />
         <option value="$PROJECT_DIR$/JPL_Eph_DE405.py" />
         <option value="$PROJECT_DIR$/Cylindrical.py" />
         <option value="$PROJECT_DIR$/get_lambda.py" />
         <option value="$PROJECT_DIR$/Shadow.py" />
         <option value="$PROJECT_DIR$/AccelSolrad.py" />
         <option value="$PROJECT_DIR$/Accel.py" />
+        <option value="$PROJECT_DIR$/HPOP.py" />
+        <option value="$PROJECT_DIR$/Animation_planet.py" />
       </list>
     </option>
   </component>
@@ -223,7 +207,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -245,7 +229,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.HPOP">
+  <component name="RunManager" selected="Python.Animation_planet">
+    <configuration name="Accel" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="VLBIOrbit-Simulation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Accel.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="AccelSolrad" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VLBIOrbit-Simulation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -267,7 +272,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Cylindrical" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Animation_planet" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VLBIOrbit-Simulation" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -279,7 +284,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Cylindrical.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Animation_planet.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Global_parameters" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="VLBIOrbit-Simulation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Global_parameters.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -330,55 +356,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Shadow" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="VLBIOrbit-Simulation" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Shadow.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="get_lambda" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="VLBIOrbit-Simulation" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/get_lambda.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Animation_planet" />
         <item itemvalue="Python.HPOP" />
+        <item itemvalue="Python.Accel" />
+        <item itemvalue="Python.Global_parameters" />
         <item itemvalue="Python.AccelSolrad" />
-        <item itemvalue="Python.Shadow" />
-        <item itemvalue="Python.get_lambda" />
-        <item itemvalue="Python.Cylindrical" />
       </list>
     </recent_temporary>
   </component>
@@ -722,7 +706,21 @@
       <option name="project" value="LOCAL" />
       <updated>1553140954460</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="2019/3/21/Morning/Work on get_lambda">
+      <created>1553156033239</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1553156033239</updated>
+    </task>
+    <task id="LOCAL-00049" summary="2019/3/21/Afternoon/Work on Accel">
+      <created>1553156099951</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1553156099951</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TodoView">
@@ -760,8 +758,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2019/2/15" />
-    <MESSAGE value="2019/2/16" />
     <MESSAGE value="2019/2/19" />
     <MESSAGE value="2019/2/26" />
     <MESSAGE value="2019/2/26/night" />
@@ -785,7 +781,9 @@
     <MESSAGE value="2019/3/20/Afternoon/work on iauGst06" />
     <MESSAGE value="2019/3/20/Night/Work on Accel" />
     <MESSAGE value="2019/3/21/Morning/Work on get_lambda" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019/3/21/Morning/Work on get_lambda" />
+    <MESSAGE value="2019/3/21/Afternoon/Work on Accel" />
+    <MESSAGE value="2019/3/21/Eve/Work on Accel" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019/3/21/Eve/Work on Accel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -804,11 +802,6 @@
           <url>file://$PROJECT_DIR$/JPL_Eph_DE405.py</url>
           <line>106</line>
           <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/HPOP.py</url>
-          <line>123</line>
-          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -835,16 +828,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Radau.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="150" column="33" lean-forward="true" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="33" />
-          <folding>
-            <element signature="e#1#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iauCal2jd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1168,46 +1151,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Global_parameters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#3#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Perturbation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4116">
-          <caret line="202" column="26" selection-start-line="202" selection-start-column="26" selection-end-line="202" selection-end-column="26" />
-          <folding>
-            <element signature="e#24#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HPOP.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Const.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Cylindrical.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -1217,7 +1160,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/get_lambda.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
+        <state relative-caret-position="1155">
           <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
         </state>
       </provider>
@@ -1225,29 +1168,76 @@
     <entry file="file://$PROJECT_DIR$/Shadow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="387">
-          <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
           <folding>
             <element signature="e#572#595#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Const.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-798">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Perturbation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2179">
+          <caret line="202" column="26" selection-start-line="202" selection-start-column="26" selection-end-line="202" selection-end-column="26" />
+          <folding>
+            <element signature="e#24#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AccelSolrad.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="387">
+          <caret line="58" column="12" lean-forward="true" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
           <folding>
             <element signature="e#1003#1038#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Global_parameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#3#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Accel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
+        <state relative-caret-position="-117">
+          <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
           <folding>
             <element signature="e#915#939#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HPOP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Animation_planet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>

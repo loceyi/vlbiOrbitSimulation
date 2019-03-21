@@ -103,7 +103,7 @@ def Accel(t,Y):
     a=np.array([0,0,0])#Initial Value
     #Luni-solar perturbations
     norm_r=np.sqrt(Y[0]**2+Y[1]**2+Y[2]**2)
-    r=Y[0:4]
+    r=Y[0:3]
     mu=398600*1e9#m^3/s^2
     a=-mu*r/(norm_r**3)
 
@@ -133,8 +133,9 @@ def Accel(t,Y):
     if Global_parameters.AuxParam['sRad']:
 
         a=a+AccelSolrad(Y[0:3],r_Earth,r_Moon,r_Sun,r_SunSSB,
-                        Global_parameters.AuxParam.area_solar,Global_parameters.AuxParam.mass,
-                        Global_parameters.AuxParam.Cr,const.P_Sol,const.AU,'geometrical')
+                        Global_parameters.AuxParam['area_solar'],Global_parameters.AuxParam['mass'],
+                        Global_parameters.AuxParam['Cr'],const['P_Sol'],const['AU'],'geometrical')
+
 
 
 

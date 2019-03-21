@@ -7,6 +7,9 @@ from Julian_date import Mjd,Julian_date
 from array_compare import intersection
 from scipy.integrate import solve_ivp
 from Accel import  Accel
+import matplotlib as mpl
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
 
 import Global_parameters
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!不要随意输入整数，最好都用float，int容易溢出
@@ -34,10 +37,10 @@ def HPOP():
     Global_parameters.AuxParam['Mjd_UTC'] = Mjd_UTC
     Global_parameters.AuxParam['n'] = 40
     Global_parameters.AuxParam['m'] = 40
-    Global_parameters.AuxParam['sun'] = 0
-    Global_parameters.AuxParam['moon'] = 0
-    Global_parameters.AuxParam['planets'] = 0
-    Global_parameters.AuxParam['sRad'] = 0
+    Global_parameters.AuxParam['sun'] = 1
+    Global_parameters.AuxParam['moon'] = 1
+    Global_parameters.AuxParam['planets'] = 1
+    Global_parameters.AuxParam['sRad'] = 1
     Global_parameters.AuxParam['drag'] = 1
     Global_parameters.AuxParam['SolidEarthTides'] = 0
     Global_parameters.AuxParam['OceanTides'] = 0
@@ -52,9 +55,9 @@ def HPOP():
 
     Mjd0 = Mjd_UTC
 
-    Step = 60 #[s]
+    Step = 100 #[s]
 
-    N_Step = 10  #26.47hours
+    N_Step = 100  #26.47hours
 
     #shorten PC, eopdata, swdata, Cnm, and Snm
     num=int(N_Step*Step/86400)+2
@@ -111,15 +114,23 @@ def HPOP():
     # Eph(:, 1) = t;
     # Eph(:, 2: 7) = yout;
 
-    ol = solve_ivp(Accel, [0, 1000], Y0, method='Radau', t_eval=np.arange(0, 100, 1))
+    ol = solve_ivp(Accel, [0, N_Step*Step], Y0, method='Radau', t_eval=np.arange(0, N_Step*Step, Step))
 
     a = ol.y
 
+    mpl.rcParams['legend.fontsize'] = 10
 
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
 
+    z = a[2,:]
 
+    x = a[1,:]
+    y = a[0,:]
+    ax.plot(x, y, z, label='parametric curve')
+    ax.legend()
 
-
+    plt.show()
 
     return
 
