@@ -2,8 +2,7 @@ import datetime,matplotlib,time
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 import numpy as np
-from gifly-master int
-from gifly import gif_maker
+from gifly import gifly
 
 plt.ion()
 fig,ax0 = plt.subplots(figsize=(5.3,4))
@@ -45,5 +44,5 @@ for pp in range(0,len(lat_vec)):
     m.drawcoastlines()
     plt.show()
     plt.pause(0.01)
-    gif_maker('blue_marble_rotating_globe.gif','./png_dir_bluemarble/',gif_indx,len(lat_vec)-1,dpi=90)
+    gifly.gif_maker('blue_marble_rotating_globe.gif','./png_dir_bluemarble/',gif_indx,len(lat_vec)-1,dpi=90)
     gif_indx+=1
