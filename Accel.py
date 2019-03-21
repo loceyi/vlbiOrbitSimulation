@@ -110,6 +110,45 @@ def Accel(t,Y):
 
         a = a + AccelPointMass(Y[0:3],r_Sun,const['GM_Sun'])
 
+    if Global_parameters.AuxParam['moon']:
+
+        a = a + AccelPointMass(Y[0:3], r_Moon, const['GM_Moon'])
+
+    if Global_parameters.AuxParam['planets']:
+
+        a = a + AccelPointMass(Y[0:3], r_Mercury, const['GM_Mercury'])
+        a = a + AccelPointMass(Y[0:3], r_Venus, const['GM_Venus'])
+        a = a + AccelPointMass(Y[0:3], r_Mars, const['GM_Mars'])
+        a = a + AccelPointMass(Y[0:3], r_Jupiter, const['GM_Jupiter'])
+        a = a + AccelPointMass(Y[0:3], r_Saturn, const['GM_Saturn'])
+        a = a + AccelPointMass(Y[0:3], r_Uranus, const['GM_Uranus'])
+        a = a + AccelPointMass(Y[0:3], r_Neptune, const['GM_Mercury'])
+        a = a + AccelPointMass(Y[0:3], r_Pluto, const['GM_Pluto'])
+
+
+
+
+        #Solar radiation pressure
+    if Global_parameters.AuxParam['sRad']:
+
+        a=a+AccelSolrad(Y(1:3),r_Earth,r_Moon,r_Sun,r_SunSSB, 
+                        AuxParam.area_solar,AuxParam.mass,AuxParam.Cr,const.P_Sol,const.AU,'geometrical')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

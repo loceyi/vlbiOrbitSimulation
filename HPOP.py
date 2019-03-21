@@ -9,7 +9,7 @@ from scipy.integrate import solve_ivp
 from Accel import  Accel
 
 import Global_parameters
-
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!不要随意输入整数，最好都用float，int容易溢出
 def HPOP():
 
     #Load basic data

@@ -15,8 +15,8 @@ import numpy as np
 def AccelPointMass(r, s, GM):
     '''
 
-    :param r: 必须为一维array，不能有换行号
-    :param s: 必须为一维array，不能有换行号
+    :param r: 必须为一维array，不能有换行号,且数据类型要为float
+    :param s: 必须为一维array，不能有换行号,且数据类型要为float
     :param GM:
     :return: a array([x y x])
     '''
@@ -35,8 +35,8 @@ def AccelPointMass(r, s, GM):
 
 def test():
 
-    r=np.array([1,2,3])
-    s=np.array([5,4,5])
+    r=np.array([1.0,2.0,3.0])
+    s=np.array([5.0,4.0,5.0])
     GM=100
     a=AccelPointMass(r, s, GM)
     print(a)
