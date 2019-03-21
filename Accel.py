@@ -39,6 +39,7 @@ from Mjday_TDB import Mjday_TDB
 from JPL_Eph_DE405 import JPL_Eph_DE405
 from AccelPointMass import AccelPointMass
 from Const import Const
+from AccelSolrad import AccelSolrad
 def Accel(t,Y):
     '''
 
@@ -131,8 +132,9 @@ def Accel(t,Y):
         #Solar radiation pressure
     if Global_parameters.AuxParam['sRad']:
 
-        a=a+AccelSolrad(Y(1:3),r_Earth,r_Moon,r_Sun,r_SunSSB, 
-                        AuxParam.area_solar,AuxParam.mass,AuxParam.Cr,const.P_Sol,const.AU,'geometrical')
+        a=a+AccelSolrad(Y[0:3],r_Earth,r_Moon,r_Sun,r_SunSSB,
+                        Global_parameters.AuxParam.area_solar,Global_parameters.AuxParam.mass,
+                        Global_parameters.AuxParam.Cr,const.P_Sol,const.AU,'geometrical')
 
 
 

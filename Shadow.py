@@ -13,6 +13,7 @@
 from Const import Const
 import numpy as np
 from math import sqrt
+from get_lambda import get_lambda
 
 def Shadow(pccor,ccor,pscor,sbcor,bcor,sbpcor):
 
@@ -30,7 +31,7 @@ def Shadow(pccor,ccor,pscor,sbcor,bcor,sbpcor):
 
     # % Check for both eclipses of the Sun by both the Earth and the Moon
     # % First the Earth
-    ubcor = np.zeros([3,1])
+    ubcor = np.array([0.0,0.0,0.0])
     rb = np.sqrt(bcor.dot(bcor))
     rc = np.sqrt(ccor.dot(ccor))
 
@@ -60,45 +61,79 @@ def Shadow(pccor,ccor,pscor,sbcor,bcor,sbpcor):
         sep=sqrt(sepp[0]**2+sepp[1]**2+sepp[2]**2)/rsbx
 
         lambda_1 = get_lambda(rs,rp,sep)
-    end
-    % If no Earth eclipse, check the Moon
-    if(lambda<1)
-        ecltyp = 'E';
-        return
-    else
 
-        for i=1:3
-            pscor(i) = pccor(i) + ccor(i);
-            sbpcor(i) = sbcor(i) - pccor(i);
-        end
+    # % If no Earth eclipse, check the Moon
+    if lambda_1<1:
 
-        rps = sqrt(pscor(1)^2+pscor(2)^2+pscor(3)^2);
+        ecltyp = 'E'
 
-        if(rb<=rps)
-            return
-        end
+        return lambda_1,ecltyp
+    else:
 
-        %   unit vector of SV wrt Sun
-        for i=1:3
-            ubcor(i)=bcor(i)/rb;
-        end
+        for i in range(1,4):
 
-        % rsbx is the projection of sbcor along bcor
-        rsbx=dot(sbpcor,ubcor);
+            pscor[i-1] = pccor[i-1] + ccor[i-1]
+            sbpcor[i-1] = sbcor[i-1] - pccor[i-1]
 
-        % rs, rp are apparent (from satellite) radii of sun and moon
-        % sep is apparent angular separation of their centers
-        rs=const.R_Sun/rb;
-        rp=const.R_Moon/rsbx;
 
-        sepp=cross(sbpcor,ubcor);
-        sep=sqrt(sepp(1)^2+sepp(2)^2+sepp(3)^2)/rsbx;
 
-        lambda = get_lambda(rs,rp,sep);
+        rps = sqrt(pscor[0]**2+pscor[1]**2+pscor[2]**2)
 
-        if( lambda<1 )
-            ecltyp = 'M';
-        end
-    end
+        if rb<=rps:
 
-    return lambda,ecltyp
+            return lambda_1,ecltyp
+
+
+
+        # %   unit vector of SV wrt Sun
+
+        for i in range(1,4):
+
+
+            ubcor[i-1]=bcor[i-1]/rb
+
+
+
+
+        # % rsbx is the projection of sbcor along bcor
+        rsbx=np.dot(sbpcor,ubcor)
+
+        # % rs, rp are apparent (from satellite) radii of sun and moon
+        # % sep is apparent angular separation of their centers
+        rs=const['R_Sun']/rb
+        rp=const['R_Moon']/rsbx
+
+        sepp=np.cross(sbpcor,ubcor)
+        sep=sqrt(sepp[0]**2+sepp[1]**2+sepp[2]**2)/rsbx
+
+        lambda_1 = get_lambda(rs,rp,sep)
+
+        if lambda_1<1:
+
+            ecltyp = 'M'
+
+
+
+    return lambda_1,ecltyp
+
+
+
+def test():
+#!!!!!!!!!!!!!!!!!!!!!!!!!若用int容易溢出！！！！！！！！！！！！！！！！！
+
+    pccor=np.array([1234,223,3234.0])
+    ccor=np.array([2132.4,3.134,4.45])
+    pscor=np.array([2.1324,3.12,4.32])
+    sbcor=np.array([4132.4,532.4,6324.4])
+    bcor=np.array([4234,56132,713.2])
+    sbpcor=np.array([313,423.0,346])
+
+
+    lambda_1, ecltyp=Shadow(pccor,ccor,pscor,sbcor,bcor,sbpcor)
+    print(lambda_1,ecltyp)
+
+
+
+if __name__ == "__main__":
+
+    test()

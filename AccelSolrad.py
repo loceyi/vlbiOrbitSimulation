@@ -24,7 +24,9 @@
 # # %   e.g. m, m^2, kg and N/m^2.
 # # %
 from Cylindrical import Cylindrical
-
+from Shadow import Shadow
+import numpy as np
+from math import sqrt
 def AccelSolrad(r,r_Earth,r_Moon,r_Sun,r_SunSSB,Area,mass,Cr,P0,AU,shm):
 
     # %        Moon wrt Earth  wrt=with regard to        pccor      rpc
@@ -44,10 +46,14 @@ def AccelSolrad(r,r_Earth,r_Moon,r_Sun,r_SunSSB,Area,mass,Cr,P0,AU,shm):
 
         nu = Cylindrical(r,r_Sun)
     else:
-        [nu,~] = Shadow(pccor,ccor,pscor,sbcor,bcor,sbpcor);
-    end
 
-    % Acceleration
-    a = nu*Cr*(Area/mass)*P0*(AU*AU)*bcor/(norm(bcor)^3);
+        lambda_1, ecltyp= Shadow(pccor,ccor,pscor,sbcor,bcor,sbpcor)
+        nu=lambda_1
+
+
+
+    # % Acceleration
+    norm_bcor=sqrt(np.dot(bcor,bcor))
+    a = nu*Cr*(Area/mass)*P0*(AU*AU)*bcor/(norm_bcor**3)
 
     return a
