@@ -18,8 +18,8 @@ m1 = Basemap(projection='ortho',
           lat_0=lat_vec[0], lon_0=lon_vec[0],resolution=None)
 
 # add axis for space background effect
-galaxy_image = plt.imread('galaxy_image.png')
-ax0.imshow(galaxy_image)
+# galaxy_image = plt.imread('galaxy_image.png')
+# ax0.imshow(galaxy_image)
 ax0.set_axis_off()
 ax1 = fig.add_axes([0.25,0.2,0.5,0.5])
 
