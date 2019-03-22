@@ -10,7 +10,7 @@ from Accel import  Accel
 import matplotlib as mpl
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
-
+from Basic_sphere import sat_orbit_plot
 import Global_parameters
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!不要随意输入整数，最好都用float，int容易溢出
 def HPOP():
@@ -129,6 +129,21 @@ def HPOP():
     y = a[0,:]
     ax.plot(x, y, z, label='parametric curve')
     ax.legend()
+
+
+
+
+    # Make data
+    u = np.linspace(0, 2 * np.pi, 100)
+    v = np.linspace(0, np.pi, 100)
+    x = 5000000 * np.outer(np.cos(u), np.sin(v))
+    y = 5000000 * np.outer(np.sin(u), np.sin(v))
+    z = 5000000 * np.outer(np.ones(np.size(u)), np.cos(v))
+
+    # Plot the surface
+    plt.axis('off')
+    ax.plot_surface(x, y, z, rstride=1,  # row 行步长
+                    cstride=2,color='w')
 
     plt.show()
 
