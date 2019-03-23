@@ -40,6 +40,7 @@ from JPL_Eph_DE405 import JPL_Eph_DE405
 from AccelPointMass import AccelPointMass
 from Const import Const
 from AccelSolrad import AccelSolrad
+from Relativity import Relativity
 def Accel(t,Y):
     '''
 
@@ -138,33 +139,9 @@ def Accel(t,Y):
 
 
 
+    if Global_parameters.AuxParam['Relativity']:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        a=a+Relativity(Y[0:3],Y[3:6])
 
 
 

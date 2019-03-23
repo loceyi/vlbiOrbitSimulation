@@ -44,7 +44,7 @@ def HPOP():
     Global_parameters.AuxParam['drag'] = 1
     Global_parameters.AuxParam['SolidEarthTides'] = 0
     Global_parameters.AuxParam['OceanTides'] = 0
-    Global_parameters.AuxParam['Relativity'] = 0
+    Global_parameters.AuxParam['Relativity'] = 1
     Global_parameters.AuxParam['Cr'] = 1.0
     Global_parameters.AuxParam['Cd'] = 4
     Global_parameters.AuxParam['mass'] = 8000
@@ -121,7 +121,29 @@ def HPOP():
     mpl.rcParams['legend.fontsize'] = 10
 
     fig = plt.figure()
+
+
+
+
+
+
+
+
     ax = fig.gca(projection='3d')
+
+    # # Make data
+    # u = np.linspace(0, 2 * np.pi, 100)
+    # v = np.linspace(0, np.pi, 100)
+    # x = 5000000 * np.outer(np.cos(u), np.sin(v))
+    # y = 5000000 * np.outer(np.sin(u), np.sin(v))
+    # z = 5000000 * np.outer(np.ones(np.size(u)), np.cos(v))
+    #
+    # # Plot the surface
+    # plt.axis('off')
+    # ax.plot_surface(x, y, z, rstride=1,  # row 行步长
+    #                 cstride=2, color='w')
+
+
 
     z = a[2,:]
 
@@ -133,17 +155,7 @@ def HPOP():
 
 
 
-    # Make data
-    u = np.linspace(0, 2 * np.pi, 100)
-    v = np.linspace(0, np.pi, 100)
-    x = 5000000 * np.outer(np.cos(u), np.sin(v))
-    y = 5000000 * np.outer(np.sin(u), np.sin(v))
-    z = 5000000 * np.outer(np.ones(np.size(u)), np.cos(v))
 
-    # Plot the surface
-    plt.axis('off')
-    ax.plot_surface(x, y, z, rstride=1,  # row 行步长
-                    cstride=2,color='w')
 
     plt.show()
 
