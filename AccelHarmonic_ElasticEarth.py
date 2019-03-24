@@ -31,6 +31,7 @@ from invjday import invjday
 from iauCal2jd import iauCal2jd
 from iauGmst06 import iauGmst06
 from math import pi
+from math import sqrt,asin,atan2
 def AccelHarmonic_ElasticEarth(Mjd_UTC,r_Sun,r_Moon,r,E,UT1_UTC,TT_UTC,x_pole,y_pole):
 
 
@@ -42,9 +43,9 @@ def AccelHarmonic_ElasticEarth(Mjd_UTC,r_Sun,r_Moon,r,E,UT1_UTC,TT_UTC,x_pole,y_
     C=Global_parameters.Cnm
     S=Global_parameters.Snm
 
-    r_Moon = E * r_Moon
+    r_Moon = np.dot(E,r_Moon)
     lM, phiM, rM = CalcPolarAngles(r_Moon)
-    r_Sun = E * r_Sun
+    r_Sun = np.dot(E,r_Sun)
     lS, phiS, rS= CalcPolarAngles(r_Sun)
 
     Mjd_TT = Mjd_UTC + TT_UTC / 86400
@@ -448,25 +449,31 @@ def AccelHarmonic_ElasticEarth(Mjd_UTC,r_Sun,r_Moon,r,E,UT1_UTC,TT_UTC,x_pole,y_
 
 
     # % Body-fixed position
-    r_bf = E * r
+    r_bf = np.dot(E,r)
 
     # % Auxiliary quantities
-    d = norm(r_bf)                    # distance
-    latgc = asin(r_bf(3)/d)
-    lon = atan2(r_bf(2),r_bf(1))
+    d = sqrt(r_bf.dot(r_bf))                    # distance
+    latgc = asin(r_bf[2]/d)
+    lon = atan2(r_bf[1],r_bf[0])
 
-    [pnm, dpnm] = Legendre(AuxParam.n,AuxParam.m,latgc)
+    pnm, dpnm = Legendre(Global_parameters.AuxParam.n,Global_parameters.AuxParam.m,latgc)
 
     dUdr = 0
     dUdlatgc = 0
     dUdlon = 0
-    q3 = 0; q2 = q3; q1 = q2
-    for n=0:AuxParam.n
-        b1 = (-gm/d^2)*(r_ref/d)^n*(n+1)
-        b2 =  (gm/d)*(r_ref/d)^n
-        b3 =  (gm/d)*(r_ref/d)^n
-        for m=0:AuxParam.m
-            q1 = q1 + pnm(n+1,m+1)*(C(n+1,m+1)*cos(m*lon)+S(n+1,m+1)*sin(m*lon))
+    q3 = 0
+    q2 = q3
+    q1 = q2
+
+    for n in range(0,Global_parameters.AuxParam.n+1):
+        b1 = (-gm/(d**2))*((r_ref/d)**n)*(n+1)
+        b2 =  (gm/d)*((r_ref/d)**n)
+        b3 =  (gm/d)*((r_ref/d)**n)
+
+
+        for m in range(0,AuxParam.m+1):
+
+            q1 = q1 + pnm[n,m]*(C(n+1,m+1)*cos(m*lon)+S(n+1,m+1)*sin(m*lon))
             q2 = q2 + dpnm(n+1,m+1)*(C(n+1,m+1)*cos(m*lon)+S(n+1,m+1)*sin(m*lon))
             q3 = q3 + m*pnm(n+1,m+1)*(S(n+1,m+1)*cos(m*lon)-C(n+1,m+1)*sin(m*lon))
         end
