@@ -466,44 +466,37 @@ def AccelHarmonic_ElasticEarth(Mjd_UTC,r_Sun,r_Moon,r,E,UT1_UTC,TT_UTC,x_pole,y_
     q1 = q2
 
     for n in range(0,Global_parameters.AuxParam.n+1):
+
         b1 = (-gm/(d**2))*((r_ref/d)**n)*(n+1)
         b2 =  (gm/d)*((r_ref/d)**n)
         b3 =  (gm/d)*((r_ref/d)**n)
 
 
-        for m in range(0,AuxParam.m+1):
+        for m in range(0,Global_parameters.AuxParam.m+1):
 
-            q1 = q1 + pnm[n,m]*(C(n+1,m+1)*cos(m*lon)+S(n+1,m+1)*sin(m*lon))
-            q2 = q2 + dpnm(n+1,m+1)*(C(n+1,m+1)*cos(m*lon)+S(n+1,m+1)*sin(m*lon))
-            q3 = q3 + m*pnm(n+1,m+1)*(S(n+1,m+1)*cos(m*lon)-C(n+1,m+1)*sin(m*lon))
-        end
+            q1 = q1 + pnm[n,m]*(C[n,m]*cos(m*lon)+S[n,m]*sin(m*lon))
+            q2 = q2 + dpnm[n,m]*(C[n,m]*cos(m*lon)+S[n,m]*sin(m*lon))
+            q3 = q3 + m*pnm[n,m]*(S[n,m]*cos(m*lon)-C[n,m]*sin(m*lon))
+
         dUdr     = dUdr     + q1*b1
         dUdlatgc = dUdlatgc + q2*b2
         dUdlon   = dUdlon   + q3*b3
-        q3 = 0; q2 = q3; q1 = q2;
-    end
+        q3 = 0
+        q2 = q3
+        q1 = q2
+
 
     # % Body-fixed acceleration
-    r2xy = r_bf(1)^2+r_bf(2)^2
+    r2xy = r_bf[0]**2+r_bf[1]**2
 
-    ax = (1/d*dUdr-r_bf(3)/(d^2*sqrt(r2xy))*dUdlatgc)*r_bf(1)-(1/r2xy*dUdlon)*r_bf(2)
-    ay = (1/d*dUdr-r_bf(3)/(d^2*sqrt(r2xy))*dUdlatgc)*r_bf(2)+(1/r2xy*dUdlon)*r_bf(1)
-    az =  1/d*dUdr*r_bf(3)+sqrt(r2xy)/d^2*dUdlatgc
+    ax = (1/d*dUdr-r_bf[2]/(d**2*sqrt(r2xy))*dUdlatgc)*r_bf[0]-(1/r2xy*dUdlon)*r_bf[1]
+    ay = (1/d*dUdr-r_bf[2]/(d**2*sqrt(r2xy))*dUdlatgc)*r_bf[1]+(1/r2xy*dUdlon)*r_bf[0]
+    az =  1/d*dUdr*r_bf[2]+sqrt(r2xy)/(d**2)*dUdlatgc
 
-    a_bf = [ax ay az]';
+    a_bf = np.array([ax,ay,az])
 
     # % Inertial acceleration
-    a = E'*a_bf
-
-
-
-
-
-
-
-
-
-
+    a = np.dot(E,a_bf)
 
 
     return a
