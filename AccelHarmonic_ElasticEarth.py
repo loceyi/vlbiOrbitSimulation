@@ -292,194 +292,201 @@ def AccelHarmonic_ElasticEarth(Mjd_UTC,r_Sun,r_Moon,r,E,UT1_UTC,TT_UTC,x_pole,y_
 
 
 
-    if Global_parameters.AuxParam['OceanTides']：
+    if Global_parameters.AuxParam['OceanTides']:
 
         # % Ocean Tides
         lgM, dlgM= Legendre(6,6,phiM)
         lgS, dlgS= Legendre(6,6,phiS)
 
-        dCnm20 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.3075)/5*( (const.GM_Moon/gm)*((r_ref/rM)^3)*lgM(3,1)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^3)*lgS(3,1) );
-        dCnm21 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.3075)/5*( (const.GM_Moon/gm)*((r_ref/rM)^3)*lgM(3,2)*cos(lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^3)*lgS(3,2)*cos(lS) );
-        dSnm21 = -0.3075/5*( (const.GM_Moon/gm)*((r_ref/rM)^3)*lgM(3,2)*sin(lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^3)*lgS(3,2)*sin(lS) );
-        dCnm22 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.3075)/5*( (const.GM_Moon/gm)*((r_ref/rM)^3)*lgM(3,3)*cos(2*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^3)*lgS(3,3)*cos(2*lS) );
-        dSnm22 = -0.3075/5*( (const.GM_Moon/gm)*((r_ref/rM)^3)*lgM(3,3)*sin(2*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^3)*lgS(3,3)*sin(2*lS) );
-        dCnm30 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.195)/7*( (const.GM_Moon/gm)*((r_ref/rM)^4)*lgM(4,1)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^4)*lgS(4,1) );
-        dCnm31 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.195)/7*( (const.GM_Moon/gm)*((r_ref/rM)^4)*lgM(4,2)*cos(lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^4)*lgS(4,2)*cos(lS) );
-        dSnm31 = -0.195/7*( (const.GM_Moon/gm)*((r_ref/rM)^4)*lgM(4,2)*sin(lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^4)*lgS(4,2)*sin(lS) );
-        dCnm32 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.195)/7*( (const.GM_Moon/gm)*((r_ref/rM)^4)*lgM(4,3)*cos(2*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^4)*lgS(4,3)*cos(2*lS) );
-        dSnm32 = -0.195/7*( (const.GM_Moon/gm)*((r_ref/rM)^4)*lgM(4,3)*sin(2*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^4)*lgS(4,3)*sin(2*lS) );
-        dCnm33 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.195)/7*( (const.GM_Moon/gm)*((r_ref/rM)^4)*lgM(4,4)*cos(3*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^4)*lgS(4,4)*cos(3*lS) );
-        dSnm33 = -0.195/7*( (const.GM_Moon/gm)*((r_ref/rM)^4)*lgM(4,4)*sin(3*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^4)*lgS(4,4)*sin(3*lS) );
-        dCnm40 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.132)/9*( (const.GM_Moon/gm)*((r_ref/rM)^5)*lgM(5,1)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^5)*lgS(5,1) );
-        dCnm41 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.132)/9*( (const.GM_Moon/gm)*((r_ref/rM)^5)*lgM(5,2)*cos(lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^5)*lgS(5,2)*cos(lS) );
-        dSnm41 = -0.132/9*( (const.GM_Moon/gm)*((r_ref/rM)^5)*lgM(5,2)*sin(lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^5)*lgS(5,2)*sin(lS) );
-        dCnm42 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.132)/9*( (const.GM_Moon/gm)*((r_ref/rM)^5)*lgM(5,3)*cos(2*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^5)*lgS(5,3)*cos(2*lS) );
-        dSnm42 = -0.132/9*( (const.GM_Moon/gm)*((r_ref/rM)^5)*lgM(5,3)*sin(2*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^5)*lgS(5,3)*sin(2*lS) );
-        dCnm43 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.132)/9*( (const.GM_Moon/gm)*((r_ref/rM)^5)*lgM(5,4)*cos(3*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^5)*lgS(5,4)*cos(3*lS) );
-        dSnm43 = -0.132/9*( (const.GM_Moon/gm)*((r_ref/rM)^5)*lgM(5,4)*sin(3*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^5)*lgS(5,4)*sin(3*lS) );
-        dCnm44 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.132)/9*( (const.GM_Moon/gm)*((r_ref/rM)^5)*lgM(5,5)*cos(4*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^5)*lgS(5,5)*cos(4*lS) );
-        dSnm44 = -0.132/9*( (const.GM_Moon/gm)*((r_ref/rM)^5)*lgM(5,5)*sin(4*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^5)*lgS(5,5)*sin(4*lS) );
-        dCnm50 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.1032)/11*( (const.GM_Moon/gm)*((r_ref/rM)^6)*lgM(6,1)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^6)*lgS(6,1) );
-        dCnm51 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.1032)/11*( (const.GM_Moon/gm)*((r_ref/rM)^6)*lgM(6,2)*cos(lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^6)*lgS(6,2)*cos(lS) );
-        dSnm51 = -0.1032/9*( (const.GM_Moon/gm)*((r_ref/rM)^6)*lgM(6,2)*sin(lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^6)*lgS(6,2)*sin(lS) );
-        dCnm52 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.1032)/11*( (const.GM_Moon/gm)*((r_ref/rM)^6)*lgM(6,3)*cos(2*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^6)*lgS(6,3)*cos(2*lS) );
-        dSnm52 = -0.1032/9*( (const.GM_Moon/gm)*((r_ref/rM)^6)*lgM(6,3)*sin(2*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^6)*lgS(6,3)*sin(2*lS) );
-        dCnm53 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.1032)/11*( (const.GM_Moon/gm)*((r_ref/rM)^6)*lgM(6,4)*cos(3*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^6)*lgS(6,4)*cos(3*lS) );
-        dSnm53 = -0.1032/9*( (const.GM_Moon/gm)*((r_ref/rM)^6)*lgM(6,4)*sin(3*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^6)*lgS(6,4)*sin(3*lS) );
-        dCnm54 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.1032)/11*( (const.GM_Moon/gm)*((r_ref/rM)^6)*lgM(6,5)*cos(4*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^6)*lgS(6,5)*cos(4*lS) );
-        dSnm54 = -0.1032/9*( (const.GM_Moon/gm)*((r_ref/rM)^6)*lgM(6,5)*sin(4*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^6)*lgS(6,5)*sin(4*lS) );
-        dCnm55 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.1032)/11*( (const.GM_Moon/gm)*((r_ref/rM)^6)*lgM(6,6)*cos(5*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^6)*lgS(6,6)*cos(5*lS) );
-        dSnm55 = -0.1032/9*( (const.GM_Moon/gm)*((r_ref/rM)^6)*lgM(6,6)*sin(5*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^6)*lgS(6,6)*sin(5*lS) );
-        dCnm60 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.0892)/13*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,1)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,1) );
-        dCnm61 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.0892)/13*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,2)*cos(lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,2)*cos(lS) );
-        dSnm61 = -0.0892/9*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,2)*sin(lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,2)*sin(lS) );
-        dCnm62 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.0892)/13*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,3)*cos(2*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,3)*cos(2*lS) );
-        dSnm62 = -0.0892/9*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,3)*sin(2*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,3)*sin(2*lS) );
-        dCnm63 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.0892)/13*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,4)*cos(3*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,4)*cos(3*lS) );
-        dSnm63 = -0.0892/9*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,4)*sin(3*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,4)*sin(3*lS) );
-        dCnm64 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.0892)/13*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,5)*cos(4*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,5)*cos(4*lS) );
-        dSnm64 = -0.0892/9*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,5)*sin(4*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,5)*sin(4*lS) );
-        dCnm65 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.0892)/13*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,6)*cos(5*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,6)*cos(5*lS) );
-        dSnm65 = -0.0892/9*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,6)*sin(5*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,6)*sin(5*lS) );
-        dCnm66 = 4*pi*r_ref^2*1025/(5.9722e24)*(1-0.0892)/13*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,7)*cos(6*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,7)*cos(6*lS) );
-        dSnm66 = -0.0892/9*( (const.GM_Moon/gm)*((r_ref/rM)^7)*lgM(7,7)*sin(6*lM)...
-               + (const.GM_Sun/gm)*((r_ref/rS)^7)*lgS(7,7)*sin(6*lS) );
+        dCnm20 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.3075)/5*( (const['GM_Moon']/gm)*((r_ref/rM)**3)*lgM[2,0]
+               + (const['GM_Sun']/gm)*((r_ref/rS)**3)*lgS[2,0] )
+        dCnm21 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.3075)/5*( (const['GM_Moon']/gm)*((r_ref/rM)**3)*lgM[2,1]*cos(lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**3)*lgS[2,1]*cos(lS) )
+        dSnm21 = -0.3075/5*( (const['GM_Moon']/gm)*((r_ref/rM)**3)*lgM[2,1]*sin(lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**3)*lgS[2,1]*sin(lS) )
+        dCnm22 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.3075)/5*( (const['GM_Moon']/gm)*((r_ref/rM)**3)*lgM[2,2]*cos(2*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**3)*lgS[2,2]*cos(2*lS) )
+        dSnm22 = -0.3075/5*( (const['GM_Moon']/gm)*((r_ref/rM)**3)*lgM[2,2]*sin(2*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**3)*lgS[2,2]*sin(2*lS) )
+        dCnm30 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.195)/7*( (const['GM_Moon']/gm)*((r_ref/rM)**4)*lgM[3,0]
+               + (const['GM_Sun']/gm)*((r_ref/rS)**4)*lgS[3,0] )
+        dCnm31 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.195)/7*( (const['GM_Moon']/gm)*((r_ref/rM)**4)*lgM[3,1]*cos(lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**4)*lgS[3,1]*cos(lS) )
+        dSnm31 = -0.195/7*( (const['GM_Moon']/gm)*((r_ref/rM)**4)*lgM[3,1]*sin(lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**4)*lgS[3,1]*sin(lS) )
+        dCnm32 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.195)/7*( (const['GM_Moon']/gm)*((r_ref/rM)**4)*lgM[3,2]*cos(2*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**4)*lgS[3,2]*cos(2*lS) )
+        dSnm32 = -0.195/7*( (const['GM_Moon']/gm)*((r_ref/rM)**4)*lgM[3,2]*sin(2*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**4)*lgS[3,2]*sin(2*lS) )
+        dCnm33 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.195)/7*( (const['GM_Moon']/gm)*((r_ref/rM)**4)*lgM[3,3]*cos(3*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**4)*lgS[3,3]*cos(3*lS) )
+        dSnm33 = -0.195/7*( (const['GM_Moon']/gm)*((r_ref/rM)**4)*lgM[3,3]*sin(3*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**4)*lgS[3,3]*sin(3*lS) )
+        dCnm40 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.132)/9*( (const['GM_Moon']/gm)*((r_ref/rM)**5)*lgM[4,0]
+               + (const['GM_Sun']/gm)*((r_ref/rS)**5)*lgS[4,0] )
+        dCnm41 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.132)/9*( (const['GM_Moon']/gm)*((r_ref/rM)**5)*lgM[4,1]*cos(lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**5)*lgS[4,1]*cos(lS) )
+        dSnm41 = -0.132/9*( (const['GM_Moon']/gm)*((r_ref/rM)**5)*lgM[4,1]*sin(lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**5)*lgS[4,1]*sin(lS) )
+        dCnm42 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.132)/9*( (const['GM_Moon']/gm)*((r_ref/rM)**5)*lgM[4,2]*cos(2*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**5)*lgS[4,2]*cos(2*lS) )
+        dSnm42 = -0.132/9*( (const['GM_Moon']/gm)*((r_ref/rM)**5)*lgM[4,2]*sin(2*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**5)*lgS[4,2]*sin(2*lS) )
+        dCnm43 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.132)/9*( (const['GM_Moon']/gm)*((r_ref/rM)**5)*lgM[4,3]*cos(3*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**5)*lgS[4,3]*cos(3*lS) )
+        dSnm43 = -0.132/9*( (const['GM_Moon']/gm)*((r_ref/rM)**5)*lgM[4,3]*sin(3*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**5)*lgS[4,3]*sin(3*lS) )
+        dCnm44 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.132)/9*( (const['GM_Moon']/gm)*((r_ref/rM)**5)*lgM[4,4]*cos(4*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**5)*lgS[4,4]*cos(4*lS) )
+        dSnm44 = -0.132/9*( (const['GM_Moon']/gm)*((r_ref/rM)**5)*lgM[4,4]*sin(4*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**5)*lgS[4,4]*sin(4*lS) )
+        dCnm50 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.1032)/11*( (const['GM_Moon']/gm)*((r_ref/rM)**6)*lgM[5,0]
+               + (const['GM_Sun']/gm)*((r_ref/rS)**6)*lgS[5,0] )
+        dCnm51 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.1032)/11*( (const['GM_Moon']/gm)*((r_ref/rM)**6)*lgM[5,1]*cos(lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**6)*lgS[5,1]*cos(lS) )
+        dSnm51 = -0.1032/9*( (const['GM_Moon']/gm)*((r_ref/rM)**6)*lgM[5,1]*sin(lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**6)*lgS[5,1]*sin(lS) )
+        dCnm52 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.1032)/11*( (const['GM_Moon']/gm)*((r_ref/rM)**6)*lgM[5,2]*cos(2*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**6)*lgS[5,2]*cos(2*lS) )
+        dSnm52 = -0.1032/9*( (const['GM_Moon']/gm)*((r_ref/rM)**6)*lgM[5,2]*sin(2*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**6)*lgS[5,2]*sin(2*lS) )
+        dCnm53 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.1032)/11*( (const['GM_Moon']/gm)*((r_ref/rM)**6)*lgM[5,3]*cos(3*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**6)*lgS[5,3]*cos(3*lS) )
+        dSnm53 = -0.1032/9*( (const['GM_Moon']/gm)*((r_ref/rM)**6)*lgM[5,3]*sin(3*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**6)*lgS[5,3]*sin(3*lS) )
+        dCnm54 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.1032)/11*( (const['GM_Moon']/gm)*((r_ref/rM)**6)*lgM[5,4]*cos(4*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**6)*lgS[5,4]*cos(4*lS) )
+        dSnm54 = -0.1032/9*( (const['GM_Moon']/gm)*((r_ref/rM)**6)*lgM[5,4]*sin(4*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**6)*lgS[5,4]*sin(4*lS) )
 
-        C(3,1) = C(3,1) + dCnm20;
-        C(3,2) = C(3,2) + dCnm21;
-        C(3,3) = C(3,3) + dCnm22;
-        S(3,2) = S(3,2) + dSnm21;
-        S(3,3) = S(3,3) + dSnm22;
+        dCnm55 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.1032)/11*( (const['GM_Moon']/gm)*((r_ref/rM)**6)*lgM[5,5]*cos(5*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**6)*lgS[5,5]*cos(5*lS) )
 
-        C(4,1) = C(4,1) + dCnm30;
-        C(4,2) = C(4,2) + dCnm31;
-        C(4,3) = C(4,3) + dCnm32;
-        C(4,4) = C(4,4) + dCnm33;
-        S(4,2) = S(4,2) + dSnm31;
-        S(4,3) = S(4,3) + dSnm32;
-        S(4,4) = S(4,4) + dSnm33;
+        dSnm55 = -0.1032/9*( (const['GM_Moon']/gm)*((r_ref/rM)**6)*lgM[5,5]*sin(5*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**6)*lgS[5,5]*sin(5*lS) )
 
-        C(5,1) = C(5,1) + dCnm40;
-        C(5,2) = C(5,2) + dCnm41;
-        C(5,3) = C(5,3) + dCnm42;
-        C(5,4) = C(5,4) + dCnm43;
-        C(5,5) = C(5,5) + dCnm44;
-        S(5,2) = S(5,2) + dSnm41;
-        S(5,3) = S(5,3) + dSnm42;
-        S(5,4) = S(5,4) + dSnm43;
-        S(5,5) = S(5,5) + dSnm44;
+        dCnm60 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.0892)/13*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,0]
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,0] )
 
-        C(6,1) = C(6,1) + dCnm50;
-        C(6,2) = C(6,2) + dCnm51;
-        C(6,3) = C(6,3) + dCnm52;
-        C(6,4) = C(6,4) + dCnm53;
-        C(6,5) = C(6,5) + dCnm54;
-        C(6,6) = C(6,6) + dCnm55;
-        S(6,2) = S(6,2) + dSnm51;
-        S(6,3) = S(6,3) + dSnm52;
-        S(6,4) = S(6,4) + dSnm53;
-        S(6,5) = S(6,5) + dSnm54;
-        S(6,6) = S(6,6) + dSnm55;
-
-        C(7,1) = C(7,1) + dCnm60;
-        C(7,2) = C(7,2) + dCnm61;
-        C(7,3) = C(7,3) + dCnm62;
-        C(7,4) = C(7,4) + dCnm63;
-        C(7,5) = C(7,5) + dCnm64;
-        C(7,6) = C(7,6) + dCnm65;
-        C(7,7) = C(7,7) + dCnm66;
-        S(7,2) = S(7,2) + dSnm61;
-        S(7,3) = S(7,3) + dSnm62;
-        S(7,4) = S(7,4) + dSnm63;
-        S(7,5) = S(7,5) + dSnm64;
-        S(7,6) = S(7,6) + dSnm65;
-        S(7,7) = S(7,7) + dSnm66;
+        dCnm61 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.0892)/13*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,1]*cos(lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,1]*cos(lS) )
+        dSnm61 = -0.0892/9*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,1]*sin(lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,1]*sin(lS) )
+        dCnm62 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.0892)/13*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,2]*cos(2*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,2]*cos(2*lS) )
 
 
-    % Body-fixed position
-    r_bf = E * r;
+        dSnm62 = -0.0892/9*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,2]*sin(2*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,2]*sin(2*lS) )
 
-    % Auxiliary quantities
-    d = norm(r_bf);                     % distance
-    latgc = asin(r_bf(3)/d);
-    lon = atan2(r_bf(2),r_bf(1));
+        dCnm63 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.0892)/13*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,3]*cos(3*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,3]*cos(3*lS) )
+        dSnm63 = -0.0892/9*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,3]*sin(3*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,3]*sin(3*lS) )
+        dCnm64 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.0892)/13*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,4]*cos(4*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,4]*cos(4*lS) )
+        dSnm64 = -0.0892/9*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,4]*sin(4*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,4]*sin(4*lS) )
+        dCnm65 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.0892)/13*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,5]*cos(5*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,5]*cos(5*lS) )
+        dSnm65 = -0.0892/9*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,5]*sin(5*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,5]*sin(5*lS) )
+        dCnm66 = 4*pi*r_ref**2*1025/(5.9722e24)*(1-0.0892)/13*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,6]*cos(6*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,6]*cos(6*lS) )
+        dSnm66 = -0.0892/9*( (const['GM_Moon']/gm)*((r_ref/rM)**7)*lgM[6,6]*sin(6*lM)
+               + (const['GM_Sun']/gm)*((r_ref/rS)**7)*lgS[6,6]*sin(6*lS) )
 
-    [pnm, dpnm] = Legendre(AuxParam.n,AuxParam.m,latgc);
+        C[2,0] = C[2,0] + dCnm20
+        C[2,1] = C[2,1] + dCnm21
+        C[2,2] = C[2,2] + dCnm22
+        S[2,1] = S[2,1] + dSnm21
+        S[2,2] = S[2,2] + dSnm22
 
-    dUdr = 0;
-    dUdlatgc = 0;
-    dUdlon = 0;
-    q3 = 0; q2 = q3; q1 = q2;
+        C[3,0] = C[3,0] + dCnm30
+        C[3,1] = C[3,1] + dCnm31
+        C[3,2] = C[3,2] + dCnm32
+        C[3,3] = C[3,3] + dCnm33
+        S[3,1] = S[3,1] + dSnm31
+        S[3,2] = S[3,2] + dSnm32
+        S[3,3] = S[3,3] + dSnm33
+
+        C[4,0] = C[4,0] + dCnm40
+        C[4,1] = C[4,1] + dCnm41
+        C[4,2] = C[4,2] + dCnm42
+        C[4,3] = C[4,3] + dCnm43
+        C[4,4] = C[4,4] + dCnm44
+        S[4,1] = S[4,1] + dSnm41
+        S[4,2] = S[4,2] + dSnm42
+        S[4,3] = S[4,3] + dSnm43
+        S[4,4] = S[4,4] + dSnm44
+
+        C[5,0] = C[5,0] + dCnm50
+        C[5,1] = C[5,1] + dCnm51
+        C[5,2] = C[5,2] + dCnm52
+        C[5,3] = C[5,3] + dCnm53
+        C[5,4] = C[5,4] + dCnm54
+        C[5,5] = C[5,5] + dCnm55
+        S[5,1] = S[5,1] + dSnm51
+        S[5,2] = S[5,2] + dSnm52
+        S[5,3] = S[5,3] + dSnm53
+        S[5,4] = S[5,4] + dSnm54
+        S[5,5] = S[5,5] + dSnm55
+
+        C[6,0] = C[6,0] + dCnm60
+        C[6,1] = C[6,1] + dCnm61
+        C[6,2] = C[6,2] + dCnm62
+        C[6,3] = C[6,3] + dCnm63
+        C[6,4] = C[6,4] + dCnm64
+        C[6,5] = C[6,5] + dCnm65
+        C[6,6] = C[6,6] + dCnm66
+        S[6,1] = S[6,1] + dSnm61
+        S[6,2] = S[6,2] + dSnm62
+        S[6,3] = S[6,3] + dSnm63
+        S[6,4] = S[6,4] + dSnm64
+        S[6,5] = S[6,5] + dSnm65
+        S[6,6] = S[6,6] + dSnm66
+
+
+    # % Body-fixed position
+    r_bf = E * r
+
+    # % Auxiliary quantities
+    d = norm(r_bf)                    # distance
+    latgc = asin(r_bf(3)/d)
+    lon = atan2(r_bf(2),r_bf(1))
+
+    [pnm, dpnm] = Legendre(AuxParam.n,AuxParam.m,latgc)
+
+    dUdr = 0
+    dUdlatgc = 0
+    dUdlon = 0
+    q3 = 0; q2 = q3; q1 = q2
     for n=0:AuxParam.n
-        b1 = (-gm/d^2)*(r_ref/d)^n*(n+1);
-        b2 =  (gm/d)*(r_ref/d)^n;
-        b3 =  (gm/d)*(r_ref/d)^n;
+        b1 = (-gm/d^2)*(r_ref/d)^n*(n+1)
+        b2 =  (gm/d)*(r_ref/d)^n
+        b3 =  (gm/d)*(r_ref/d)^n
         for m=0:AuxParam.m
-            q1 = q1 + pnm(n+1,m+1)*(C(n+1,m+1)*cos(m*lon)+S(n+1,m+1)*sin(m*lon));
-            q2 = q2 + dpnm(n+1,m+1)*(C(n+1,m+1)*cos(m*lon)+S(n+1,m+1)*sin(m*lon));
-            q3 = q3 + m*pnm(n+1,m+1)*(S(n+1,m+1)*cos(m*lon)-C(n+1,m+1)*sin(m*lon));
+            q1 = q1 + pnm(n+1,m+1)*(C(n+1,m+1)*cos(m*lon)+S(n+1,m+1)*sin(m*lon))
+            q2 = q2 + dpnm(n+1,m+1)*(C(n+1,m+1)*cos(m*lon)+S(n+1,m+1)*sin(m*lon))
+            q3 = q3 + m*pnm(n+1,m+1)*(S(n+1,m+1)*cos(m*lon)-C(n+1,m+1)*sin(m*lon))
         end
-        dUdr     = dUdr     + q1*b1;
-        dUdlatgc = dUdlatgc + q2*b2;
-        dUdlon   = dUdlon   + q3*b3;
+        dUdr     = dUdr     + q1*b1
+        dUdlatgc = dUdlatgc + q2*b2
+        dUdlon   = dUdlon   + q3*b3
         q3 = 0; q2 = q3; q1 = q2;
     end
 
-    % Body-fixed acceleration
-    r2xy = r_bf(1)^2+r_bf(2)^2;
+    # % Body-fixed acceleration
+    r2xy = r_bf(1)^2+r_bf(2)^2
 
-    ax = (1/d*dUdr-r_bf(3)/(d^2*sqrt(r2xy))*dUdlatgc)*r_bf(1)-(1/r2xy*dUdlon)*r_bf(2);
-    ay = (1/d*dUdr-r_bf(3)/(d^2*sqrt(r2xy))*dUdlatgc)*r_bf(2)+(1/r2xy*dUdlon)*r_bf(1);
-    az =  1/d*dUdr*r_bf(3)+sqrt(r2xy)/d^2*dUdlatgc;
+    ax = (1/d*dUdr-r_bf(3)/(d^2*sqrt(r2xy))*dUdlatgc)*r_bf(1)-(1/r2xy*dUdlon)*r_bf(2)
+    ay = (1/d*dUdr-r_bf(3)/(d^2*sqrt(r2xy))*dUdlatgc)*r_bf(2)+(1/r2xy*dUdlon)*r_bf(1)
+    az =  1/d*dUdr*r_bf(3)+sqrt(r2xy)/d^2*dUdlatgc
 
     a_bf = [ax ay az]';
 
-    % Inertial acceleration
-    a = E'*a_bf;
+    # % Inertial acceleration
+    a = E'*a_bf
 
 
 

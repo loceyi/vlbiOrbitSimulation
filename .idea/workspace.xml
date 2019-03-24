@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2922b152-4010-4ace-9865-d6192257d594" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/iauGmst06.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AccelHarmonic_ElasticEarth.py" beforeDir="false" afterPath="$PROJECT_DIR$/AccelHarmonic_ElasticEarth.py" afterDir="false" />
     </list>
@@ -71,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AccelHarmonic_ElasticEarth.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="297" column="37" lean-forward="true" selection-start-line="297" selection-start-column="37" selection-end-line="297" selection-end-column="37" />
+            <state relative-caret-position="205">
+              <caret line="467" column="26" lean-forward="true" selection-start-line="467" selection-start-column="26" selection-end-line="467" selection-end-column="26" />
               <folding>
                 <element signature="e#1055#1079#0" expanded="true" />
               </folding>
@@ -83,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iauGst06.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+            <state relative-caret-position="1995">
+              <caret line="99" selection-start-line="99" selection-end-line="99" />
               <folding>
                 <element signature="e#2823#2855#0" expanded="true" />
               </folding>
@@ -240,7 +239,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.iauGmst06">
+  <component name="RunManager" selected="Python.AccelHarmonic_ElasticEarth">
+    <configuration name="AccelHarmonic_ElasticEarth" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="VLBIOrbit-Simulation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AccelHarmonic_ElasticEarth.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="CalcPolarAngles" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VLBIOrbit-Simulation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -325,27 +345,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Relativity" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="VLBIOrbit-Simulation" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Relativity.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="iauGmst06" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VLBIOrbit-Simulation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -370,18 +369,18 @@
     <list>
       <item itemvalue="Python.OrbitElementsToRV" />
       <item itemvalue="Python.HPOP" />
-      <item itemvalue="Python.Relativity" />
       <item itemvalue="Python.CalcPolarAngles" />
       <item itemvalue="Python.Legendre" />
       <item itemvalue="Python.iauGmst06" />
+      <item itemvalue="Python.AccelHarmonic_ElasticEarth" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.AccelHarmonic_ElasticEarth" />
         <item itemvalue="Python.iauGmst06" />
         <item itemvalue="Python.Legendre" />
         <item itemvalue="Python.CalcPolarAngles" />
         <item itemvalue="Python.HPOP" />
-        <item itemvalue="Python.Relativity" />
       </list>
     </recent_temporary>
   </component>
@@ -395,13 +394,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543982195569</updated>
-    </task>
-    <task id="LOCAL-00008" summary="2018/12/19">
-      <created>1545219847568</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1545219847568</updated>
     </task>
     <task id="LOCAL-00009" summary="2018/12/19">
       <created>1546660017414</created>
@@ -739,7 +731,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553311719301</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="2019/3/23/Night/Work on ACCEL Elastic">
+      <created>1553339248297</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1553339248297</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TodoView">
@@ -777,7 +776,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2019/2/26/night" />
     <MESSAGE value="2019/3/1/afternoon" />
     <MESSAGE value="2019/3/1/night" />
     <MESSAGE value="2019/3/1/night later" />
@@ -802,7 +800,8 @@
     <MESSAGE value="2019/3/21/Eve/Work on Accel" />
     <MESSAGE value="2019/3/21/afer/Work on graph" />
     <MESSAGE value="2019/3/23/Morning/Work on ACCEL Elastic" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019/3/23/Morning/Work on ACCEL Elastic" />
+    <MESSAGE value="2019/3/23/Night/Work on ACCEL Elastic" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019/3/23/Night/Work on ACCEL Elastic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1143,6 +1142,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CalcPolarAngles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1407">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+          <folding>
+            <element signature="e#245#275#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AccelPointMass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/invjday.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iauGmst06.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="93" column="22" lean-forward="true" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
+          <folding>
+            <element signature="e#2478#2502#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Global_parameters.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1187,20 +1220,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CalcPolarAngles.py">
+    <entry file="file://$PROJECT_DIR$/iauGst06.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1407">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        <state relative-caret-position="1995">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
           <folding>
-            <element signature="e#245#275#0" expanded="true" />
+            <element signature="e#2823#2855#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AccelPointMass.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
@@ -1214,37 +1240,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/invjday.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iauGst06.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
-          <folding>
-            <element signature="e#2823#2855#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iauGmst06.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="93" column="22" lean-forward="true" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
-          <folding>
-            <element signature="e#2478#2502#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AccelHarmonic_ElasticEarth.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="297" column="37" lean-forward="true" selection-start-line="297" selection-start-column="37" selection-end-line="297" selection-end-column="37" />
+        <state relative-caret-position="205">
+          <caret line="467" column="26" lean-forward="true" selection-start-line="467" selection-start-column="26" selection-end-line="467" selection-end-column="26" />
           <folding>
             <element signature="e#1055#1079#0" expanded="true" />
           </folding>
