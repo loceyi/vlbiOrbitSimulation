@@ -34,6 +34,20 @@ from math import pi
 from math import sqrt,asin,atan2
 def AccelHarmonic_ElasticEarth(Mjd_UTC,r_Sun,r_Moon,r,E,UT1_UTC,TT_UTC,x_pole,y_pole):
 
+    '''
+
+    :param Mjd_UTC: float
+    :param r_Sun: 行向量
+    :param r_Moon: 行向量
+    :param r: 行向量
+    :param E: 矩阵
+    :param UT1_UTC:float
+    :param TT_UTC: float
+    :param x_pole: float
+    :param y_pole: float
+    :return: a 行向量
+    '''
+
 
     const=Const()
 
@@ -456,7 +470,7 @@ def AccelHarmonic_ElasticEarth(Mjd_UTC,r_Sun,r_Moon,r,E,UT1_UTC,TT_UTC,x_pole,y_
     latgc = asin(r_bf[2]/d)
     lon = atan2(r_bf[1],r_bf[0])
 
-    pnm, dpnm = Legendre(Global_parameters.AuxParam.n,Global_parameters.AuxParam.m,latgc)
+    pnm, dpnm = Legendre(Global_parameters.AuxParam['n'],Global_parameters.AuxParam['m'],latgc)
 
     dUdr = 0
     dUdlatgc = 0
@@ -465,14 +479,14 @@ def AccelHarmonic_ElasticEarth(Mjd_UTC,r_Sun,r_Moon,r,E,UT1_UTC,TT_UTC,x_pole,y_
     q2 = q3
     q1 = q2
 
-    for n in range(0,Global_parameters.AuxParam.n+1):
+    for n in range(0,Global_parameters.AuxParam['n']+1):
 
         b1 = (-gm/(d**2))*((r_ref/d)**n)*(n+1)
         b2 =  (gm/d)*((r_ref/d)**n)
         b3 =  (gm/d)*((r_ref/d)**n)
 
 
-        for m in range(0,Global_parameters.AuxParam.m+1):
+        for m in range(0,Global_parameters.AuxParam['m']+1):
 
             q1 = q1 + pnm[n,m]*(C[n,m]*cos(m*lon)+S[n,m]*sin(m*lon))
             q2 = q2 + dpnm[n,m]*(C[n,m]*cos(m*lon)+S[n,m]*sin(m*lon))
@@ -496,12 +510,32 @@ def AccelHarmonic_ElasticEarth(Mjd_UTC,r_Sun,r_Moon,r,E,UT1_UTC,TT_UTC,x_pole,y_
     a_bf = np.array([ax,ay,az])
 
     # % Inertial acceleration
-    a = np.dot(E,a_bf)
+    a = np.dot(np.transpose(E),np.transpose(a_bf))
 
 
     return a
 
 
+def test():
+    from numpy import array
+    Mjd_UTC=5000
+    r_Sun=array([1,2,3])
+    r_Moon=array([2,3,4])
+    r=array([2,3,23])
+    E=array([[1,23,21.2],[21,213.2,23],[154,543,243.2]])
+    UT1_UTC=12
+    TT_UTC=12
+    x_pole=1.5
+    y_pole=2.06
+    a=AccelHarmonic_ElasticEarth(Mjd_UTC,r_Sun,r_Moon,r,E,UT1_UTC,TT_UTC,x_pole,y_pole)
+    print('a',a)
+
+
+
+
+if __name__ == "__main__":
+
+    test()
 
 
 

@@ -42,8 +42,8 @@ def HPOP():
     Global_parameters.AuxParam['planets'] = 1
     Global_parameters.AuxParam['sRad'] = 1
     Global_parameters.AuxParam['drag'] = 1
-    Global_parameters.AuxParam['SolidEarthTides'] = 0
-    Global_parameters.AuxParam['OceanTides'] = 0
+    Global_parameters.AuxParam['SolidEarthTides'] = 1
+    Global_parameters.AuxParam['OceanTides'] = 1
     Global_parameters.AuxParam['Relativity'] = 1
     Global_parameters.AuxParam['Cr'] = 1.0
     Global_parameters.AuxParam['Cd'] = 4
