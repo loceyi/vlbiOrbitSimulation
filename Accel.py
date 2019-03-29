@@ -151,6 +151,22 @@ def Accel(t,Y):
 
 
 
+    if Global_parameters.AuxParam['drag']:
+
+           # % Atmospheric density
+        # % Omega = 7292115.8553e-11+4.3e-15*( (MJD_UTC-const.MJD_J2000)/36525 ); % [rad/s]
+        Omega = const['omega_Earth']-0.843994809*1e-9*LOD; #% IERS [rad/s]
+        [~,dens] = JB2008(MJD_UTC,r_Sun,Y(1:3));
+        # % dens = nrlmsise00(MJD_UTC,E*Y(1:3),UT1_UTC,TT_UTC);
+        # % [d,~] = msis86(MJD_UTC,E*Y(1:3),gast);
+        # % dens = 1e3*d(6);
+        # % dens = Density_Jacchia70(r_Sun,MJD_UTC,E*Y(1:3),gast);
+        # % dens = Density_HP(r_Sun,NPB*Y(1:3));
+        a = a + AccelDrag(dens,Y(1:3),Y(4:6),NPB,AuxParam.area_drag,AuxParam.mass,AuxParam.Cd,Omega)
+
+
+
+
     if Global_parameters.AuxParam['Relativity']:
 
         a=a+Relativity(Y[0:3],Y[3:6])
