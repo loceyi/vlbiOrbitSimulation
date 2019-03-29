@@ -129,7 +129,7 @@ from finddays import finddays
 from Geodetic import Geodetic
 from sign_ import sign_
 def JB2008(MJD,r_Sun,r_SAT):
-
+    # print(MJD,r_Sun,r_SAT)
     SOLdata=Global_parameters.SOLdata
     DTCdata=Global_parameters.DTCdata
 
@@ -174,7 +174,7 @@ def JB2008(MJD,r_Sun,r_SAT):
     A = [x for x in i if x in j]
     i=A[0]
 
-    DTC = DTCdata[:,i-1]
+    DTC = DTCdata[:,i]
     ii = floor(hour)+3
     DSTDTC = DTC[ii-1]
 
@@ -183,7 +183,7 @@ def JB2008(MJD,r_Sun,r_SAT):
     ra_SAT  = atan2(r_SAT[1], r_SAT[0])
     dec_SAT = atan2(r_SAT[2], sqrt(r_SAT[0]**2+r_SAT[1]**2))
     SAT=np.zeros(3)
-    SAT[0] = ra_SAT-2*pi*floor(ra_SAT/2*pi)
+    SAT[0] = ra_SAT-2*pi*floor(ra_SAT/(2*pi))
     SAT[1] = dec_SAT
     tp1, tp2, height = Geodetic(r_SAT)
     SAT[2] = height/1000
@@ -192,7 +192,7 @@ def JB2008(MJD,r_Sun,r_SAT):
     ra_Sun  = atan2(r_Sun[1], r_Sun[0])
     dec_Sun = atan2(r_Sun[2], sqrt( r_Sun[0]**2+r_Sun[1]**2 ))
     SUN=np.zeros(3)
-    SUN[0] = ra_Sun-2*pi*int(ra_Sun/2*pi)
+    SUN[0] = ra_Sun-2*pi*floor(ra_Sun/(2*pi))
     SUN[1] = dec_Sun
 
     # % The alpha are the thermal diffusion coefficients in Eq. (6)
@@ -252,15 +252,25 @@ def JB2008(MJD,r_Sun,r_SAT):
     ZHT   = SAT[2]
     GLST  = H + pi
     GLSTHR = (GLST/DEGRAD)*(24/360)
-
+    # print(H)
     if GLSTHR>=24:
 
         GLSTHR = GLSTHR - 24
+
+    else:
+
+        pass
 
 
     if GLSTHR< 0:
 
         GLSTHR = GLSTHR + 24
+
+
+    else:
+
+
+        pass
 
 
 
@@ -272,7 +282,7 @@ def JB2008(MJD,r_Sun,r_SAT):
     TSUBL = TSUBC * (1 + 0.31 * DF)
 
     # % Compute correction to dTc for local solar time and lat correction
-    DTCLST = DTSUB (F10,GLSTHR,GLAT,ZHT)
+    DTCLST = DTSUB(F10,GLSTHR,GLAT,ZHT)
 
     # % Compute the local exospheric temperature.
     # % Add geomagnetic storm effect from input dTc value
@@ -324,8 +334,13 @@ def JB2008(MJD,r_Sun,r_SAT):
         SUM2 = SUM2 + DZ * SUM1
 
 
+
     FACT1 = 1000/RSTAR
+
+
     RHO = 3.46e-6 * AMBAR2 * TLOC1 * exp(-FACT1*SUM2)/AMBAR1/TLOC2
+
+
 
     # % Equation (2)
     ANM = AVOGAD * RHO
@@ -334,7 +349,9 @@ def JB2008(MJD,r_Sun,r_SAT):
     # % Equation (3)
     FACT2  = ANM/28.960
     ALN=np.zeros(6)
+
     ALN[0] = log(FRAC[0]*FACT2)
+
     ALN[3] = log(FRAC[2]*FACT2)
     ALN[4] = log(FRAC[3]*FACT2)
 
@@ -848,9 +865,9 @@ def TMOUTD(MJD):
 
 
 def test():
-    r_Sun=[12312312.23,12321.1322,1232132534.324]
-    r_SAT=[32142341.134,11341324123.3242,234234.23]
-    MJD=5.723691351851868e+04
+    r_Sun=[1.24455226e+11,7.75860255e+10,3.36337022e+10]
+    r_SAT=[-1198581.96996663 ,5048158.17197648, 4416368.6706316 ]
+    MJD=57136.917358302824
     TEMP, RHO=JB2008(MJD,r_Sun,r_SAT)
 
     print(TEMP, RHO)

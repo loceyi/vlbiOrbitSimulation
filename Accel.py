@@ -43,6 +43,7 @@ from AccelSolrad import AccelSolrad
 from Relativity import Relativity
 from AccelHarmonic_ElasticEarth import AccelHarmonic_ElasticEarth
 from JB2008 import JB2008
+from AccelDrag import AccelDrag
 def Accel(t,Y):
     '''
 
@@ -163,8 +164,8 @@ def Accel(t,Y):
         # % dens = 1e3*d(6);
         # % dens = Density_Jacchia70(r_Sun,MJD_UTC,E*Y(1:3),gast);
         # % dens = Density_HP(r_Sun,NPB*Y(1:3));
-        a = a + AccelDrag(dens,Y[0:3],Y[3:6],NPB,Global_parameters.AuxParam.area_drag
-                          ,Global_parameters.AuxParam.mass,Global_parameters.AuxParam.Cd,Omega)
+        a = a + AccelDrag(dens,Y[0:3],Y[3:6],NPB,Global_parameters.AuxParam['area_drag']
+                          ,Global_parameters.AuxParam['mass'],Global_parameters.AuxParam['Cd'],Omega)
 
 
 

@@ -35,16 +35,16 @@ def HPOP():
     Mjd_UTC=t_start_jd-2400000.5
 
     Global_parameters.AuxParam['Mjd_UTC'] = Mjd_UTC
-    Global_parameters.AuxParam['n'] = 40
-    Global_parameters.AuxParam['m'] = 40
-    Global_parameters.AuxParam['sun'] = 1
-    Global_parameters.AuxParam['moon'] = 1
-    Global_parameters.AuxParam['planets'] = 1
-    Global_parameters.AuxParam['sRad'] = 1
+    Global_parameters.AuxParam['n'] = 10
+    Global_parameters.AuxParam['m'] = 10
+    Global_parameters.AuxParam['sun'] = 0
+    Global_parameters.AuxParam['moon'] = 0
+    Global_parameters.AuxParam['planets'] = 0
+    Global_parameters.AuxParam['sRad'] = 0
     Global_parameters.AuxParam['drag'] = 1
-    Global_parameters.AuxParam['SolidEarthTides'] = 1
-    Global_parameters.AuxParam['OceanTides'] = 1
-    Global_parameters.AuxParam['Relativity'] = 1
+    Global_parameters.AuxParam['SolidEarthTides'] = 0
+    Global_parameters.AuxParam['OceanTides'] = 0
+    Global_parameters.AuxParam['Relativity'] = 0
     Global_parameters.AuxParam['Cr'] = 1.0
     Global_parameters.AuxParam['Cd'] = 4
     Global_parameters.AuxParam['mass'] = 8000
@@ -55,9 +55,9 @@ def HPOP():
 
     Mjd0 = Mjd_UTC
 
-    Step = 100 #[s]
+    Step = 10 #[s]
 
-    N_Step = 100  #26.47hours
+    N_Step = 1000 #26.47hours
 
     #shorten PC, eopdata, swdata, Cnm, and Snm
     num=int(N_Step*Step/86400)+2
@@ -144,19 +144,21 @@ def HPOP():
     #                 cstride=2, color='w')
 
 
-
     z = a[2,:]
 
     x = a[1,:]
     y = a[0,:]
-    ax.plot(x, y, z, label='parametric curve')
+    ax.plot(x/1000, y/1000, z/1000, label='parametric curve')
     ax.legend()
 
-
-
-
-
-
+    ax.set_xlim(-6000, 6000)  # 设置横轴范围，会覆盖上面的横坐标,plt.xlim
+    ax.set_ylim(-6000, 6000)  #
+    ax.set_zlim(-6000, 6000)
+    ax.set_xlabel('x')  # 设置x轴名称,plt.xlabel
+    ax.set_ylabel('y')
+    ax.set_zlabel('z')
+    ax.patch.set_alpha(1)
+    ax.grid(True)
     plt.show()
 
     return
