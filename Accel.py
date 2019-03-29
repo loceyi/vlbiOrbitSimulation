@@ -188,7 +188,8 @@ def test():
 
 
 
-if __name__ == "__main__":a'f'd'f'
+if __name__ == "__main__":
 
     test()
 
+a'f'd'f
