@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2922b152-4010-4ace-9865-d6192257d594" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AccelDrag.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Accel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HPOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/HPOP.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JB2008.py" beforeDir="false" afterPath="$PROJECT_DIR$/JB2008.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_lambda.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_lambda.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Accel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="174" column="37" lean-forward="true" selection-start-line="174" selection-start-column="37" selection-end-line="174" selection-end-column="37" />
+            <state relative-caret-position="681">
+              <caret line="172" column="48" lean-forward="true" selection-start-line="172" selection-start-column="48" selection-end-line="172" selection-end-column="48" />
               <folding>
                 <element signature="e#915#939#0" expanded="true" />
               </folding>
@@ -98,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HPOP.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="171">
-              <caret line="160" column="16" selection-start-line="160" selection-start-column="16" selection-end-line="160" selection-end-column="16" />
+              <caret line="61" column="46" lean-forward="true" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -168,6 +163,11 @@
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -421,13 +421,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543982195569</updated>
-    </task>
-    <task id="LOCAL-00015" summary="2019/2/19">
-      <created>1550576734833</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1550576734833</updated>
     </task>
     <task id="LOCAL-00016" summary="2019/2/26">
       <created>1551153805132</created>
@@ -765,7 +758,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553832176281</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="2019/3/29/Morning/JB2008 Finish!">
+      <created>1553861045151</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1553861045151</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TodoView">
@@ -786,7 +786,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49960285" visible="true" weight="0.3463588" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960285" weight="0.3463588" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.6536412" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -803,7 +803,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2019/3/4/" />
     <MESSAGE value="2019/3/7/Happy birthday to myself!" />
     <MESSAGE value="2019/3/10" />
     <MESSAGE value="2019/3/11" />
@@ -828,7 +827,8 @@
     <MESSAGE value="2019/3/24/Night/Work on ACCEL Elastic" />
     <MESSAGE value="2019/3/25/Night/ACCEL Finish!" />
     <MESSAGE value="2019/3/29/Morning/JB2008 Finish!" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019/3/29/Morning/JB2008 Finish!" />
+    <MESSAGE value="2019/3/29/Evening/ Finish!" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019/3/29/Evening/ Finish!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1244,16 +1244,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Accel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="174" column="37" lean-forward="true" selection-start-line="174" selection-start-column="37" selection-end-line="174" selection-end-column="37" />
-          <folding>
-            <element signature="e#915#939#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AccelDrag.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1092">
@@ -1270,9 +1260,19 @@
     <entry file="file://$PROJECT_DIR$/HPOP.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
-          <caret line="160" column="16" selection-start-line="160" selection-start-column="16" selection-end-line="160" selection-end-column="16" />
+          <caret line="61" column="46" lean-forward="true" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Accel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="681">
+          <caret line="172" column="48" lean-forward="true" selection-start-line="172" selection-start-column="48" selection-end-line="172" selection-end-column="48" />
+          <folding>
+            <element signature="e#915#939#0" expanded="true" />
           </folding>
         </state>
       </provider>
