@@ -176,7 +176,7 @@ def JB2008(MJD,r_Sun,r_SAT):
 
     DTC = DTCdata[:,i-1]
     ii = floor(hour)+3
-    DSTDTC = DTC(ii)
+    DSTDTC = DTC[ii-1]
 
     # % CONVERT POINT OF INTEREST LOCATION (RADIANS AND KM)
     # % CONVERT LONGITUDE TO RA
@@ -845,3 +845,18 @@ def TMOUTD(MJD):
 
     return doy
 
+
+
+def test():
+    r_Sun=[12312312.23,12321.1322,1232132534.324]
+    r_SAT=[32142341.134,11341324123.3242,234234.23]
+    MJD=5.723691351851868e+04
+    TEMP, RHO=JB2008(MJD,r_Sun,r_SAT)
+
+    print(TEMP, RHO)
+
+
+
+if __name__ == "__main__":
+
+    test()

@@ -21,7 +21,7 @@ def Geodetic(r):
     rho2 = X*X + Y*Y         #% Square of distance from z-axis
 
     # % Check validity of input data
-    norm_r=sqrt(r.dot(r))
+    norm_r=sqrt(r[0]**2+r[1]**2+r[2]**2)
     if norm_r==0:
 
         print ( ' invalid input in Geodetic constructor\n' )
