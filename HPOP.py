@@ -12,7 +12,9 @@ from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 from Basic_sphere import sat_orbit_plot
 import Global_parameters
+import pylab as pl
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!不要随意输入整数，最好都用float，int容易溢出
+from RV_To_Orbit_Elements import rv_to_orbit_element
 def HPOP():
 
     #Load basic data
@@ -41,7 +43,7 @@ def HPOP():
     Global_parameters.AuxParam['moon'] = 0
     Global_parameters.AuxParam['planets'] = 0
     Global_parameters.AuxParam['sRad'] = 0
-    Global_parameters.AuxParam['drag'] = 1
+    Global_parameters.AuxParam['drag'] = 0
     Global_parameters.AuxParam['SolidEarthTides'] = 0
     Global_parameters.AuxParam['OceanTides'] = 0
     Global_parameters.AuxParam['Relativity'] = 0
@@ -57,7 +59,7 @@ def HPOP():
 
     Step = 10 #[s]
 
-    N_Step = 1000 #26.47hours
+    N_Step = 8640 #26.47hours
 
     #shorten PC, eopdata, swdata, Cnm, and Snm
     num=int(N_Step*Step/86400)+2
@@ -118,18 +120,7 @@ def HPOP():
 
     a = ol.y
 
-    mpl.rcParams['legend.fontsize'] = 10
 
-    fig = plt.figure()
-
-
-
-
-
-
-
-
-    ax = fig.gca(projection='3d')
 
     # # Make data
     # u = np.linspace(0, 2 * np.pi, 100)
@@ -145,21 +136,101 @@ def HPOP():
 
 
     z = a[2,:]
+    y = a[1,:]
+    x = a[0,:]
+    vx=a[3,:]
+    vy=a[4,:]
+    vz=a[5,:]
 
-    x = a[1,:]
-    y = a[0,:]
-    ax.plot(x/1000, y/1000, z/1000, label='parametric curve')
-    ax.legend()
+    if 0 :
 
-    ax.set_xlim(-6000, 6000)  # 设置横轴范围，会覆盖上面的横坐标,plt.xlim
-    ax.set_ylim(-6000, 6000)  #
-    ax.set_zlim(-6000, 6000)
-    ax.set_xlabel('x')  # 设置x轴名称,plt.xlabel
-    ax.set_ylabel('y')
-    ax.set_zlabel('z')
-    ax.patch.set_alpha(1)
-    ax.grid(True)
-    plt.show()
+        mpl.rcParams['legend.fontsize'] = 10
+
+        fig = plt.figure()
+
+        ax = fig.gca(projection='3d')
+        ax.plot(x/1000, y/1000, z/1000, label='parametric curve')
+        ax.legend()
+
+        ax.set_xlim(-6000, 6000)  # 设置横轴范围，会覆盖上面的横坐标,plt.xlim
+        ax.set_ylim(-6000, 6000)  #
+        ax.set_zlim(-6000, 6000)
+        ax.set_xlabel('x')  # 设置x轴名称,plt.xlabel
+        ax.set_ylabel('y')
+        ax.set_zlabel('z')
+        ax.patch.set_alpha(1)
+        ax.grid(True)
+        plt.show()
+
+
+
+    if 1:
+        length=len(x)
+
+        orbit_element_data = np.zeros([6,length])
+
+        for i in range(1,length+1):
+
+            temp=rv_to_orbit_element(np.array([x[i-1],y[i-1],z[i-1]]),
+                                     np.array([vx[i-1],vy[i-1],vz[i-1]]),398600.4418e9)
+
+            orbit_element_data[0,i-1]=temp[0]
+            orbit_element_data[1, i - 1] =temp[1]
+            orbit_element_data[2, i - 1] =temp[2]
+            orbit_element_data[3, i - 1] =temp[3]
+            orbit_element_data[4, i - 1] =temp[4]
+            orbit_element_data[5, i - 1] =temp[5]
+
+
+        X=np.arange(0, N_Step * Step, Step)
+
+        pl.figure(1)
+        pl.subplot(231)
+        ax1=pl.plot(X, orbit_element_data[0,:])
+        plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
+        plt.ylabel('a/m')
+
+        pl.subplot(232)
+        pl.plot(X, orbit_element_data[1,:])
+        plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
+        plt.ylabel('e')
+
+        pl.subplot(233)
+        pl.plot(X, orbit_element_data[2,:])
+        plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
+        plt.ylabel('i/rad')
+
+
+        pl.subplot(234)
+        pl.plot(X, orbit_element_data[3,:])
+        plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
+        plt.ylabel('RAAN/rad')
+
+        pl.subplot(235)
+        pl.plot(X, orbit_element_data[4,:])
+        plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
+        plt.ylabel('Perigee/rad')
+
+        pl.subplot(236)
+        pl.plot(X, orbit_element_data[5,:]% (2 * pi))
+        plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
+        plt.ylabel('True_anomaly/rad')
+
+
+        pl.show()
+
+
+        # plt.plot(X, orbit_element_data[0,:])
+        # plt.plot(X, orbit_element_data[1,:])
+        # plt.plot(X, orbit_element_data[2, :])
+        # plt.plot(X, orbit_element_data[3, :])
+        # plt.plot(X, orbit_element_data[4, :])
+        # plt.plot(X, orbit_element_data[5, :]% (2 * pi))
+        # 在ipython的交互环境中需要这句话才能显示出来
+
+        plt.show()
+
+
 
     return
 

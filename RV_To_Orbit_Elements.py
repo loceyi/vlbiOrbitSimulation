@@ -5,7 +5,7 @@ import math
 
 def rv_to_orbit_element (R,V,mu):
     '''
-    :param r km ,velocity km/s
+    :param r km ,velocity km/s,mu 398600 or r m,v m/s, 398600 1e9
     :return: orbit_element: semi_major_axis km, Eccentricity,
            Inclination, RAAN, Perigee, True_Anomaly
            半长轴输出单位为km,其余角度输出单位为弧度
@@ -81,7 +81,7 @@ def rv_to_orbit_element (R,V,mu):
 def test():
     G = 6.67259e-11  # kg m/s^2·m2/kg2=m^3/kg/s^2
     M_sun = 1.9891e30  # kg
-    mu = 398600 + G * M_sun / (1e9)  # m^3/s^2
+    mu = 398600 + G * M_sun / (1e9)  # km^3/s^2
     R=np.array([4.95640052e+07, 1.31548319e+08, 5.70407354e+07])
     V=np.array([-27.65588466 ,  9.0320182 ,   3.91534451])
     b=rv_to_orbit_element(R,V,mu)
