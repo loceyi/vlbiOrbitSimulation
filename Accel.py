@@ -108,19 +108,23 @@ def Accel(t,Y):
     r_Mercury, r_Venus, r_Earth, r_Mars, r_Jupiter, r_Saturn, r_Uranus, \
     r_Neptune, r_Pluto, r_Moon, r_Sun, r_SunSSB = JPL_Eph_DE405(JD)
 
-
-
-
-
-
+    earth_shape_perturbation =0
     a=np.array([0,0,0])#Initial Value
-    #Luni-solar perturbations
+
     # norm_r=np.sqrt(Y[0]**2+Y[1]**2+Y[2]**2)
     # r=Y[0:3]
     # mu=398600*1e9#m^3/s^2
     # a=-mu*r/(norm_r**3)
-    a = AccelHarmonic_ElasticEarth(MJD_UTC,r_Sun,r_Moon,Y[0:3],E,UT1_UTC,TT_UTC,x_pole,y_pole)
+    if earth_shape_perturbation==1:
 
+        a = AccelHarmonic_ElasticEarth(MJD_UTC,r_Sun,r_Moon,Y[0:3],E,UT1_UTC,TT_UTC,x_pole,y_pole)
+
+    else:
+
+        norm_r = np.sqrt(Y[0] ** 2 + Y[1] ** 2 + Y[2] ** 2)
+        r = Y[0:3]
+        mu = 398600 * 1e9  # m^3/s^2
+        a = -mu * r / (norm_r ** 3)
 
 
 
