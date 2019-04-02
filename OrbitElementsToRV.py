@@ -25,7 +25,7 @@ def orbit_element_to_rv(orbit_element):
 
     '''
 
-    mu=398600 #km^3/s^(-2)
+    mu=398600.4418 #km^3/s^(-2)
     semi_major_axis=orbit_element[0]
     Eccentricity=orbit_element[1]
     Inclination=radians(orbit_element[2])

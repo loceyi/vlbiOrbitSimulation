@@ -1,5 +1,5 @@
 import numpy as np
-from math import pi,floor
+from math import pi,floor,radians
 from OrbitElementsToRV import orbit_element_to_rv
 import Load_data
 from scipy import io
@@ -15,6 +15,8 @@ import Global_parameters
 import pylab as pl
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!不要随意输入整数，最好都用float，int容易溢出
 from RV_To_Orbit_Elements import rv_to_orbit_element
+from Accel_Two_Body import Accel_Two_Body
+from decimal import *
 def HPOP():
 
     #Load basic data
@@ -28,12 +30,12 @@ def HPOP():
     t_start_jd=Julian_date(year,month,day,hour,minute,second)
 
 
-    orbit_element = np.array([6878, 0.010, 45, 45, 45, 0]) #输入角度单位为度°
+    orbit_element = np.array([6878.0, 0.010, 45.0, 45.0, 45.0, 0.0]) #输入角度单位为度°
 
     r0,v0 = orbit_element_to_rv(orbit_element)
 
     Y0=np.array([r0[0]*1e3,r0[1]*1e3,r0[2]*1e3,v0[0]*1e3,v0[1]*1e3,v0[2]*1e3]) #Y0单位为m,m/s
-
+    orbisgsdfgdf=rv_to_orbit_element(Y0[0:3], Y0[3:6], 398600.4418e9)
     Mjd_UTC=t_start_jd-2400000.5
 
     Global_parameters.AuxParam['Mjd_UTC'] = Mjd_UTC
@@ -116,7 +118,8 @@ def HPOP():
     # Eph(:, 1) = t;
     # Eph(:, 2: 7) = yout;
 
-    ol = solve_ivp(Accel, [0, N_Step*Step], Y0, method='Radau', t_eval=np.arange(0, N_Step*Step, Step))
+    ol = solve_ivp(Accel, [0, N_Step*Step], Y0, method='Radau', t_eval=np.arange(0, N_Step*Step, Step),
+                   rtol=1e-10, atol=1e-10)
 
     a = ol.y
 
@@ -182,37 +185,49 @@ def HPOP():
             orbit_element_data[5, i - 1] =temp[5]
 
 
-        X=np.arange(0, N_Step * Step, Step)
+        X=ol.t
 
         pl.figure(1)
         pl.subplot(231)
-        ax1=pl.plot(X, orbit_element_data[0,:])
+        pl.plot(X, orbit_element_data[0,:])
+        temp=np.array([orbit_element[0]*1e3]*len(X))
+        pl.plot(X, temp)
         plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
         plt.ylabel('a/m')
 
         pl.subplot(232)
         pl.plot(X, orbit_element_data[1,:])
+        temp = np.array([orbit_element[1]] * len(X))
+        pl.plot(X, temp)
         plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
         plt.ylabel('e')
 
         pl.subplot(233)
         pl.plot(X, orbit_element_data[2,:])
+        temp = np.array([radians(orbit_element[2])] * len(X))
+        pl.plot(X, temp)
         plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
         plt.ylabel('i/rad')
 
 
         pl.subplot(234)
         pl.plot(X, orbit_element_data[3,:])
+        temp = np.array([radians(orbit_element[3])] * len(X))
+        pl.plot(X, temp)
         plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
         plt.ylabel('RAAN/rad')
 
         pl.subplot(235)
         pl.plot(X, orbit_element_data[4,:])
+        temp = np.array([radians(orbit_element[4])] * len(X))
+        pl.plot(X, temp)
         plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
         plt.ylabel('Perigee/rad')
 
         pl.subplot(236)
         pl.plot(X, orbit_element_data[5,:]% (2 * pi))
+        temp = np.array([radians(orbit_element[5])] * len(X))
+        pl.plot(X, temp)
         plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
         plt.ylabel('True_anomaly/rad')
 
