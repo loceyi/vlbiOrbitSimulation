@@ -61,7 +61,7 @@ def HPOP():
 
     Step = 10 #[s]
 
-    N_Step = 8640 #26.47hours
+    N_Step = 8000 #26.47hours
 
     #shorten PC, eopdata, swdata, Cnm, and Snm
     num=int(N_Step*Step/86400)+2
