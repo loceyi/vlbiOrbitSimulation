@@ -1,6 +1,27 @@
-import cesiumpy
+# Import the library
+from czml import czml
 
-v = cesiumpy.Viewer()
-v.entities.add(cesiumpy.Box(dimensions=(40e4, 30e4, 50e4),
-                             material=cesiumpy.color.RED, position=(-120, 40, 0)))
-u=v.to_html()
+# Initialize a document
+doc = czml.CZML()
+
+# Create and append the document packet
+packet1 = czml.CZMLPacket(
+        id="package1",
+        position={"cartographicDegrees":[-75.5,40.0,0.0]},
+        point={
+            "color":{"rgba":[0,0,255,255]},
+            }
+    )
+doc.packets.append(packet1)
+
+# Create and append a billboard packet
+packet2 = czml.CZMLPacket(id='billboard')
+bb = czml.Billboard(scale=0.7, show=True)
+bb.image = 'http://localhost/img.png'
+bb.color = {'rgba': [0, 255, 127, 55]}
+packet2.billboard = bb
+doc.packets.append(packet2)
+
+# Write the CZML document to a file
+filename = "example.czml"
+doc.write(filename)
