@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>czml模拟卫星轨道扫描</title>
+		<link rel="stylesheet" href="../lib/Cesium/Widgets/widgets.css" />
+		<link rel="stylesheet" href="../lib/ztree/css/zTreeStyle/zTreeStyle.css" />
+		<style>
+			html,
+			body,
+			#cesiumContainer {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="cesiumContainer"></div>
+	</body>
+
+	<script src="../lib/Cesium/Cesium.js"></script>
+	<script src="../lib/jquery/jquery-2.1.4.min.js"></script>
+	<script>
+		var url = "http://mt1.google.cn/vt/lyrs=s&hl=zh-CN&x={x}&y={y}&z={z}&s=Gali";
+		var satellite = null;
+		var viewer = new Cesium.Viewer("cesiumContainer", {
+			shouldAnimate: true,
+			baseLayerPicker: false,
+			imageryProvider: new Cesium.UrlTemplateImageryProvider({
+				url: url
+			})
+		});
+		var ellipsoid = viewer.scene.globe.ellipsoid;
+		var start = viewer.clock.startTime;
+		var clock = viewer.clock;
+		var cylinderEntity = viewer.entities.add({
+			cylinder: {
+				HeightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+				length: 600000,
+				topRadius: 0,
+				bottomRadius: 600000 / 4,
+				material: Cesium.Color.RED.withAlpha(.4),
+				outline: !0,
+				numberOfVerticalLines: 0,
+				outlineColor: Cesium.Color.RED.withAlpha(.8)
+			}
+		});
+		
+		var property;
+		viewer.dataSources.add(Cesium.CzmlDataSource.load("../czml/GAOFEN1.czml")).then(function(dataSource) {
+			satellite = dataSource.entities.getById("Satellite/GAOFEN 1");
+			property = new Cesium.SampledPositionProperty();
+			for (var ind = 0; ind < 292; ind++) {
+				var time = Cesium.JulianDate.addSeconds(clock.startTime, 300*ind, new Cesium.JulianDate());
+				var position = satellite.position.getValue(time);
+				var cartographic = viewer.scene.globe.ellipsoid.cartesianToCartographic(position);
+				var lat = Cesium.Math.toDegrees(cartographic.latitude),
+					lng = Cesium.Math.toDegrees(cartographic.longitude),
+					hei = cartographic.height / 1.9;
+				property.addSample(time, Cesium.Cartesian3.fromDegrees(lng, lat, hei));
+			}
+			cylinderEntity.position = property;
+			cylinderEntity.position.setInterpolationOptions({ //设定位置的插值算法
+				interpolationDegree: 5,
+				interpolationAlgorithm: Cesium.LagrangePolynomialApproximation
+			});
+			
+		});
+		
+	</script>
+</html>
