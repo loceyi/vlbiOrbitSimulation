@@ -24,7 +24,7 @@
 import os
 import webbrowser
 webbrowser.open("http://localhost:9090/")
-os.chdir( "D:\\Cesium")
+os.chdir( "D:\\VLBI\\Orbit Simulation\\VLBIOrbit-Simulation\\Cesium")
 os.system('python -m http.server 9090')
 
 
