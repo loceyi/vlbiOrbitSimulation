@@ -1,1 +1,14 @@
-[{"id": "package1", "position": {"cartographicDegrees": [-75.5, 40.0, 0.0]}, "point": {"color": {"rgba": [0, 0, 255, 255]}}}, {"id": "billboard", "billboard": {"show": true, "image": "http://localhost/img.png", "color": {"rgba": [0, 255, 127, 55]}, "scale": 0.7}}]
+[
+    {
+    "id": "package1",
+    "position": {"cartographicDegrees": [-75.5, 40.0, 0.0]},
+    "point": {"color": {"rgba": [0, 0, 255, 255]}}},
+    {"id": "billboard",
+    "billboard": {"show": true, "image": "http://localhost/img.png",
+                  "color": {"rgba": [0, 255, 127, 55]},
+                  "scale": 0.7}
+    }
+
+
+
+]
