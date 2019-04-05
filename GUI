@@ -1,11 +1,17 @@
 # Import the library
-from czml import czml
+from czml_local import CZML
+from czml_local import CZMLPacket
+from czml_local import Description
+from czml_local import Billboard
+from czml_local import Label
+from czml_local import Path
+from czml_local import Position
 
 # Initialize a document
-doc = czml.CZML()
+doc = CZML()
 
 # Create and append the document packet
-packet1 = czml.CZMLPacket(
+packet1 = CZMLPacket(
     id="document",
     name = "simple",
     version= "1.0",
@@ -25,14 +31,14 @@ packet1 = czml.CZMLPacket(
 doc.packets.append(packet1)
 
 # Create and append a billboard packet
-packet2 = czml.CZMLPacket(
+packet2 = CZMLPacket(
 
 
     id="Satellite/Geoeye1",
     name="Geoeye1",
     availability="2012-03-15T10:00:00Z/2012-03-16T10:00:00Z")
 
-pp=czml.Position(interpolationDegree=5,
+pp=Position(interpolationDegree=5,
 interpolationAlgorithm="LAGRANGE",
 epoch="2012-03-15T10:00:00Z")
 
@@ -339,7 +345,7 @@ packet2.position=pp
 
 
 
-bb=czml.Label(
+bb=Label(
       show=True,
       text="Geoeye 1")
 
@@ -364,7 +370,8 @@ bb.outlineWidth=2
 bb.style="FILL_AND_OUTLINE"
 bb.verticalOrigin="CENTER"
 packet2.label = bb
-aa=czml.Path(
+
+aa=Path(
       show=[
         {
           "interval":"2012-03-15T10:00:00Z/2012-03-16T10:00:00Z",
@@ -655,12 +662,12 @@ aa.trailTime=[
 
 packet2.path= aa
 
-dd=czml.Description("<!--HTML-->\r\n<p>GeoEye-1 is a high-resolution earth observation satellite owned by GeoEye, which was launched in September 2008.</p>\r\n\r\n<p>On December 1, 2004, General Dynamics C4 Systems announced it had been awarded a contract worth approximately $209 million to build the OrbView-5 satellite. Its sensor is designed by the ITT Exelis.</p>\r\n\r\n<p>The satellite, now known as GeoEye-1, was originally scheduled for April 2008 but lost its 30-day launch slot to a U.S. government mission which had been delayed. It was rescheduled for launch August 22, 2008 from Vandenberg Air Force Base aboard a Delta II launch vehicle. The launch was postponed to September 4, 2008, due to unavailability of the Big Crow telemetry-relay aircraft. It was delayed again to September 6 because Hurricane Hanna interfered with its launch crews.</p>\r\n\r\n<p>The launch took place successfully on September 6, 2008 at 11:50:57 a.m. PDT (18:50:57 UTC). The GeoEye-1 satellite separated successfully from its Delta II launch vehicle at 12:49 p.m. PDT (19:49 UTC), 58 minutes and 56 seconds after launch.</p>",)
+dd=Description("<!--HTML-->\r\n<p>GeoEye-1 is a high-resolution earth observation satellite owned by GeoEye, which was launched in September 2008.</p>\r\n\r\n<p>On December 1, 2004, General Dynamics C4 Systems announced it had been awarded a contract worth approximately $209 million to build the OrbView-5 satellite. Its sensor is designed by the ITT Exelis.</p>\r\n\r\n<p>The satellite, now known as GeoEye-1, was originally scheduled for April 2008 but lost its 30-day launch slot to a U.S. government mission which had been delayed. It was rescheduled for launch August 22, 2008 from Vandenberg Air Force Base aboard a Delta II launch vehicle. The launch was postponed to September 4, 2008, due to unavailability of the Big Crow telemetry-relay aircraft. It was delayed again to September 6 because Hurricane Hanna interfered with its launch crews.</p>\r\n\r\n<p>The launch took place successfully on September 6, 2008 at 11:50:57 a.m. PDT (18:50:57 UTC). The GeoEye-1 satellite separated successfully from its Delta II launch vehicle at 12:49 p.m. PDT (19:49 UTC), 58 minutes and 56 seconds after launch.</p>",)
 packet2.description=dd
 
 
 
-cc=czml.Billboard(scale=1.5,
+cc=Billboard(scale=1.5,
       show=True)
 cc.eyeOffset={
    "cartesian":[
