@@ -6,6 +6,8 @@ from czml_local import Billboard
 from czml_local import Label
 from czml_local import Path
 from czml_local import Position
+import shutil
+import os
 
 # Initialize a document
 doc = CZML()
@@ -692,7 +694,10 @@ packet2.billboard = cc
 doc.packets.append(packet2)
 
 # Write the CZML document to a file
-filename = "example3.czml"
+filename = "satellite.czml"
 doc.write(filename)
+old_path=os.getcwd()
+new_path='Cesium/Orbit_Simulation_GUI/SampleData'
+shutil.copyfile(os.path.join(old_path,filename),os.path.join(new_path,filename))#路径拼接要用os.path.join，复制指定文件到另一个文件夹里
 
-
+os.remove(os.path.join(old_path,filename))#删除原文件夹中的指定文件文件
