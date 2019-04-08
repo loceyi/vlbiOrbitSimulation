@@ -23,8 +23,20 @@
 
 import os
 import webbrowser
-webbrowser.open("http://localhost:9090/")
-os.chdir( "D:\\VLBI\\Orbit Simulation\\VLBIOrbit-Simulation\\Cesium")
-os.system('python -m http.server 9090')
+
+def GUI_Show():
+
+    webbrowser.open("http://localhost:9090/")
+    os.chdir( "D:\\VLBI\\Orbit Simulation\\VLBIOrbit-Simulation\\Cesium")
+    os.system('python -m http.server 9090')
+
+def test_GUI_Show():
 
 
+    GUI_Show()
+
+
+if __name__ == "__main__":
+
+
+    test_GUI_Show()

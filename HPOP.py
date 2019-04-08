@@ -59,7 +59,7 @@ def HPOP():
 
     Mjd0 = Mjd_UTC
 
-    Step = 100 #[s]
+    Step = 10 #[s]
 
     N_Step = 800 #26.47hours
 
@@ -119,7 +119,7 @@ def HPOP():
     # Eph(:, 2: 7) = yout;
 
     ol = solve_ivp(Accel, [0, N_Step*Step], Y0, method='Radau', t_eval=np.arange(0, N_Step*Step, Step),
-                   rtol=1e-6, atol=1e-6)
+                   rtol=1e-3, atol=1e-3)
 
     a = ol.y
 
