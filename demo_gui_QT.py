@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     # 可以显示启动信息
     splash.showMessage('正在加载……')
-    time.sleep(5)
+    time.sleep(1)
     # 关闭启动画面
     splash.close()
     myWin = MyMainWindow()
