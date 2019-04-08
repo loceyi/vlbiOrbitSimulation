@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>721</width>
+    <width>790</width>
     <height>438</height>
    </rect>
   </property>
@@ -55,6 +55,9 @@ border-top-color: rgb(5, 9, 20);
     </property>
     <property name="text">
      <string>创建一个新的仿真对象</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
@@ -109,7 +112,7 @@ color: rgb(23, 62, 121);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>721</width>
+     <width>790</width>
      <height>18</height>
     </rect>
    </property>
