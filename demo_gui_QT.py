@@ -1,4 +1,5 @@
 from GUI_QT import *
+from Parameter_Input import *
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 import time
@@ -23,5 +24,8 @@ if __name__ == '__main__':
     # 关闭启动画面
     splash.close()
     myWin = MyMainWindow()
+    child = QDialog()
+    child_ui = Ui_Dialog()
+    child_ui.setupUi(child)
     myWin.show()
     sys.exit(app.exec_())

@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(721, 438)
+        MainWindow.resize(790, 438)
         MainWindow.setStyleSheet("background-image: url(:/GUI_Image/background/earth.jpg);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -27,6 +27,7 @@ class Ui_MainWindow(object):
 "gridline-color: rgb(6, 10, 21);\n"
 "border-top-color: rgb(5, 9, 20);\n"
 "")
+        self.pushButton.setAutoDefault(False)
         self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(270, 290, 61, 21))
@@ -45,7 +46,7 @@ class Ui_MainWindow(object):
         self.label_2.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 721, 18))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 790, 18))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
