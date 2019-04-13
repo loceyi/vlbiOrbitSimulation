@@ -10,6 +10,31 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         super(MyMainWindow, self).__init__(parent)
         self.setupUi(self)
 
+
+#     def paintEvent1(self, event):
+#
+#         
+#     def keyPressEvent1(self,e):
+#         
+#         if e.key() == Qt.Key_Escape:
+#             self.close()
+#
+# class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
+#
+#     def __init__(self):
+#         super(ChildWindow,self).__init__()
+#         self.setupUi(self)
+#       
+#         self.setWindowTitle('child window')
+#        
+#         self.pushButton.clicked.connect( self.btnClick)  #按钮事件绑定
+#
+#     def btnClick(self): 
+# #子窗体自定义事件
+#         self.close()
+
+
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
 
@@ -24,8 +49,11 @@ if __name__ == '__main__':
     # 关闭启动画面
     splash.close()
     myWin = MyMainWindow()
-    child = QDialog()
+    child = QtWidgets.QDialog()
     child_ui = Ui_Dialog()
     child_ui.setupUi(child)
+    btn = myWin.pushButton
+    btn.clicked.connect(child.show)
+
     myWin.show()
     sys.exit(app.exec_())

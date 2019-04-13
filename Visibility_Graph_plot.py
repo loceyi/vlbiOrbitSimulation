@@ -18,14 +18,15 @@ second = 0
 length=60#设置步长
 time=np.arange(0,length,1.0)#生成长度为60的数组,要打1.0因为数组数据类型要为float，输入1则默认类型为int
 Visibility=np.arange(0,length,1)
+a = array([7000, 0, 0, 0, 0, 0])
+direction_vector = array([-1.0, 0.0, 0.0])
 for i in range(0,length): #0~59,没有60
 
 
     minute=i+1
-    time[i] = Julian_date(month, day, year, hour, minute, second)
+    time[i] = Julian_date(year,month,day,hour,minute,second)
 
-    a = array([7000, 0.2, 45, 20, 30, 0])
-    direction_vector = array([1, 1, 0.1])
+
     Visibility[i] = Visibility_for_celestial_body(direction_vector, a, time[i])
 
 

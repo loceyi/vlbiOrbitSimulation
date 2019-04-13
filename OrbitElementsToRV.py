@@ -55,7 +55,7 @@ def orbit_element_to_rv(orbit_element):
 
 def test():
 
-    a=array([7000,0.2,45,20,30,0])
+    a=array([7000,0,0,0,0,0])
     r,v=orbit_element_to_rv(a)
     print(r,v)
 
