@@ -15,7 +15,7 @@ PC=mat['DE436Coeff']
 
 #Model parameters
 
-AuxParam={'Mjd_UTC':0,'area_solar':0,'area_drag':0,'mass':0,'Cr':0,
+AuxParam={'Mjd_UTC':57136,'area_solar':0,'area_drag':0,'mass':0,'Cr':0,
                   'Cd':0,'n':40,'m':40,'sun':0,'moon':0,'sRad':0,'drag':0,
                   'planets':0,'SolidEarthTides':0,'OceanTides':0,'Relativity':0}
 

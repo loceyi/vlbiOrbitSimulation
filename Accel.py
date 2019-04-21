@@ -51,7 +51,7 @@ from AccelDrag import AccelDrag
 def Accel(t,Y):
     '''
 
-    :param t:
+    :param t:单位是秒
     :param Y:
     :param AuxParam: 一定要是字典格式
     :return:
