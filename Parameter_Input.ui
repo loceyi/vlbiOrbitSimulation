@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>569</width>
-    <height>461</height>
+    <height>685</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,83 +17,14 @@
    <string notr="true">background-color: rgb(240, 240, 240);</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label">
-     <property name="styleSheet">
-      <string notr="true">font: 11pt &quot;Arial&quot;;</string>
-     </property>
-     <property name="text">
-      <string>Propagator:HPOP</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="4" rowspan="4">
-    <widget class="QScrollBar" name="verticalScrollBar">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="4">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,1">
-     <item>
-      <widget class="QLabel" name="label_8">
-       <property name="text">
-        <string>Start Time:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>Stop Time:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>Step Size:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_11">
-       <property name="text">
-        <string>Coord System:</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="2" column="1">
-    <layout class="QVBoxLayout" name="verticalLayout_4">
-     <property name="spacing">
-      <number>28</number>
-     </property>
-     <item>
-      <widget class="QPlainTextEdit" name="plainTextEdit_8"/>
-     </item>
-     <item>
-      <widget class="QPlainTextEdit" name="plainTextEdit_9"/>
-     </item>
-     <item>
-      <widget class="QPlainTextEdit" name="plainTextEdit_10"/>
-     </item>
-     <item>
-      <widget class="QPlainTextEdit" name="plainTextEdit_7"/>
-     </item>
-    </layout>
-   </item>
+   <property name="sizeConstraint">
+    <enum>QLayout::SetNoConstraint</enum>
+   </property>
    <item row="2" column="2">
     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,1,1,1,1,1">
+     <property name="bottomMargin">
+      <number>360</number>
+     </property>
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
@@ -138,8 +69,54 @@
      </item>
     </layout>
    </item>
+   <item row="2" column="1">
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <property name="spacing">
+      <number>24</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetNoConstraint</enum>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>14</number>
+     </property>
+     <property name="rightMargin">
+      <number>34</number>
+     </property>
+     <property name="bottomMargin">
+      <number>462</number>
+     </property>
+     <item>
+      <widget class="QPlainTextEdit" name="plainTextEdit_8"/>
+     </item>
+     <item>
+      <widget class="QPlainTextEdit" name="plainTextEdit_9"/>
+     </item>
+     <item>
+      <widget class="QPlainTextEdit" name="plainTextEdit_10"/>
+     </item>
+     <item>
+      <widget class="QPlainTextEdit" name="plainTextEdit_11"/>
+     </item>
+    </layout>
+   </item>
    <item row="2" column="3">
-    <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,1,0,1,1,1">
+    <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,1,1,1,1,1">
+     <property name="spacing">
+      <number>23</number>
+     </property>
+     <property name="topMargin">
+      <number>12</number>
+     </property>
+     <property name="rightMargin">
+      <number>25</number>
+     </property>
+     <property name="bottomMargin">
+      <number>372</number>
+     </property>
      <item>
       <widget class="QPlainTextEdit" name="plainTextEdit_3"/>
      </item>
@@ -167,6 +144,67 @@
      </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,1">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetNoConstraint</enum>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>450</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Stop Time:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Start Time:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Step Size:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>Coord System:</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label">
+     <property name="styleSheet">
+      <string notr="true">font: 11pt &quot;Arial&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Propagator:HPOP</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="4">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>

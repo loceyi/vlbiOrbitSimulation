@@ -129,7 +129,7 @@ def test():
     time = np.arange(0, 86400, 100)
     plt.plot(time, Visibility_GS_SAT)
     plt.show()
-    print('1')
+
 
 
 

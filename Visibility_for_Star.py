@@ -4,21 +4,19 @@ from numpy import array,sqrt,arccos,pi
 from ephemeris_position_ECRF import ephemeris_sun_lunar_ECRF
 from math import degrees
 
-def Visibility_for_celestial_body (direction_vector,orbit_element,time):
+def Visibility_for_celestial_body (direction_vector,r,time):
     '''
   
   :param direction_vector: 需要观测天区方向矢量，在ICRF地心坐标系下，严格来说是ECRF
-  :param orbit_element: 卫星初始时间的轨道六根数，在ECRF坐标系下
-  :param start_time: 需要预测的时间起点
-  :param end_time: 预测时间结束点
+  :param r: 卫星位置，在ECRF坐标系下，
+  :param time:当前儒略日
   :return: 可观测时间段
 
     '''
     R_earth=6371 #km
     R_sun=6.955*(10**5) #km
     R_moon=3476.28/2  #km
-    r,v=orbit_element_to_rv(orbit_element)
-
+    r=r/1000  #m化成km
     Distance_sat_EarthCenter=sqrt(r.dot(r))
 
     Position_satellite_ECRF=r
@@ -174,10 +172,10 @@ def Visibility_for_celestial_body (direction_vector,orbit_element,time):
 
 def test():
 
-    a=array([7000,0.2,45,20,30,0])
+    r=array([3e6,4e6,4e6])
     time=2444395.7
     direction_vector=array([1,1,1])
-    Visibility=Visibility_for_celestial_body(direction_vector, a, time)
+    Visibility=Visibility_for_celestial_body(direction_vector,r, time)
     print(Visibility)
 
 
