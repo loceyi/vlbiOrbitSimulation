@@ -3,5 +3,7 @@
 <RCC version="1.0">
 <qresource>
     <file>GUI_Image/background/earth.jpg</file>
+    <file>GUI_Image/background/wall-ocisly.png</file>
+    <file>GUI_Image/background/wall-ocisly (1).png</file>
 </qresource>
 </RCC>
