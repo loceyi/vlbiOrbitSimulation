@@ -39,7 +39,46 @@ background-image: url(:/GUI_Image/background/wall-ocisly.png);
 
 </string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>290</y>
+      <width>171</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(255, 255, 246);
+background-color: rgb(29, 29, 29);
+color: rgb(255, 255, 255);
+selection-background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>建立新的仿真</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>290</y>
+      <width>171</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(255, 255, 246);
+background-color: rgb(29, 29, 29);
+color: rgb(255, 255, 255);
+selection-background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>退出</string>
+    </property>
+   </widget>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionadf">
    <property name="text">

@@ -7,8 +7,6 @@
       <change beforePath="$PROJECT_DIR$/GUI_QT.ui" beforeDir="false" afterPath="$PROJECT_DIR$/GUI_QT.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parameter_Input.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parameter_Input.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parameter_Input.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Parameter_Input.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backgraound.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/backgraound.qrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backgraound_rc.py" beforeDir="false" afterPath="$PROJECT_DIR$/backgraound_rc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo_gui_QT.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo_gui_QT.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GUI_QT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1134">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="84">
+              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="5" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -46,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demo_gui_QT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="695">
-              <caret line="66" column="21" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
+            <state relative-caret-position="282">
+              <caret line="61" column="27" lean-forward="true" selection-start-line="63" selection-start-column="28" selection-end-line="64" />
               <folding>
                 <element signature="e#200#220#0" expanded="true" />
               </folding>
@@ -58,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backgraound.qrc">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="189">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -70,7 +68,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo_gui_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
+            <state relative-caret-position="42">
               <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
@@ -224,8 +222,8 @@
         <option value="$PROJECT_DIR$/Visibility_Graph_plot.py" />
         <option value="$PROJECT_DIR$/Visibility_for_Star.py" />
         <option value="$PROJECT_DIR$/Parameter_Input.py" />
-        <option value="$PROJECT_DIR$/demo_gui_QT.py" />
         <option value="$PROJECT_DIR$/backgraound.qrc" />
+        <option value="$PROJECT_DIR$/demo_gui_QT.py" />
       </list>
     </option>
   </component>
@@ -412,10 +410,10 @@
     <list>
       <item itemvalue="Python.OrbitElementsToRV" />
       <item itemvalue="Python.Ground_Station_Access" />
-      <item itemvalue="Python.Visibility_for_Star" />
-      <item itemvalue="Python.Visibility_Graph_plot" />
-      <item itemvalue="Python.demo_gui_QT" />
       <item itemvalue="Python.Parameter_Input" />
+      <item itemvalue="Python.Visibility_Graph_plot" />
+      <item itemvalue="Python.Visibility_for_Star" />
+      <item itemvalue="Python.demo_gui_QT" />
     </list>
     <recent_temporary>
       <list>
@@ -437,13 +435,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543982195569</updated>
-    </task>
-    <task id="LOCAL-00021" summary="2019/3/2/morning">
-      <created>1551497546597</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1551497546597</updated>
     </task>
     <task id="LOCAL-00022" summary="2019/3/2/morning">
       <created>1551598209601</created>
@@ -781,7 +772,14 @@
       <option name="project" value="LOCAL" />
       <updated>1555901188884</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="2019/5/07/Morning/GUI">
+      <created>1557223156908</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1557223156910</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TodoView">
@@ -840,7 +838,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2019/3/15/Happy lunar birthday!" />
     <MESSAGE value="2019/3/17" />
     <MESSAGE value="2019/3/18" />
     <MESSAGE value="2019/3/19" />
@@ -865,7 +862,8 @@
     <MESSAGE value="2019/4/13/Night/" />
     <MESSAGE value="2019/4/21/Afternoon/VisibilityGStoSat" />
     <MESSAGE value="2019/4/22/Morning/GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019/4/22/Morning/GUI" />
+    <MESSAGE value="2019/5/07/Morning/GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019/5/07/Morning/GUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1239,10 +1237,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GUI_QT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="54" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backgraound.qrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo_gui_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1283,37 +1305,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GUI_QT.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1134">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo_gui_demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demo_gui_QT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="66" column="21" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
+        <state relative-caret-position="282">
+          <caret line="61" column="27" lean-forward="true" selection-start-line="63" selection-start-column="28" selection-end-line="64" />
           <folding>
             <element signature="e#200#220#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backgraound.qrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>

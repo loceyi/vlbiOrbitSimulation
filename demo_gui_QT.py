@@ -60,8 +60,8 @@ if __name__ == '__main__':
     child = QtWidgets.QDialog()
     child_ui = Ui_Dialog()
     child_ui.setupUi(child)
-    # btn = myWin.pushButton
-    # btn.clicked.connect(child.show)
+    btn = myWin.pushButton
+    btn.clicked.connect(child.show)
 
     myWin.show()
     sys.exit(app.exec_())
