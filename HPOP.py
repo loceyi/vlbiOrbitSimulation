@@ -30,7 +30,7 @@ def HPOP():
     t_start_jd=Julian_date(year,month,day,hour,minute,second)
 
 
-    orbit_element = np.array([6878.0, 0.010, 45.0, 45.0, 45.0, 0.0]) #输入角度单位为度°
+    orbit_element = np.array([360000.0, 0.4, 45.0, 45.0, 45.0, 0.0]) #输入角度单位为度°
 
     r0,v0 = orbit_element_to_rv(orbit_element)
 
@@ -138,121 +138,126 @@ def HPOP():
     #                 cstride=2, color='w')
 
 
-    z = a[2,:]
-    y = a[1,:]
-    x = a[0,:]
-    vx=a[3,:]
-    vy=a[4,:]
-    vz=a[5,:]
+    # z = a[2,:]
+    # y = a[1,:]
+    # x = a[0,:]
+    # vx=a[3,:]
+    # vy=a[4,:]
+    # vz=a[5,:]
 
-    if 0 :
+    position=a[0:3,:]
+    time = ol.t
 
-        mpl.rcParams['legend.fontsize'] = 10
-
-        fig = plt.figure()
-
-        ax = fig.gca(projection='3d')
-        ax.plot(x/1000, y/1000, z/1000, label='parametric curve')
-        ax.legend()
-
-        ax.set_xlim(-6000, 6000)  # 设置横轴范围，会覆盖上面的横坐标,plt.xlim
-        ax.set_ylim(-6000, 6000)  #
-        ax.set_zlim(-6000, 6000)
-        ax.set_xlabel('x')  # 设置x轴名称,plt.xlabel
-        ax.set_ylabel('y')
-        ax.set_zlabel('z')
-        ax.patch.set_alpha(1)
-        ax.grid(True)
-        plt.show()
-
-
-
-    if 1:
-        length=len(x)
-
-        orbit_element_data = np.zeros([6,length])
-
-        for i in range(1,length+1):
-
-            temp=rv_to_orbit_element(np.array([x[i-1],y[i-1],z[i-1]]),
-                                     np.array([vx[i-1],vy[i-1],vz[i-1]]),398600.4418e9)
-
-            orbit_element_data[0,i-1]=temp[0]
-            orbit_element_data[1, i - 1] =temp[1]
-            orbit_element_data[2, i - 1] =temp[2]
-            orbit_element_data[3, i - 1] =temp[3]
-            orbit_element_data[4, i - 1] =temp[4]
-            orbit_element_data[5, i - 1] =temp[5]
-
-
-        X=ol.t
-
-        pl.figure(1)
-        pl.subplot(231)
-        pl.plot(X, orbit_element_data[0,:])
-        temp=np.array([orbit_element[0]*1e3]*len(X))
-        pl.plot(X, temp)
-        plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
-        plt.ylabel('a/m')
-
-        pl.subplot(232)
-        pl.plot(X, orbit_element_data[1,:])
-        temp = np.array([orbit_element[1]] * len(X))
-        pl.plot(X, temp)
-        plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
-        plt.ylabel('e')
-
-        pl.subplot(233)
-        pl.plot(X, orbit_element_data[2,:])
-        temp = np.array([radians(orbit_element[2])] * len(X))
-        pl.plot(X, temp)
-        plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
-        plt.ylabel('i/rad')
-
-
-        pl.subplot(234)
-        pl.plot(X, orbit_element_data[3,:])
-        temp = np.array([radians(orbit_element[3])] * len(X))
-        pl.plot(X, temp)
-        plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
-        plt.ylabel('RAAN/rad')
-
-        pl.subplot(235)
-        pl.plot(X, orbit_element_data[4,:])
-        temp = np.array([radians(orbit_element[4])] * len(X))
-        pl.plot(X, temp)
-        plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
-        plt.ylabel('Perigee/rad')
-
-        pl.subplot(236)
-        pl.plot(X, orbit_element_data[5,:]% (2 * pi))
-        temp = np.array([radians(orbit_element[5])] * len(X))
-        pl.plot(X, temp)
-        plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
-        plt.ylabel('True_anomaly/rad')
-
-
-        pl.show()
-
-
-        # plt.plot(X, orbit_element_data[0,:])
-        # plt.plot(X, orbit_element_data[1,:])
-        # plt.plot(X, orbit_element_data[2, :])
-        # plt.plot(X, orbit_element_data[3, :])
-        # plt.plot(X, orbit_element_data[4, :])
-        # plt.plot(X, orbit_element_data[5, :]% (2 * pi))
-        # 在ipython的交互环境中需要这句话才能显示出来
-
-        plt.show()
+    # if 0 :
+    #
+    #     mpl.rcParams['legend.fontsize'] = 10
+    #
+    #     fig = plt.figure()
+    #
+    #     ax = fig.gca(projection='3d')
+    #     ax.plot(x/1000, y/1000, z/1000, label='parametric curve')
+    #     ax.legend()
+    #
+    #     ax.set_xlim(-6000, 6000)  # 设置横轴范围，会覆盖上面的横坐标,plt.xlim
+    #     ax.set_ylim(-6000, 6000)  #
+    #     ax.set_zlim(-6000, 6000)
+    #     ax.set_xlabel('x')  # 设置x轴名称,plt.xlabel
+    #     ax.set_ylabel('y')
+    #     ax.set_zlabel('z')
+    #     ax.patch.set_alpha(1)
+    #     ax.grid(True)
+    #     plt.show()
 
 
 
-    return
+    # if 1:
+    #     length=len(x)
+    #
+    #     orbit_element_data = np.zeros([6,length])
+    #
+    #     for i in range(1,length+1):
+    #
+    #         temp=rv_to_orbit_element(np.array([x[i-1],y[i-1],z[i-1]]),
+    #                                  np.array([vx[i-1],vy[i-1],vz[i-1]]),398600.4418e9)
+    #
+    #         orbit_element_data[0,i-1]=temp[0]
+    #         orbit_element_data[1, i - 1] =temp[1]
+    #         orbit_element_data[2, i - 1] =temp[2]
+    #         orbit_element_data[3, i - 1] =temp[3]
+    #         orbit_element_data[4, i - 1] =temp[4]
+    #         orbit_element_data[5, i - 1] =temp[5]
+    #
+    #
+    #     X=ol.t
+    #
+    #     pl.figure(1)
+    #     pl.subplot(231)
+    #     pl.plot(X, orbit_element_data[0,:])
+    #     temp=np.array([orbit_element[0]*1e3]*len(X))
+    #     pl.plot(X, temp)
+    #     plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
+    #     plt.ylabel('a/m')
+    #
+    #     pl.subplot(232)
+    #     pl.plot(X, orbit_element_data[1,:])
+    #     temp = np.array([orbit_element[1]] * len(X))
+    #     pl.plot(X, temp)
+    #     plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
+    #     plt.ylabel('e')
+    #
+    #     pl.subplot(233)
+    #     pl.plot(X, orbit_element_data[2,:])
+    #     temp = np.array([radians(orbit_element[2])] * len(X))
+    #     pl.plot(X, temp)
+    #     plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
+    #     plt.ylabel('i/rad')
+    #
+    #
+    #     pl.subplot(234)
+    #     pl.plot(X, orbit_element_data[3,:])
+    #     temp = np.array([radians(orbit_element[3])] * len(X))
+    #     pl.plot(X, temp)
+    #     plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
+    #     plt.ylabel('RAAN/rad')
+    #
+    #     pl.subplot(235)
+    #     pl.plot(X, orbit_element_data[4,:])
+    #     temp = np.array([radians(orbit_element[4])] * len(X))
+    #     pl.plot(X, temp)
+    #     plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
+    #     plt.ylabel('Perigee/rad')
+    #
+    #     pl.subplot(236)
+    #     pl.plot(X, orbit_element_data[5,:]% (2 * pi))
+    #     temp = np.array([radians(orbit_element[5])] * len(X))
+    #     pl.plot(X, temp)
+    #     plt.xlabel('t/s')  # 设置x轴名称,plt.xlabel
+    #     plt.ylabel('True_anomaly/rad')
+    #
+    #
+    #     pl.show()
+    #
+    #
+    #     # plt.plot(X, orbit_element_data[0,:])
+    #     # plt.plot(X, orbit_element_data[1,:])
+    #     # plt.plot(X, orbit_element_data[2, :])
+    #     # plt.plot(X, orbit_element_data[3, :])
+    #     # plt.plot(X, orbit_element_data[4, :])
+    #     # plt.plot(X, orbit_element_data[5, :]% (2 * pi))
+    #     # 在ipython的交互环境中需要这句话才能显示出来
+    #
+    #     plt.show()
+
+
+
+    return position,time
 
 
 def test_HPOP():
 
-    HPOP()
+    position, time=HPOP()
+
+    print('1')
 
 
 if __name__ == "__main__":
