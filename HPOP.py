@@ -17,10 +17,11 @@ import pylab as pl
 from RV_To_Orbit_Elements import rv_to_orbit_element
 from Accel_Two_Body import Accel_Two_Body
 from decimal import *
+
 def HPOP():
 
     #Load basic data
-
+    # Start_time, Number_of_Steps, Step, Initial_Orbit_Elements
     year=2015
     month=4
     day=24
@@ -30,7 +31,7 @@ def HPOP():
     t_start_jd=Julian_date(year,month,day,hour,minute,second)
 
 
-    orbit_element = np.array([360000.0, 0.4, 45.0, 45.0, 45.0, 0.0]) #输入角度单位为度°
+    orbit_element = np.array([7000.0, 0.01, 45.0, 45.0, 45.0, 0.0]) #输入角度单位为度°
 
     r0,v0 = orbit_element_to_rv(orbit_element)
 
