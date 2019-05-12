@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_VSS(object):
     def setupUi(self, VSS):
         VSS.setObjectName("VSS")
-        VSS.resize(800, 408)
+        VSS.resize(800, 397)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -43,12 +43,17 @@ class Ui_VSS(object):
         self.pushButton_2.setObjectName("pushButton_2")
         VSS.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(VSS)
+        self.statusbar.setEnabled(True)
+        self.statusbar.setMaximumSize(QtCore.QSize(0, 0))
+        self.statusbar.setAutoFillBackground(False)
+        self.statusbar.setStyleSheet("background-color: rgb(0, 0, 0);")
         self.statusbar.setObjectName("statusbar")
         VSS.setStatusBar(self.statusbar)
         self.actionadf = QtWidgets.QAction(VSS)
         self.actionadf.setObjectName("actionadf")
 
         self.retranslateUi(VSS)
+        self.pushButton_2.clicked.connect(VSS.close)
         QtCore.QMetaObject.connectSlotsByName(VSS)
 
     def retranslateUi(self, VSS):
