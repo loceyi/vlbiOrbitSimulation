@@ -44,16 +44,114 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
         super(ChildWindow,self).__init__()
         self.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
-        self.pushButton.clicked.connect(self.showdialog)  # 按钮事件绑定
+        self.pushButton.clicked.connect(self.run_simulation)  # 按钮事件绑定
+
+
+    def run_simulation(self):
+
+        Initial_Value=self.Initial_Value_Get()
+
+
+        self.showdialog()
+
 
     def showdialog(self):
 
         dialog=QtWidgets.QDialog()
-        # dialog.self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
+        screen = QtWidgets.QDesktopWidget().screenGeometry()
+        dialog.resize(screen.width(),screen.height())
+        dialog.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
         dialog.setWindowTitle("Results")
-        # dialog.setWindowModality(QtCore.Qt.ApplicationModal)
-        dialog.show()
-#
+        dialog.setWindowModality(QtCore.Qt.ApplicationModal)
+        dialog.exec_()
+
+    def Initial_Value_Get(self):
+
+
+        import re
+
+
+        Start_Time_str = self.Start_Time.text()
+        Stop_Time_str = self.Stop_Time.text()
+        Step_Size_str = self.Step_Size.text()
+        Coord_System_str = self.Coord_System.currentText()
+        Semimajor_Axis_str = self.Semimajor_Axis.text()
+        Eccentricity_str = self.Eccentricity.text()
+        Inclination_str = self.Inclination.text()
+        Perigee_str = self.Perigee.text()
+        RAAN_str=self.RAAN.text()
+        TA_str = self.TA.text()
+
+        #Start time
+        Start_Time_Seconds=float(Start_Time_str[0:2])
+        Start_Time_Mins=float(Start_Time_str[3:5])
+        Start_Time_Hrs = float(Start_Time_str[6:8])
+        Start_Time_Day = float(Start_Time_str[9:11])
+        Start_Time_Month = float(Start_Time_str[12:14])
+        Start_Time_Year = float(Start_Time_str[15:19])
+
+
+        #Stop time
+        Stop_Time_Seconds = float(Stop_Time_str[0:2])
+        Stop_Time_Mins = float(Stop_Time_str[3:5])
+        Stop_Time_Hrs = float(Stop_Time_str[6:8])
+        Stop_Time_Day = float(Stop_Time_str[9:11])
+        Stop_Time_Month = float(Stop_Time_str[12:14])
+        Stop_Time_Year = float(Stop_Time_str[15:19])
+
+
+
+        #Step_Size
+        Step_Size=float(re.search("(\d+(\.\d+)?)",Step_Size_str).group())
+
+        #Semimajor_Axis
+
+        Semimajor_Axis=float(re.search("(\d+(\.\d+)?)",Semimajor_Axis_str).group())
+
+        # Eccentricity
+
+        Eccentricity = float(re.search("(\d+(\.\d+)?)",Eccentricity_str).group())
+
+
+        #Inclination
+
+        Inclination = float(re.search("(\d+(\.\d+)?)",Inclination_str).group())
+
+        # Perigee
+
+        Perigee = float(re.search("(\d+(\.\d+)?)",Perigee_str).group())
+
+        # RAAN
+
+        RAAN = float(re.search("(\d+(\.\d+)?)",RAAN_str).group())
+
+
+        #TA
+
+        TA = float(re.search("(\d+(\.\d+)?)",TA_str).group())
+
+
+
+
+
+
+
+
+        Start_Time=[Start_Time_Seconds,Start_Time_Mins,Start_Time_Hrs,
+                    Start_Time_Day,Start_Time_Month,Start_Time_Year]
+
+        # return Start_Time,Stop_Time,Step_Size, Coord_System,Semimajor_Axis,\
+        #        Eccentricity,Inclination,Perigee,RAAN,TA
+
+
+
+
+
+
+
+
+
+    #
 #
 #     def btnClick(self):
 # #子窗体自定义事件

@@ -13,7 +13,7 @@
     <x>0</x>
     <y>0</y>
     <width>1100</width>
-    <height>750</height>
+    <height>755</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -73,7 +73,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>70</y>
+     <y>150</y>
      <width>101</width>
      <height>41</height>
     </rect>
@@ -89,7 +89,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>160</y>
+     <y>80</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -194,7 +194,7 @@
     <string notr="true">font: 10pt &quot;Adobe 黑体 Std R&quot;;</string>
    </property>
    <property name="text">
-    <string>Argument of Perigee:</string>
+    <string>Perigee:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
@@ -229,7 +229,7 @@
     <string>True Anomaly:</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="Coord_System">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -275,7 +275,7 @@
     <string>Cancel</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="Start_Time">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -284,11 +284,17 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string extracomment="(SEC/MIN/HR/DAY/MONTH/YEAR)">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;SEC/MIN/HR/DAY/MONTH/YEAR&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="toolTipDuration">
+    <number>-3</number>
+   </property>
    <property name="text">
-    <string>SEC/MIN/HR/DAY/MONTH/YEAR</string>
+    <string>00/00/00/00/01/2015</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="Stop_Time">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -297,11 +303,17 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;SEC/MIN/HR/DAY/MONTH/YEAR&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="toolTipDuration">
+    <number>-1</number>
+   </property>
    <property name="text">
-    <string>SEC/MIN/HR/DAY/MONTH/YEAR</string>
+    <string>00/00/00/01/01/2015</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="Step_Size">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -309,12 +321,15 @@
      <width>281</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;1s &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="text">
     <string>1s</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="Semimajor_Axis">
    <property name="geometry">
     <rect>
      <x>700</x>
@@ -323,11 +338,14 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;i.e.7000 KM&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
    <property name="text">
-    <string>7000km</string>
+    <string>7000 km</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
+  <widget class="QLineEdit" name="Inclination">
    <property name="geometry">
     <rect>
      <x>700</x>
@@ -336,11 +354,14 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;45 deg&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
    <property name="text">
     <string>45 deg</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_6">
+  <widget class="QLineEdit" name="Eccentricity">
    <property name="geometry">
     <rect>
      <x>700</x>
@@ -349,11 +370,14 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;0.1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
    <property name="text">
     <string>0.1</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_7">
+  <widget class="QLineEdit" name="Perigee">
    <property name="geometry">
     <rect>
      <x>700</x>
@@ -362,11 +386,14 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;12 deg&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
    <property name="text">
     <string>12 deg</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_8">
+  <widget class="QLineEdit" name="RAAN">
    <property name="geometry">
     <rect>
      <x>700</x>
@@ -375,11 +402,14 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;12 deg&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
    <property name="text">
     <string>12 deg</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_9">
+  <widget class="QLineEdit" name="TA">
    <property name="geometry">
     <rect>
      <x>700</x>
@@ -387,6 +417,9 @@
      <width>241</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;12 deg&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="text">
     <string>12 deg</string>
