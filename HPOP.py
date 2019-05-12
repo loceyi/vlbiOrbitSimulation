@@ -18,7 +18,7 @@ from RV_To_Orbit_Elements import rv_to_orbit_element
 from Accel_Two_Body import Accel_Two_Body
 from decimal import *
 
-def HPOP():
+def HPOP(Start_Time,Number_of_Steps,Step_Size,Initial_Orbit_Elements):
 
     #Load basic data
     # Start_time, Number_of_Steps, Step, Initial_Orbit_Elements

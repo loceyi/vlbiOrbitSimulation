@@ -285,7 +285,7 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string extracomment="(SEC/MIN/HR/DAY/MONTH/YEAR)">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;SEC/MIN/HR/DAY/MONTH/YEAR&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string extracomment="(SEC/MIN/HR/DAY/MONTH/YEAR)">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;SEC/MIN/HR/DAY/MONTH/YEAR(All must be Int)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="toolTipDuration">
     <number>-3</number>
@@ -304,7 +304,7 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;SEC/MIN/HR/DAY/MONTH/YEAR&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;SEC/MIN/HR/DAY/MONTH/YEAR(All must be Int)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="toolTipDuration">
     <number>-1</number>

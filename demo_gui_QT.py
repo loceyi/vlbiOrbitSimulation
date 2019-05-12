@@ -11,6 +11,7 @@ from Parameter_Input import *
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 import time
+from datetime import datetime
 # 继承至界面文件的主窗口类
 
 class MyMainWindow(QtWidgets.QMainWindow, Ui_VSS):
@@ -48,8 +49,12 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
 
 
     def run_simulation(self):
+        Start_Time,Number_Of_Steps, Step_Size, Semimajor_Axis,\
+        Eccentricity, Inclination, Perigee, RAAN, TA=self.Initial_Value_Get()
 
-        Initial_Value=self.Initial_Value_Get()
+
+
+
 
 
         self.showdialog()
@@ -70,6 +75,8 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
 
         import re
 
+        from math import floor
+
 
         Start_Time_str = self.Start_Time.text()
         Stop_Time_str = self.Stop_Time.text()
@@ -83,26 +90,43 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
         TA_str = self.TA.text()
 
         #Start time
-        Start_Time_Seconds=float(Start_Time_str[0:2])
-        Start_Time_Mins=float(Start_Time_str[3:5])
-        Start_Time_Hrs = float(Start_Time_str[6:8])
-        Start_Time_Day = float(Start_Time_str[9:11])
-        Start_Time_Month = float(Start_Time_str[12:14])
-        Start_Time_Year = float(Start_Time_str[15:19])
+        Start_Time_Seconds=int(Start_Time_str[0:2])
+        Start_Time_Mins=int(Start_Time_str[3:5])
+        Start_Time_Hrs = int(Start_Time_str[6:8])
+        Start_Time_Day = int(Start_Time_str[9:11])
+        Start_Time_Month = int(Start_Time_str[12:14])
+        Start_Time_Year = int(Start_Time_str[15:19])
 
 
         #Stop time
-        Stop_Time_Seconds = float(Stop_Time_str[0:2])
-        Stop_Time_Mins = float(Stop_Time_str[3:5])
-        Stop_Time_Hrs = float(Stop_Time_str[6:8])
-        Stop_Time_Day = float(Stop_Time_str[9:11])
-        Stop_Time_Month = float(Stop_Time_str[12:14])
-        Stop_Time_Year = float(Stop_Time_str[15:19])
+        Stop_Time_Seconds = int(Stop_Time_str[0:2])
+        Stop_Time_Mins = int(Stop_Time_str[3:5])
+        Stop_Time_Hrs = int(Stop_Time_str[6:8])
+        Stop_Time_Day = int(Stop_Time_str[9:11])
+        Stop_Time_Month = int(Stop_Time_str[12:14])
+        Stop_Time_Year = int(Stop_Time_str[15:19])
 
 
 
         #Step_Size
         Step_Size=float(re.search("(\d+(\.\d+)?)",Step_Size_str).group())
+
+
+        # Number of Steps
+        d1 = datetime(Start_Time_Year, Start_Time_Month, Start_Time_Day,
+                               Start_Time_Hrs, Start_Time_Mins,Start_Time_Seconds)
+
+
+        d2 = datetime(Stop_Time_Year, Stop_Time_Month, Stop_Time_Day ,
+                               Stop_Time_Hrs, Stop_Time_Mins , Stop_Time_Seconds)
+        interval = d2 - d1
+        Total_Time = interval.days * 24 * 3600 + interval.seconds
+
+        Number_Of_Steps=floor(Total_Time/Step_Size)
+
+
+
+
 
         #Semimajor_Axis
 
@@ -140,8 +164,10 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
         Start_Time=[Start_Time_Seconds,Start_Time_Mins,Start_Time_Hrs,
                     Start_Time_Day,Start_Time_Month,Start_Time_Year]
 
-        # return Start_Time,Stop_Time,Step_Size, Coord_System,Semimajor_Axis,\
-        #        Eccentricity,Inclination,Perigee,RAAN,TA
+
+
+        return Start_Time,Number_Of_Steps,Step_Size,Semimajor_Axis,\
+               Eccentricity,Inclination,Perigee,RAAN,TA
 
 
 
