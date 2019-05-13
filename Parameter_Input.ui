@@ -310,7 +310,7 @@
     <number>-1</number>
    </property>
    <property name="text">
-    <string>00/00/00/02/01/2015</string>
+    <string>00/10/00/01/01/2015</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="Step_Size">
@@ -326,7 +326,7 @@
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;1s &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="text">
-    <string>1s</string>
+    <string>10s</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="Semimajor_Axis">

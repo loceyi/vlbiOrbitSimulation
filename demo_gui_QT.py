@@ -17,6 +17,7 @@ from HPOP import HPOP
 from CZML_Generate import CZML_Generate
 from PyQt5.QtWebEngineWidgets import *
 import Web_Server
+import threading
 # 继承至界面文件的主窗口类
 
 class MyMainWindow(QtWidgets.QMainWindow, Ui_VSS):
@@ -25,6 +26,8 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_VSS):
         self.setupUi(self)
         self.center()
         self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
+
+
 
         # self.statusBar = self.statusbar
         # self.statusBar.showMessage('菜单选项被点击了', 5000)
@@ -102,7 +105,18 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
         dialog.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
         dialog.setWindowTitle("Results")
         dialog.setWindowModality(QtCore.Qt.ApplicationModal)
+
+        btn1 = QtWidgets.QPushButton('Orbit Elements Report', dialog)
+        btn1.move(50, 50)
+        btn2 = QtWidgets.QPushButton('3D Graph', dialog)
+        btn2.move(50, 100)
+        btn3 = QtWidgets.QPushButton('Observe time Report', dialog)
+        btn3.move(50, 150)
+        btn4 = QtWidgets.QPushButton('Access Report', dialog)
+        btn4.move(50, 200)
+
         dialog.exec_()
+
 
     def Initial_Value_Get(self):
 
@@ -221,10 +235,18 @@ class MainWindow2(QtWidgets.QMainWindow):
         # self.setWindowTitle('加载本地网页的例子')
         self.setGeometry(5, 30, 1355, 730)
         self.browser = QWebEngineView()
+        self.thread = threading.Thread(target=run,args=())
+        self.thread.setDaemon(True)
+        self.thread.start()
         # #加载外部的web界面
         url='http://localhost:9090/'
         self.browser.load(QtCore.QUrl(url))
         self.setCentralWidget(self.browser)
+
+def run():
+        # 线程相关代码
+        Web_Server.GUI_Show()
+
 
 class Thread(QtCore.QThread):
 
@@ -232,13 +254,12 @@ class Thread(QtCore.QThread):
     def __init__(self):
         super().__init__()
 
-    def run(self):
-        # 线程相关代码
-        pass
+
+
+
 
     # 创建一个新的线程
-    thread = Thread()
-    thread.start()
+
 
 
 
@@ -266,11 +287,16 @@ if __name__ == '__main__':
     splash.close()
     myWin = MyMainWindow()
     child_ui = ChildWindow()
-    MainWin2=MainWindow2()
+    # MainWin2=MainWindow2()
     btn = myWin.pushButton
 
-    btn.clicked.connect(MainWin2.show)
+
+    btn.clicked.connect(child_ui.show)
+
+    o=child_ui.btn2
+    # o.clicked.connect()
 
     myWin.show()
-    Web_Server.GUI_Show()
+
+
     sys.exit(app.exec_())

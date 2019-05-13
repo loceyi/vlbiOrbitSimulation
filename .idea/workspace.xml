@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2922b152-4010-4ace-9865-d6192257d594" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web_Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Web_Server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cesium/Orbit_Simulation_GUI/SampleData/satellite.czml" beforeDir="false" afterPath="$PROJECT_DIR$/Cesium/Orbit_Simulation_GUI/SampleData/satellite.czml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parameter_Input.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parameter_Input.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parameter_Input.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Parameter_Input.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo_gui_QT.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo_gui_QT.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demo_gui_QT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="236" column="12" lean-forward="true" selection-start-line="236" selection-start-column="12" selection-end-line="236" selection-end-column="12" />
+            <state relative-caret-position="121">
+              <caret line="103" column="42" lean-forward="true" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="42" />
               <folding>
                 <element signature="e#200#220#0" expanded="true" />
               </folding>
@@ -29,7 +31,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GUI_QT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
+            <state relative-caret-position="-798">
               <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
@@ -38,7 +40,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Parameter_Input.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2877">
+            <state relative-caret-position="1465">
               <caret line="137" column="3" selection-start-line="137" selection-start-column="3" selection-end-line="137" selection-end-column="3" />
             </state>
           </provider>
@@ -57,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/Web_Server.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="290">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -408,13 +410,6 @@
       <option name="presentableId" value="Default" />
       <updated>1543982195569</updated>
     </task>
-    <task id="LOCAL-00030" summary="2019/3/11">
-      <created>1552311706052</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1552311706052</updated>
-    </task>
     <task id="LOCAL-00031" summary="2019/3/13">
       <created>1552468324225</created>
       <option name="number" value="00031" />
@@ -751,7 +746,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557716179072</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="2019/5/13/Afternoon 17:35/Multi-threads">
+      <created>1557740138096</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1557740138096</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TodoView">
@@ -810,7 +812,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2019/3/21/Afternoon/Work on Accel" />
     <MESSAGE value="2019/3/21/Eve/Work on Accel" />
     <MESSAGE value="2019/3/21/afer/Work on graph" />
     <MESSAGE value="2019/3/23/Morning/Work on ACCEL Elastic" />
@@ -835,7 +836,8 @@
     <MESSAGE value="2019/5/12/Night 20:03/GUI" />
     <MESSAGE value="2019/5/12/Night 22:03/GUI" />
     <MESSAGE value="2019/5/13/Morning 10:56/GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019/5/13/Morning 10:56/GUI" />
+    <MESSAGE value="2019/5/13/Afternoon 17:35/Multi-threads" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019/5/13/Afternoon 17:35/Multi-threads" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -875,10 +877,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gifly-master/gif_random_test.py" />
-    <entry file="file://$PROJECT_DIR$/galaxy_image.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Orthographic_Example.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1064,13 +1062,6 @@
     <entry file="file://D:/ANAdonda/Lib/site-packages/matplotlib/pyplot.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-2009539318/PyQt5/QtWidgets/QWidget.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1439">
-          <caret line="549" column="8" selection-start-line="549" selection-start-column="8" selection-end-line="549" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/get_lambda.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1895">
@@ -1211,13 +1202,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Parameter_Input.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2877">
-          <caret line="137" column="3" selection-start-line="137" selection-start-column="3" selection-end-line="137" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CZML_Generate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8631">
@@ -1262,9 +1246,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-2009539318/PyQt5/QtWidgets/QWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="929" column="8" selection-start-line="929" selection-start-column="8" selection-end-line="929" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GUI_QT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
+        <state relative-caret-position="-798">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
@@ -1272,14 +1263,31 @@
     <entry file="file://$PROJECT_DIR$/Web_Server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/threading.pyi">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://D:/ANAdonda/Lib/threading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="757" column="8" selection-start-line="757" selection-start-column="8" selection-end-line="757" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Parameter_Input.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1465">
+          <caret line="137" column="3" selection-start-line="137" selection-start-column="3" selection-end-line="137" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo_gui_QT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="236" column="12" lean-forward="true" selection-start-line="236" selection-start-column="12" selection-end-line="236" selection-end-column="12" />
+        <state relative-caret-position="121">
+          <caret line="103" column="42" lean-forward="true" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="42" />
           <folding>
             <element signature="e#200#220#0" expanded="true" />
           </folding>
