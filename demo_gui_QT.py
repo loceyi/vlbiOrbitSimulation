@@ -12,6 +12,9 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 import time
 from datetime import datetime
+import numpy as np
+from HPOP import HPOP
+from CZML_Generate import CZML_Generate
 # 继承至界面文件的主窗口类
 
 class MyMainWindow(QtWidgets.QMainWindow, Ui_VSS):
@@ -49,8 +52,37 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
 
 
     def run_simulation(self):
-        Start_Time,Number_Of_Steps, Step_Size, Semimajor_Axis,\
-        Eccentricity, Inclination, Perigee, RAAN, TA=self.Initial_Value_Get()
+        Start_Time, Stop_Time, Number_Of_Steps, Step_Size, Initial_Orbit_Elements=self.Initial_Value_Get()
+
+        position, velocity, time = HPOP(Start_Time,Number_Of_Steps,Step_Size,Initial_Orbit_Elements)
+
+
+        Start_time = "%s-%02d-%02dT%02d:%02d:%02dZ"%(Start_Time[5],Start_Time[4],Start_Time[3],Start_Time[2],
+                                           Start_Time[1],Start_Time[0])
+        end_time = "%s-%02d-%02dT%02d:%02d:%02dZ"%(Stop_Time[5],Stop_Time[4],Stop_Time[3],Stop_Time[2],
+                                           Stop_Time[1],Stop_Time[0])
+        # Start_time = "2012-03-15T10:00:00Z"
+        # end_time = "2012-03-16T10:00:00Z"
+
+        x = position[0, :]
+        y = position[1, :]
+        z = position[2, :]
+
+        time = time.tolist()
+        cartesian_file = []
+        for i in range(0, len(time)):
+            cartesian_file.append(time[i])
+            cartesian_file.append(x[i])
+            cartesian_file.append(y[i])
+            cartesian_file.append(z[i])
+
+        CZML_Generate(Start_time, end_time, cartesian_file)
+
+
+
+
+
+
 
 
 
@@ -112,7 +144,10 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
         Step_Size=float(re.search("(\d+(\.\d+)?)",Step_Size_str).group())
 
 
+
         # Number of Steps
+
+
         d1 = datetime(Start_Time_Year, Start_Time_Month, Start_Time_Day,
                                Start_Time_Hrs, Start_Time_Mins,Start_Time_Seconds)
 
@@ -154,6 +189,11 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
 
         TA = float(re.search("(\d+(\.\d+)?)",TA_str).group())
 
+        #Initial Orbit Elements
+
+        Initial_Orbit_Elements = np.array([Semimajor_Axis, Eccentricity , Inclination,
+                                           Perigee, RAAN, TA])  # 输入角度单位为度°
+
 
 
 
@@ -164,10 +204,13 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
         Start_Time=[Start_Time_Seconds,Start_Time_Mins,Start_Time_Hrs,
                     Start_Time_Day,Start_Time_Month,Start_Time_Year]
 
+        Stop_Time=[Stop_Time_Seconds,Stop_Time_Mins,Stop_Time_Hrs,
+                    Stop_Time_Day,Stop_Time_Month,Stop_Time_Year]
 
 
-        return Start_Time,Number_Of_Steps,Step_Size,Semimajor_Axis,\
-               Eccentricity,Inclination,Perigee,RAAN,TA
+
+
+        return Start_Time,Stop_Time,Number_Of_Steps,Step_Size,Initial_Orbit_Elements
 
 
 

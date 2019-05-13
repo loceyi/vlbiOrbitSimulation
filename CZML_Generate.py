@@ -410,7 +410,7 @@ def CZML_Generate(Start_time,end_time,cartesian_file):
 
 
 def test_CZML():
-    from HPOP import HPOP
+    from Hpop_test import HPOP
     Start_time="2012-03-15T10:00:00Z"
     end_time="2012-03-16T10:00:00Z"
     position, time = HPOP()

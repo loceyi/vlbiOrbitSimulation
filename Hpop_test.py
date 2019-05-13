@@ -18,24 +18,25 @@ from RV_To_Orbit_Elements import rv_to_orbit_element
 from Accel_Two_Body import Accel_Two_Body
 from decimal import *
 
-def HPOP(Start_Time,Number_of_Steps,Step_Size,Initial_Orbit_Elements):
+def HPOP():
 
     #Load basic data
     # Start_time, Number_of_Steps, Step, Initial_Orbit_Elements
-    year=Start_Time[5]
-    month=Start_Time[4]
-    day=Start_Time[3]
-    hour=Start_Time[2]
-    minute=Start_Time[1]
-    second=Start_Time[0]
+    year=2015
+    month=4
+    day=24
+    hour=21
+    minute=55
+    second=28.000
     t_start_jd=Julian_date(year,month,day,hour,minute,second)
 
 
-    orbit_element = Initial_Orbit_Elements #输入角度单位为度°
+    orbit_element = np.array([7000.0, 0.01, 45.0, 45.0, 45.0, 0.0]) #输入角度单位为度°
 
     r0,v0 = orbit_element_to_rv(orbit_element)
 
     Y0=np.array([r0[0]*1e3,r0[1]*1e3,r0[2]*1e3,v0[0]*1e3,v0[1]*1e3,v0[2]*1e3]) #Y0单位为m,m/s
+    orbisgsdfgdf=rv_to_orbit_element(Y0[0:3], Y0[3:6], 398600.4418e9)
     Mjd_UTC=t_start_jd-2400000.5
 
     Global_parameters.AuxParam['Mjd_UTC'] = Mjd_UTC
@@ -59,9 +60,9 @@ def HPOP(Start_Time,Number_of_Steps,Step_Size,Initial_Orbit_Elements):
 
     Mjd0 = Mjd_UTC
 
-    Step = Step_Size#[s]
+    Step = 10 #[s]
 
-    N_Step = Number_of_Steps #26.47hours
+    N_Step = 800 #26.47hours
 
     #shorten PC, eopdata, swdata, Cnm, and Snm
     num=int(N_Step*Step/86400)+2
@@ -146,7 +147,6 @@ def HPOP(Start_Time,Number_of_Steps,Step_Size,Initial_Orbit_Elements):
     # vz=a[5,:]
 
     position=a[0:3,:]
-    velocity=a[3:6,:]
     time = ol.t
 
     # if 0 :
@@ -251,11 +251,12 @@ def HPOP(Start_Time,Number_of_Steps,Step_Size,Initial_Orbit_Elements):
 
 
 
-    return position,velocity,time
+    return position,time
 
 
 def test_HPOP():
-    position, velocity, time=HPOP()
+
+    position, time=HPOP()
 
     print('1')
 
@@ -263,4 +264,3 @@ def test_HPOP():
 if __name__ == "__main__":
 
     test_HPOP()
-    print('1')
