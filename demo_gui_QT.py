@@ -15,6 +15,8 @@ from datetime import datetime
 import numpy as np
 from HPOP import HPOP
 from CZML_Generate import CZML_Generate
+from PyQt5.QtWebEngineWidgets import *
+import Web_Server
 # 继承至界面文件的主窗口类
 
 class MyMainWindow(QtWidgets.QMainWindow, Ui_VSS):
@@ -212,10 +214,31 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
 
         return Start_Time,Stop_Time,Number_Of_Steps,Step_Size,Initial_Orbit_Elements
 
+class MainWindow2(QtWidgets.QMainWindow):
+
+    def __init__(self):
+        super(MainWindow2, self).__init__()
+        # self.setWindowTitle('加载本地网页的例子')
+        self.setGeometry(5, 30, 1355, 730)
+        self.browser = QWebEngineView()
+        # #加载外部的web界面
+        url='http://localhost:9090/'
+        self.browser.load(QtCore.QUrl(url))
+        self.setCentralWidget(self.browser)
+
+class Thread(QtCore.QThread):
 
 
+    def __init__(self):
+        super().__init__()
 
+    def run(self):
+        # 线程相关代码
+        pass
 
+    # 创建一个新的线程
+    thread = Thread()
+    thread.start()
 
 
 
@@ -243,8 +266,11 @@ if __name__ == '__main__':
     splash.close()
     myWin = MyMainWindow()
     child_ui = ChildWindow()
+    MainWin2=MainWindow2()
     btn = myWin.pushButton
-    btn.clicked.connect(child_ui.show)
+
+    btn.clicked.connect(MainWin2.show)
 
     myWin.show()
+    Web_Server.GUI_Show()
     sys.exit(app.exec_())

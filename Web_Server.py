@@ -26,8 +26,8 @@ import webbrowser
 
 def GUI_Show():
 
-    webbrowser.open("http://localhost:9090/")
-    os.chdir( "D:\\VLBI\\Orbit Simulation\\VLBIOrbit-Simulation\\Cesium")
+    # webbrowser.open("http://localhost:9090/")
+    os.chdir( "Cesium")
     os.system('python -m http.server 9090')
 
 def test_GUI_Show():
