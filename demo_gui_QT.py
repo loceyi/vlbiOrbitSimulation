@@ -8,6 +8,7 @@
 
 from GUI_QT import *
 from Parameter_Input import *
+import GuiShowChoice
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 import time
@@ -85,37 +86,8 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
 
 
 
+        # self.showdialog()
 
-
-
-
-
-
-
-
-
-        self.showdialog()
-
-
-    def showdialog(self):
-
-        dialog=QtWidgets.QDialog()
-        screen = QtWidgets.QDesktopWidget().screenGeometry()
-        dialog.resize(screen.width(),screen.height())
-        dialog.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
-        dialog.setWindowTitle("Results")
-        dialog.setWindowModality(QtCore.Qt.ApplicationModal)
-
-        btn1 = QtWidgets.QPushButton('Orbit Elements Report', dialog)
-        btn1.move(50, 50)
-        btn2 = QtWidgets.QPushButton('3D Graph', dialog)
-        btn2.move(50, 100)
-        btn3 = QtWidgets.QPushButton('Observe time Report', dialog)
-        btn3.move(50, 150)
-        btn4 = QtWidgets.QPushButton('Access Report', dialog)
-        btn4.move(50, 200)
-
-        dialog.exec_()
 
 
     def Initial_Value_Get(self):
@@ -228,6 +200,32 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
 
         return Start_Time,Stop_Time,Number_Of_Steps,Step_Size,Initial_Orbit_Elements
 
+
+
+class showdialog(QtWidgets.QDialog):
+
+    def __init__(self):
+        super(showdialog,self).__init__()
+
+        # dialog=QtWidgets.QDialog()
+        self.btn1 = QtWidgets.QPushButton('Orbit Elements Report',self)
+        self.btn1.move(50, 50)
+        self.btn2 = QtWidgets.QPushButton('3D Graph',self)
+        self.btn2.move(50, 100)
+        self.btn3 = QtWidgets.QPushButton('Observe time Report',self)
+        self.btn3.move(50, 150)
+        self.btn4 = QtWidgets.QPushButton('Access Report',self)
+        self.btn4.move(50, 200)
+        screen = QtWidgets.QDesktopWidget().screenGeometry()
+        self.resize(screen.width(),screen.height())
+        self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
+        self.setWindowTitle("Results")
+        self.setWindowModality(QtCore.Qt.ApplicationModal)
+
+
+
+
+
 class MainWindow2(QtWidgets.QMainWindow):
 
     def __init__(self):
@@ -243,16 +241,40 @@ class MainWindow2(QtWidgets.QMainWindow):
         self.browser.load(QtCore.QUrl(url))
         self.setCentralWidget(self.browser)
 
+
+
+
+class GuishowChoice(QtWidgets.QMainWindow,GuiShowChoice.Ui_Dialog):
+    def __init__(self, parent=None):
+        super(GuishowChoice, self).__init__(parent)
+        self.setupUi(self)
+        self.center()
+        self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
+
+
+
+        # self.statusBar = self.statusbar
+        # self.statusBar.showMessage('菜单选项被点击了', 5000)
+        # self.setWindowTitle('QStatusBar例子')
+
+    def center(self):
+
+        screen=QtWidgets.QDesktopWidget().screenGeometry()
+        size=self.geometry()
+        self.move((screen.width()-size.width())/2,(screen.height()-size.height())/2)
+
+
+
 def run():
         # 线程相关代码
         Web_Server.GUI_Show()
 
-
-class Thread(QtCore.QThread):
-
-
-    def __init__(self):
-        super().__init__()
+#
+# class Thread(QtCore.QThread):
+#
+#
+#     def __init__(self):
+#         super().__init__()
 
 
 
@@ -287,13 +309,22 @@ if __name__ == '__main__':
     splash.close()
     myWin = MyMainWindow()
     child_ui = ChildWindow()
+    # GuishowChoice_ui=GuishowChoice()
+    showdialog_ui=showdialog()
+
     # MainWin2=MainWindow2()
     btn = myWin.pushButton
-
-
     btn.clicked.connect(child_ui.show)
 
-    o=child_ui.btn2
+
+    # btn2 = GuishowChoice_ui.pushButton
+    # btn2.clicked.connect(showdialog_ui.show)
+
+    btn3=child_ui.pushButton
+    btn3.clicked.connect(showdialog_ui.show)
+
+
+    # o=child_ui.btn2
     # o.clicked.connect()
 
     myWin.show()
