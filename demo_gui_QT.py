@@ -6,8 +6,8 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from GUI_QT import *
-from Parameter_Input import *
+import GUI_QT
+import Parameter_Input
 import GuiShowChoice
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -18,10 +18,11 @@ from HPOP import HPOP
 from CZML_Generate import CZML_Generate
 from PyQt5.QtWebEngineWidgets import *
 import Web_Server
+import webbrowser
 import threading
 # 继承至界面文件的主窗口类
 
-class MyMainWindow(QtWidgets.QMainWindow, Ui_VSS):
+class MyMainWindow(QtWidgets.QMainWindow, GUI_QT.Ui_VSS):
     def __init__(self, parent=None):
         super(MyMainWindow, self).__init__(parent)
         self.setupUi(self)
@@ -48,7 +49,7 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_VSS):
 #         if e.key() == Qt.Key_Escape:
 #             self.close()
 #
-class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
+class ChildWindow(QtWidgets.QDialog, Parameter_Input.Ui_Dialog):
 
     def __init__(self):
         super(ChildWindow,self).__init__()
@@ -202,25 +203,27 @@ class ChildWindow(QtWidgets.QDialog, Ui_Dialog):
 
 
 
-class showdialog(QtWidgets.QDialog):
-
-    def __init__(self):
-        super(showdialog,self).__init__()
-
-        # dialog=QtWidgets.QDialog()
-        self.btn1 = QtWidgets.QPushButton('Orbit Elements Report',self)
-        self.btn1.move(50, 50)
-        self.btn2 = QtWidgets.QPushButton('3D Graph',self)
-        self.btn2.move(50, 100)
-        self.btn3 = QtWidgets.QPushButton('Observe time Report',self)
-        self.btn3.move(50, 150)
-        self.btn4 = QtWidgets.QPushButton('Access Report',self)
-        self.btn4.move(50, 200)
-        screen = QtWidgets.QDesktopWidget().screenGeometry()
-        self.resize(screen.width(),screen.height())
-        self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
-        self.setWindowTitle("Results")
-        self.setWindowModality(QtCore.Qt.ApplicationModal)
+# class showdialog(QtWidgets.QDialog):
+#
+#     def __init__(self):
+#         super(showdialog,self).__init__()
+#
+#         # dialog=QtWidgets.QDialog()
+#         self.btn1 = QtWidgets.QPushButton('Orbit Elements Report',self)
+#         self.btn1.move(50, 50)
+#         self.btn2 = QtWidgets.QPushButton('3D Graph',self)
+#         self.btn2.move(50, 100)
+#         self.btn2.setObjectName("btn2")
+#         self.btn3 = QtWidgets.QPushButton('Observe time Report',self)
+#         self.btn3.setObjectName("btn3")
+#         self.btn3.move(50, 150)
+#         self.btn4 = QtWidgets.QPushButton('Access Report',self)
+#         self.btn4.move(50, 200)
+#         screen = QtWidgets.QDesktopWidget().screenGeometry()
+#         self.resize(screen.width(),screen.height())
+#         self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
+#         self.setWindowTitle("Results")
+#         self.setWindowModality(QtCore.Qt.ApplicationModal)
 
 
 
@@ -231,20 +234,25 @@ class MainWindow2(QtWidgets.QMainWindow):
     def __init__(self):
         super(MainWindow2, self).__init__()
         # self.setWindowTitle('加载本地网页的例子')
+        # self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
         self.setGeometry(5, 30, 1355, 730)
         self.browser = QWebEngineView()
-        self.thread = threading.Thread(target=run,args=())
-        self.thread.setDaemon(True)
-        self.thread.start()
+        # self.thread = threading.Thread(target=run, args=())
+        # self.thread.setDaemon(True)
+        # self.thread.start()
         # #加载外部的web界面
-        url='http://localhost:9090/'
+        url="D:\\VLBI\\Orbit Simulation\\VLBIOrbit-Simulation\\Cesium\\index.html"
         self.browser.load(QtCore.QUrl(url))
         self.setCentralWidget(self.browser)
 
 
 
 
-class GuishowChoice(QtWidgets.QMainWindow,GuiShowChoice.Ui_Dialog):
+
+
+
+
+class GuishowChoice(QtWidgets.QDialog,GuiShowChoice.Ui_Dialog):
     def __init__(self, parent=None):
         super(GuishowChoice, self).__init__(parent)
         self.setupUi(self)
@@ -264,10 +272,41 @@ class GuishowChoice(QtWidgets.QMainWindow,GuiShowChoice.Ui_Dialog):
         self.move((screen.width()-size.width())/2,(screen.height()-size.height())/2)
 
 
+class Thread(QtCore.QThread):
 
-def run():
-        # 线程相关代码
+
+    def __init__(self):
+        super().__init__()
+
+    def run(self):
+
         Web_Server.GUI_Show()
+
+    # 创建一个新的线程
+
+class OpenWeb:
+
+
+    def __init__(self):
+        super().__init__()
+
+    def run(self):
+
+        webbrowser.open("D:\\VLBI\\Orbit Simulation\\VLBIOrbit-Simulation\\Cesium\\index.html")
+
+
+
+
+
+# def web_server():
+#
+#         thread = threading.Thread(target=run, args=())
+#         self.thread.setDaemon(True)
+#         thread.start()
+#
+# def run():
+#         # 线程相关代码
+#         Web_Server.GUI_Show()
 
 #
 # class Thread(QtCore.QThread):
@@ -292,9 +331,13 @@ def run():
 # #子窗体自定义事件
 #         self.close()
 
+# def three_d_graph():
+#     MainWin2 = MainWindow2()
+
 
 
 if __name__ == '__main__':
+
     app = QtWidgets.QApplication(sys.argv)
 
 
@@ -309,9 +352,10 @@ if __name__ == '__main__':
     splash.close()
     myWin = MyMainWindow()
     child_ui = ChildWindow()
-    # GuishowChoice_ui=GuishowChoice()
-    showdialog_ui=showdialog()
-
+    GuishowChoice_ui=GuishowChoice()
+    OpenWeb_ui=OpenWeb()
+    # showdialog_ui=showdialog()
+    thread = Thread()
     # MainWin2=MainWindow2()
     btn = myWin.pushButton
     btn.clicked.connect(child_ui.show)
@@ -321,7 +365,25 @@ if __name__ == '__main__':
     # btn2.clicked.connect(showdialog_ui.show)
 
     btn3=child_ui.pushButton
-    btn3.clicked.connect(showdialog_ui.show)
+    btn3.clicked.connect(GuishowChoice_ui.show)
+
+    # btn4 = showdialog_ui.btn2
+    # showdialog_ui.btn2.clicked.connect(MainWin2=MainWindow2())
+    MainWin2 = MainWindow2()
+
+    btn5 = GuishowChoice_ui.pushButton_6
+    btn5.clicked.connect(thread.start)
+
+
+
+
+    btn4=GuishowChoice_ui.pushButton_2
+    btn4.clicked.connect(OpenWeb_ui.run)
+
+
+
+
+    # btn4.clicked.connect()
 
 
     # o=child_ui.btn2
