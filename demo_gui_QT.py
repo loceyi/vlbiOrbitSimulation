@@ -19,6 +19,7 @@ from CZML_Generate import CZML_Generate
 from PyQt5.QtWebEngineWidgets import *
 import Web_Server
 import webbrowser
+from sklearn.externals import joblib
 import threading
 # 继承至界面文件的主窗口类
 
@@ -61,8 +62,9 @@ class ChildWindow(QtWidgets.QDialog, Parameter_Input.Ui_Dialog):
     def run_simulation(self):
         Start_Time, Stop_Time, Number_Of_Steps, Step_Size, Initial_Orbit_Elements=self.Initial_Value_Get()
 
-        position, velocity, time = HPOP(Start_Time,Number_Of_Steps,Step_Size,Initial_Orbit_Elements)
+        HPOP(Start_Time,Number_Of_Steps,Step_Size,Initial_Orbit_Elements)
 
+        HPOP_Results= joblib.load('HPOP_Results.pkl')
 
         Start_time = "%s-%02d-%02dT%02d:%02d:%02dZ"%(Start_Time[5],Start_Time[4],Start_Time[3],Start_Time[2],
                                            Start_Time[1],Start_Time[0])
@@ -71,10 +73,10 @@ class ChildWindow(QtWidgets.QDialog, Parameter_Input.Ui_Dialog):
         # Start_time = "2012-03-15T10:00:00Z"
         # end_time = "2012-03-16T10:00:00Z"
 
-        x = position[0, :]
-        y = position[1, :]
-        z = position[2, :]
-
+        x = HPOP_Results[1, :]
+        y = HPOP_Results[2, :]
+        z = HPOP_Results[3, :]
+        time=HPOP_Results[0,:]
         time = time.tolist()
         cartesian_file = []
         for i in range(0, len(time)):

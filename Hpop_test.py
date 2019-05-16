@@ -63,7 +63,7 @@ def HPOP():
 
     Step = 10 #[s]
 
-    N_Step = 800 #26.47hours
+    N_Step = 80 #26.47hours
 
     #shorten PC, eopdata, swdata, Cnm, and Snm
     num=int(N_Step*Step/86400)+2
@@ -251,9 +251,12 @@ def HPOP():
     #     plt.show()
 
     # 保存x
-    joblib.dump(a, 'a.pkl')
+    data=np.row_stack((time,a))
+    joblib.dump(data, 'data.pkl')
     # 加载x
     # x = joblib.load('x.pkl')
+
+    np.savetxt('data.csv', data, delimiter=',')
 
 
     return position,time
