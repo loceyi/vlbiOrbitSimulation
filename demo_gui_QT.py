@@ -9,6 +9,7 @@
 import GUI_QT
 import Parameter_Input
 import GuiShowChoice
+import Graph
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 import time
@@ -20,7 +21,11 @@ from PyQt5.QtWebEngineWidgets import *
 import Web_Server
 import webbrowser
 from sklearn.externals import joblib
+import pyqtgraph as pg
+from RV_To_Orbit_Elements import rv_to_orbit_element
+from math import pi
 import threading
+
 # 继承至界面文件的主窗口类
 
 class MyMainWindow(QtWidgets.QMainWindow, GUI_QT.Ui_VSS):
@@ -297,6 +302,85 @@ class OpenWeb:
         webbrowser.open("http://localhost:9090/")
 
 
+class MyGraphWindow(QtWidgets.QMainWindow, Graph.Ui_MainWindow):
+    def __init__(self, parent=None):
+        super(MyGraphWindow, self).__init__(parent)
+        self.setupUi(self)
+        self.center()
+        self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
+        plt1, plt2, plt3, plt4, plt5, plt6=self.Get_graph()
+
+        self.verticalLayout_1.addWidget(plt1)
+        self.verticalLayout_2.addWidget(plt2)
+        self.verticalLayout_3.addWidget(plt3)
+        self.verticalLayout_4.addWidget(plt4)
+        self.verticalLayout_5.addWidget(plt5)
+        self.verticalLayout_6.addWidget(plt6)
+
+
+    def Get_graph(self):
+
+        Results = joblib.load('HPOP_Results.pkl')
+
+
+        time = Results[0, :]
+        x = Results[1, :]
+        y = Results[2, :]
+        z = Results[3, :]
+        vx=Results[4,:]
+        vy=Results[5,:]
+        vz=Results[6,:]
+
+
+        length = len(x)
+
+        orbit_element_data = np.zeros([6,length])
+
+        for i in range(1,length+1):
+
+            temp=rv_to_orbit_element(np.array([x[i-1],y[i-1],z[i-1]]),
+                                     np.array([vx[i-1],vy[i-1],vz[i-1]]),398600.4418e9)
+
+            orbit_element_data[0,i-1]=temp[0]
+            orbit_element_data[1, i - 1] =temp[1]
+            orbit_element_data[2, i - 1] =temp[2]
+            orbit_element_data[3, i - 1] =temp[3]
+            orbit_element_data[4, i - 1] =temp[4]
+            orbit_element_data[5, i - 1] =temp[5]
+
+
+
+
+        plt1 = pg.PlotWidget(title="Semi-axis")
+        plt1.plot(time, orbit_element_data[0,:])
+
+        plt2 = pg.PlotWidget(title="Eccentricity")
+        plt2.plot(time, orbit_element_data[1, :])
+
+        plt3 = pg.PlotWidget(title="Inclination")
+        plt3.plot(time, orbit_element_data[2, :])
+
+        plt4 = pg.PlotWidget(title="RAAN")
+        plt4.plot(time, orbit_element_data[3, :])
+
+        plt5 = pg.PlotWidget(title="Perigee")
+        plt5.plot(time, orbit_element_data[4, :])
+
+        plt6 = pg.PlotWidget(title="True Anomaly")
+        plt6.plot(time, orbit_element_data[5, :]% (2 * pi))
+
+        return plt1,plt2,plt3,plt4,plt5,plt6
+
+
+
+
+
+    def center(self):
+
+        screen=QtWidgets.QDesktopWidget().screenGeometry()
+        size=self.geometry()
+        self.move((screen.width()-size.width())/2,(screen.height()-size.height())/2)
+
 
 
 
@@ -358,6 +442,7 @@ if __name__ == '__main__':
     OpenWeb_ui=OpenWeb()
     # showdialog_ui=showdialog()
     thread = Thread()
+    Graph_ui=MyGraphWindow()
     # MainWin2=MainWindow2()
     btn = myWin.pushButton
     btn.clicked.connect(child_ui.show)
@@ -389,6 +474,11 @@ if __name__ == '__main__':
 
     btn6.clicked.connect(thread.finished)
 
+
+
+    btn7 = GuishowChoice_ui.pushButton
+
+    btn7.clicked.connect(Graph_ui.show)
 
 
     # btn4.clicked.connect()
