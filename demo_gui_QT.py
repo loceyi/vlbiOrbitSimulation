@@ -241,7 +241,7 @@ class MainWindow2(QtWidgets.QMainWindow):
         # self.thread.setDaemon(True)
         # self.thread.start()
         # #加载外部的web界面
-        url="D:\\VLBI\\Orbit Simulation\\VLBIOrbit-Simulation\\Cesium\\index.html"
+        url="http://localhost:9090/"
         self.browser.load(QtCore.QUrl(url))
         self.setCentralWidget(self.browser)
 
@@ -292,7 +292,7 @@ class OpenWeb:
 
     def run(self):
 
-        webbrowser.open("D:\\VLBI\\Orbit Simulation\\VLBIOrbit-Simulation\\Cesium\\index.html")
+        webbrowser.open("http://localhost:9090/")
 
 
 
@@ -378,8 +378,14 @@ if __name__ == '__main__':
 
 
     btn4=GuishowChoice_ui.pushButton_2
-    btn4.clicked.connect(OpenWeb_ui.run)
+    # btn4.clicked.connect(OpenWeb_ui.run)
+    btn4.clicked.connect(MainWin2.show)
 
+
+
+    btn6=GuishowChoice_ui.pushButton_7
+
+    btn6.clicked.connect(thread.finished)
 
 
 

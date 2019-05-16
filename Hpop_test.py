@@ -17,6 +17,7 @@ import pylab as pl
 from RV_To_Orbit_Elements import rv_to_orbit_element
 from Accel_Two_Body import Accel_Two_Body
 from decimal import *
+from sklearn.externals import joblib
 
 def HPOP():
 
@@ -249,6 +250,10 @@ def HPOP():
     #
     #     plt.show()
 
+    # 保存x
+    joblib.dump(a, 'a.pkl')
+    # 加载x
+    # x = joblib.load('x.pkl')
 
 
     return position,time
