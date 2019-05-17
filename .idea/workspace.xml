@@ -3,9 +3,28 @@
   <component name="ChangeListManager">
     <list default="true" id="2922b152-4010-4ace-9865-d6192257d594" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cesium/Orbit_Simulation_GUI/SampleData/satellite.czml" beforeDir="false" afterPath="$PROJECT_DIR$/Cesium/Orbit_Simulation_GUI/SampleData/satellite.czml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HPOP_Results.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/HPOP_Results.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_gui_QT.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo_gui_QT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hpop_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hpop_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/data.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_0_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_10_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_11_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_12_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_13_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_14_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_15_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_16_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_17_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_18_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_1_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_2_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_3_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_4_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_5_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_6_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_7_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_8_.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/png_dir_bluemarble/frame_9_.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo_gui_QT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+            <state relative-caret-position="-84">
+              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -27,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Graph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+            <state relative-caret-position="273">
+              <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -36,7 +55,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GuiShowChoice.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
+            <state relative-caret-position="1071">
               <caret line="51" selection-start-line="51" selection-end-line="51" />
             </state>
           </provider>
@@ -45,7 +64,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Parameter_Input.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
+            <state relative-caret-position="2415">
               <caret line="115" column="34" selection-start-line="115" selection-start-column="34" selection-end-line="115" selection-end-column="34" />
             </state>
           </provider>
@@ -54,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HPOP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3411">
-              <caret line="183" column="47" lean-forward="true" selection-start-line="183" selection-start-column="47" selection-end-line="183" selection-end-column="47" />
+            <state relative-caret-position="1743">
+              <caret line="102" column="32" selection-start-line="102" selection-start-column="32" selection-end-line="102" selection-end-column="32" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -63,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Hpop_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="229" column="35" lean-forward="true" selection-start-line="229" selection-start-column="35" selection-end-line="229" selection-end-column="35" />
+            <state relative-caret-position="294">
+              <caret line="29" column="12" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -183,9 +202,9 @@
         <option value="$PROJECT_DIR$/backgraound.qrc" />
         <option value="$PROJECT_DIR$/Web_Server.py" />
         <option value="$PROJECT_DIR$/Result_Verify.py" />
-        <option value="$PROJECT_DIR$/Hpop_test.py" />
         <option value="$PROJECT_DIR$/HPOP.py" />
         <option value="$PROJECT_DIR$/demo_gui_QT.py" />
+        <option value="$PROJECT_DIR$/Hpop_test.py" />
       </list>
     </option>
   </component>
@@ -396,13 +415,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543982195569</updated>
-    </task>
-    <task id="LOCAL-00036" summary="2019/3/17">
-      <created>1552814124697</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1552814124697</updated>
     </task>
     <task id="LOCAL-00037" summary="2019/3/18">
       <created>1552882220427</created>
@@ -740,7 +752,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558007836468</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="2019/5/16/Eve/ 21:19/OrbitElements Report Finish! FIGHTTING!">
+      <created>1558012833580</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1558012833581</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TodoView">
@@ -761,7 +780,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4988086" weight="0.48490232" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4988086" visible="true" weight="0.48490232" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39786857" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -799,7 +818,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2019/3/24/Morning/Work on ACCEL Elastic" />
     <MESSAGE value="2019/3/24/Afternoon/Work on ACCEL Elastic" />
     <MESSAGE value="2019/3/24/Night/Work on ACCEL Elastic" />
     <MESSAGE value="2019/3/25/Night/ACCEL Finish!" />
@@ -824,7 +842,8 @@
     <MESSAGE value="2019/5/14/Eve 21:45/" />
     <MESSAGE value="2019/5/15/Morning 11:26/" />
     <MESSAGE value="2019/5/16/Eve/ 19:57" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019/5/16/Eve/ 19:57" />
+    <MESSAGE value="2019/5/16/Eve/ 21:19/OrbitElements Report Finish! FIGHTTING!" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019/5/16/Eve/ 21:19/OrbitElements Report Finish! FIGHTTING!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -838,11 +857,6 @@
           <url>file://$PROJECT_DIR$/JPL_Eph_DE405.py</url>
           <line>106</line>
           <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Hpop_test.py</url>
-          <line>253</line>
-          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -963,32 +977,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AccelHarmonic_ElasticEarth.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="522" column="25" selection-start-line="522" selection-start-column="25" selection-end-line="522" selection-end-column="25" />
-          <folding>
-            <element signature="e#1055#1079#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Visibility_for_Star.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="179" lean-forward="true" selection-start-line="179" selection-end-line="179" />
           <folding>
             <element signature="e#1#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Accel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-          <folding>
-            <element signature="e#915#939#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1176,15 +1170,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RV_To_Orbit_Elements.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/OrbitElementsToRV.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="751">
           <caret line="50" column="19" lean-forward="true" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
           <folding>
             <element signature="e#61#96#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Accel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
+          <folding>
+            <element signature="e#915#939#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AccelHarmonic_ElasticEarth.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3607">
+          <caret line="522" column="25" selection-start-line="522" selection-start-column="25" selection-end-line="522" selection-end-column="25" />
+          <folding>
+            <element signature="e#1055#1079#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RV_To_Orbit_Elements.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo_gui_QT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-84">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GuiShowChoice.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Parameter_Input.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2415">
+          <caret line="115" column="34" selection-start-line="115" selection-start-column="34" selection-end-line="115" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HPOP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1743">
+          <caret line="102" column="32" selection-start-line="102" selection-start-column="32" selection-end-line="102" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1196,51 +1248,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Parameter_Input.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="115" column="34" selection-start-line="115" selection-start-column="34" selection-end-line="115" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HPOP.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3411">
-          <caret line="183" column="47" lean-forward="true" selection-start-line="183" selection-start-column="47" selection-end-line="183" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Hpop_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="229" column="35" lean-forward="true" selection-start-line="229" selection-start-column="35" selection-end-line="229" selection-end-column="35" />
+        <state relative-caret-position="294">
+          <caret line="29" column="12" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GuiShowChoice.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo_gui_QT.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
         </state>
       </provider>
     </entry>
