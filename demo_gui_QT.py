@@ -6,6 +6,11 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+from Visibility_for_Star import *
+from Julian_date import Julian_date
+import Observe
+import Access
+import Observer_time_report
 import GUI_QT
 import Parameter_Input
 import GuiShowChoice
@@ -66,6 +71,9 @@ class ChildWindow(QtWidgets.QDialog, Parameter_Input.Ui_Dialog):
 
     def run_simulation(self):
         Start_Time, Stop_Time, Number_Of_Steps, Step_Size, Initial_Orbit_Elements=self.Initial_Value_Get()
+        joblib.dump(Start_Time, 'Start_Time.pkl')
+        joblib.dump(Step_Size, 'Step_Size.pkl')
+        joblib.dump(Number_Of_Steps, 'Number_Of_Steps.pkl')
 
         HPOP(Start_Time,Number_Of_Steps,Step_Size,Initial_Orbit_Elements)
 
@@ -202,6 +210,7 @@ class ChildWindow(QtWidgets.QDialog, Parameter_Input.Ui_Dialog):
 
         Stop_Time=[Stop_Time_Seconds,Stop_Time_Mins,Stop_Time_Hrs,
                     Stop_Time_Day,Stop_Time_Month,Stop_Time_Year]
+
 
 
 
@@ -382,6 +391,142 @@ class MyGraphWindow(QtWidgets.QMainWindow, Graph.Ui_MainWindow):
         self.move((screen.width()-size.width())/2,(screen.height()-size.height())/2)
 
 
+class MyAccess(QtWidgets.QDialog,Access.Ui_Dialog):
+    def __init__(self, parent=None):
+        super(MyAccess, self).__init__(parent)
+        self.setupUi(self)
+        self.center()
+        self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
+
+
+
+        # self.statusBar = self.statusbar
+        # self.statusBar.showMessage('菜单选项被点击了', 5000)
+        # self.setWindowTitle('QStatusBar例子')
+
+    def center(self):
+
+        screen=QtWidgets.QDesktopWidget().screenGeometry()
+        size=self.geometry()
+        self.move((screen.width()-size.width())/2,(screen.height()-size.height())/2)
+
+
+
+
+class MyObserver_time_report(QtWidgets.QDialog,Observer_time_report.Ui_Dialog):
+    def __init__(self, parent=None):
+        super(MyObserver_time_report, self).__init__(parent)
+        self.setupUi(self)
+        self.center()
+        self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
+        self.pushButton.clicked.connect(self.run_Ob)
+
+
+
+        # self.statusBar = self.statusbar
+        # self.statusBar.showMessage('菜单选项被点击了', 5000)
+        # self.setWindowTitle('QStatusBar例子')
+
+    def center(self):
+
+        screen=QtWidgets.QDesktopWidget().screenGeometry()
+        size=self.geometry()
+        self.move((screen.width()-size.width())/2,(screen.height()-size.height())/2)
+
+    def run_Ob(self):
+
+        Direction_Vector=self.value_get()
+        HPOP_Results = joblib.load('HPOP_Results.pkl')
+        x = HPOP_Results[1, :]
+        y = HPOP_Results[2, :]
+        z = HPOP_Results[3, :]
+        time = HPOP_Results[0, :]
+        position= np.row_stack((x, y))
+        position = np.row_stack((position, z))
+        Start_Time = joblib.load('Start_Time.pkl')
+        Step_Size = joblib.load('Step_Size.pkl')
+        Number_Of_Steps=joblib.load('Number_Of_Steps.pkl')
+
+        year = Start_Time[5]
+        month = Start_Time[4]
+        day = Start_Time[3]
+        hour = Start_Time[2]
+        minute = Start_Time[1]
+        second = Start_Time[0]
+
+        length = Number_Of_Steps  # 设置步长
+          # 生成长度为60的数组,要打1.0因为数组数据类型要为float，输入1则默认类型为int
+        timeJD = np.arange(0, length, 1)
+        Visibility = np.arange(0, length, 1)
+        JD_Start=Julian_date(year, month, day, hour, minute, second)
+
+        for i in range(0, length):  # 0~59,没有60
+
+            timeJD[i] = JD_Start+i*Step_Size/86400
+
+            Visibility[i] = Visibility_for_celestial_body(Direction_Vector,position[:,i], timeJD[i])
+
+
+        joblib.dump(time, 'time.pkl')
+        joblib.dump(Visibility, 'Visibility.pkl')
+
+
+
+
+
+
+
+    def value_get(self):
+        import re
+
+        Direction_Vector_str = self.Step_Size_2.text()
+
+        Direction_Vector_list_str = re.findall(r'\b\d+\b', Direction_Vector_str)
+        Direction_Vector_list = list(map(float, Direction_Vector_list_str))
+        Direction_Vector_array=np.array(Direction_Vector_list)
+
+
+
+
+        return Direction_Vector_array
+
+
+class VisibilityGraphWindow(QtWidgets.QMainWindow, Observe.Ui_MainWindow):
+    def __init__(self, parent=None):
+        super(VisibilityGraphWindow, self).__init__(parent)
+        self.setupUi(self)
+        self.center()
+        self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
+        plt1=self.Get_graph()
+
+        self.verticalLayout.addWidget(plt1)
+
+
+
+    def Get_graph(self):
+
+        Visibility = joblib.load('Visibility.pkl')
+
+        time= joblib.load('time.pkl')
+
+
+
+        plt1 = pg.PlotWidget(title="Visibility")
+        plt1.plot(time, Visibility)
+
+
+        return plt1
+
+
+
+
+
+    def center(self):
+
+        screen=QtWidgets.QDesktopWidget().screenGeometry()
+        size=self.geometry()
+        self.move((screen.width()-size.width())/2,(screen.height()-size.height())/2)
+
 
 
 # def web_server():
@@ -443,6 +588,10 @@ if __name__ == '__main__':
     # showdialog_ui=showdialog()
     thread = Thread()
     Graph_ui=MyGraphWindow()
+    Access_ui=MyAccess()
+    Observer_time_report_ui=MyObserver_time_report()
+    MainWin2 = MainWindow2()
+    VisibilityGraphWindow_ui=VisibilityGraphWindow()
     # MainWin2=MainWindow2()
     btn = myWin.pushButton
     btn.clicked.connect(child_ui.show)
@@ -456,7 +605,7 @@ if __name__ == '__main__':
 
     # btn4 = showdialog_ui.btn2
     # showdialog_ui.btn2.clicked.connect(MainWin2=MainWindow2())
-    MainWin2 = MainWindow2()
+
 
     btn5 = GuishowChoice_ui.pushButton_6
     btn5.clicked.connect(thread.start)
@@ -479,6 +628,19 @@ if __name__ == '__main__':
     btn7 = GuishowChoice_ui.pushButton
 
     btn7.clicked.connect(Graph_ui.show)
+
+    btn8 = GuishowChoice_ui.pushButton_3
+
+    btn8.clicked.connect(Observer_time_report_ui.show)
+
+    btn9 = GuishowChoice_ui.pushButton_4
+
+    btn9.clicked.connect(Access_ui.show)
+
+    btn9 = Observer_time_report_ui.pushButton
+
+    btn9.clicked.connect(VisibilityGraphWindow.show)
+
 
 
     # btn4.clicked.connect()
