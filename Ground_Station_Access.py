@@ -13,7 +13,7 @@ import numpy as np
 import pymap3d as pm
 from math import degrees
 from pylab import *
-def get_ground_station_postion_ICRF(t,lat,lon,alt):
+def get_ground_station_postion_ICRF(t,lat,lon,alt,MJD_UTC_Start):
     '''
 
     :param t:相对仿真起始点的时间/s
@@ -26,7 +26,7 @@ def get_ground_station_postion_ICRF(t,lat,lon,alt):
     r_ITRS=np.array([x,y,z])
 
     const=Const()
-    MJD_UTC=Global_parameters.AuxParam['Mjd_UTC']+t/86400
+    MJD_UTC=MJD_UTC_Start+t/86400
     # JD = MJD_UTC + 2400000.5
 
     x_pole, y_pole, UT1_UTC, LOD, dpsi, deps, dx_pole, dy_pole, TAI_UTC = IERS(Global_parameters.eopdata
@@ -73,7 +73,7 @@ def get_ground_station_postion_ICRF(t,lat,lon,alt):
     return r_ICRF
 
 
-def GSA(r_sat,t,lat,lon,alt,maxElevationAngle):
+def GSA(r_sat,t,lat,lon,alt,maxElevationAngle,MJD_UTC_Start):
     '''
 
     :param r_sat:m
@@ -85,7 +85,7 @@ def GSA(r_sat,t,lat,lon,alt,maxElevationAngle):
     :return:
     '''
 
-    r_ground_station = get_ground_station_postion_ICRF(t, lat, lon, alt)
+    r_ground_station = get_ground_station_postion_ICRF(t, lat, lon, alt,MJD_UTC_Start)
 
     r_GS_To_Sat=r_sat-r_ground_station
 
@@ -122,9 +122,10 @@ def test():
     lon=0
     alt=0
     Visibility_GS_SAT =[]
+    MJD_UTC_Start=51544.5
     for t in range(0,86400,100):
 
-        Visibility_GS_SAT.append(GSA(r_sat,t,lat,lon,alt,maxElevationAngle))
+        Visibility_GS_SAT.append(GSA(r_sat,t,lat,lon,alt,maxElevationAngle,MJD_UTC_Start))
 
     time = np.arange(0, 86400, 100)
     plt.plot(time, Visibility_GS_SAT)

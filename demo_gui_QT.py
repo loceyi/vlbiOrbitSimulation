@@ -8,6 +8,7 @@
 
 from Visibility_for_Star import *
 from Julian_date import Julian_date
+from Ground_Station_Access import GSA
 import Observe
 import Access
 import Observer_time_report
@@ -317,14 +318,14 @@ class MyGraphWindow(QtWidgets.QMainWindow, Graph.Ui_MainWindow):
         self.setupUi(self)
         self.center()
         self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
-        plt1, plt2, plt3, plt4, plt5, plt6=self.Get_graph()
+        # plt1, plt2, plt3, plt4, plt5, plt6=self.Get_graph()
 
-        self.verticalLayout_1.addWidget(plt1)
-        self.verticalLayout_2.addWidget(plt2)
-        self.verticalLayout_3.addWidget(plt3)
-        self.verticalLayout_4.addWidget(plt4)
-        self.verticalLayout_5.addWidget(plt5)
-        self.verticalLayout_6.addWidget(plt6)
+        # self.verticalLayout_1.addWidget(plt1)
+        # self.verticalLayout_2.addWidget(plt2)
+        # self.verticalLayout_3.addWidget(plt3)
+        # self.verticalLayout_4.addWidget(plt4)
+        # self.verticalLayout_5.addWidget(plt5)
+        # self.verticalLayout_6.addWidget(plt6)
 
 
     def Get_graph(self):
@@ -378,8 +379,18 @@ class MyGraphWindow(QtWidgets.QMainWindow, Graph.Ui_MainWindow):
         plt6 = pg.PlotWidget(title="True Anomaly")
         plt6.plot(time, orbit_element_data[5, :]% (2 * pi))
 
-        return plt1,plt2,plt3,plt4,plt5,plt6
+        self.verticalLayout_1.addWidget(plt1)
+        self.verticalLayout_2.addWidget(plt2)
+        self.verticalLayout_3.addWidget(plt3)
+        self.verticalLayout_4.addWidget(plt4)
+        self.verticalLayout_5.addWidget(plt5)
+        self.verticalLayout_6.addWidget(plt6)
 
+        self.show()
+
+        # return plt1,plt2,plt3,plt4,plt5,plt6
+
+        return
 
 
 
@@ -397,8 +408,7 @@ class MyAccess(QtWidgets.QDialog,Access.Ui_Dialog):
         self.setupUi(self)
         self.center()
         self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
-
-
+        self.pushButton.clicked.connect(self.run_Ob)
 
         # self.statusBar = self.statusbar
         # self.statusBar.showMessage('菜单选项被点击了', 5000)
@@ -409,6 +419,137 @@ class MyAccess(QtWidgets.QDialog,Access.Ui_Dialog):
         screen=QtWidgets.QDesktopWidget().screenGeometry()
         size=self.geometry()
         self.move((screen.width()-size.width())/2,(screen.height()-size.height())/2)
+
+
+
+    def run_Ob(self):
+
+        Longitude, Latitude, MAX_ElevationAngle,Altitude =self.value_get()
+        HPOP_Results = joblib.load('HPOP_Results.pkl')
+        x = HPOP_Results[1, :]
+        y = HPOP_Results[2, :]
+        z = HPOP_Results[3, :]
+        time = HPOP_Results[0, :]
+
+        Start_Time = joblib.load('Start_Time.pkl')
+
+        year = Start_Time[5]
+        month = Start_Time[4]
+        day = Start_Time[3]
+        hour = Start_Time[2]
+        minute = Start_Time[1]
+        second = Start_Time[0]
+
+        t_start_jd = Julian_date(year, month, day, hour, minute, second)
+
+        MJD_UTC_Start = t_start_jd - 2400000.5
+
+
+        Visibility_GS_SAT = []
+        # np.arange(0, len(time), 1)
+        i=0
+
+        for t in time:
+
+            Visibility_GS_SAT.append(GSA(np.array([x[i],y[i],z[i]]),
+                                    t, Latitude, Longitude, Altitude, MAX_ElevationAngle,MJD_UTC_Start))
+
+            i=i+1
+
+
+
+
+        joblib.dump(time, 'time.pkl')
+        joblib.dump(Visibility_GS_SAT, 'Visibility_GS_SAT.pkl')
+
+
+        return
+
+
+
+
+
+
+
+
+
+
+    def value_get(self):
+        import re
+
+        Longitude_str = self.Step_Size_3.text()
+        Latitude_str=self.Step_Size_4.text()
+        MAX_ElevationAngle_str=self.Step_Size_5.text()
+        Altitude_str = self.Step_Size_5.text()
+
+        Longitude = float(re.search("(\d+(\.\d+)?)", Longitude_str).group())
+        Latitude = float(re.search("(\d+(\.\d+)?)", Latitude_str).group())
+        MAX_ElevationAngle = float(re.search("(\d+(\.\d+)?)", MAX_ElevationAngle_str).group())
+        Altitude = float(re.search("(\d+(\.\d+)?)", Altitude_str).group())
+
+
+
+
+
+
+        return Longitude,Latitude,MAX_ElevationAngle,Altitude
+
+
+
+
+
+
+
+
+
+class Access_graph(QtWidgets.QMainWindow,Observe.Ui_MainWindow):
+    def __init__(self, parent=None):
+        super(Access_graph, self).__init__(parent)
+        self.setupUi(self)
+        self.center()
+        self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
+        # plt1=self.Get_graph()
+
+        # self.verticalLayout.addWidget(plt1)
+
+
+
+    def Get_graph(self):
+
+        Visibility_GS_SAT = joblib.load('Visibility_GS_SAT.pkl')
+
+        time= joblib.load('time.pkl')
+
+
+
+        plt1 = pg.PlotWidget(title="Access_GS_SAT")
+        plt1.plot(time, Visibility_GS_SAT)
+
+        self.verticalLayout.addWidget(plt1)
+        self.show()
+
+
+
+        return plt1
+
+
+
+
+
+    def center(self):
+
+        screen=QtWidgets.QDesktopWidget().screenGeometry()
+        size=self.geometry()
+        self.move((screen.width()-size.width())/2,(screen.height()-size.height())/2)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -471,6 +612,9 @@ class MyObserver_time_report(QtWidgets.QDialog,Observer_time_report.Ui_Dialog):
         joblib.dump(Visibility, 'Visibility.pkl')
 
 
+        return
+
+
 
 
 
@@ -491,15 +635,15 @@ class MyObserver_time_report(QtWidgets.QDialog,Observer_time_report.Ui_Dialog):
         return Direction_Vector_array
 
 
-class VisibilityGraphWindow(QtWidgets.QMainWindow, Observe.Ui_MainWindow):
+class VisibilityGraphWindow(QtWidgets.QMainWindow,Observe.Ui_MainWindow):
     def __init__(self, parent=None):
         super(VisibilityGraphWindow, self).__init__(parent)
         self.setupUi(self)
         self.center()
         self.setWindowIcon(QtGui.QIcon('./GUI_Image/background/satellites_128px_1169478_easyicon.net.ico'))
-        plt1=self.Get_graph()
+        # plt1=self.Get_graph()
 
-        self.verticalLayout.addWidget(plt1)
+        # self.verticalLayout.addWidget(plt1)
 
 
 
@@ -514,6 +658,10 @@ class VisibilityGraphWindow(QtWidgets.QMainWindow, Observe.Ui_MainWindow):
         plt1 = pg.PlotWidget(title="Visibility")
         plt1.plot(time, Visibility)
 
+        self.verticalLayout.addWidget(plt1)
+        self.show()
+
+
 
         return plt1
 
@@ -526,6 +674,11 @@ class VisibilityGraphWindow(QtWidgets.QMainWindow, Observe.Ui_MainWindow):
         screen=QtWidgets.QDesktopWidget().screenGeometry()
         size=self.geometry()
         self.move((screen.width()-size.width())/2,(screen.height()-size.height())/2)
+
+
+
+
+
 
 
 
@@ -588,10 +741,11 @@ if __name__ == '__main__':
     # showdialog_ui=showdialog()
     thread = Thread()
     Graph_ui=MyGraphWindow()
-    Access_ui=MyAccess()
     Observer_time_report_ui=MyObserver_time_report()
     MainWin2 = MainWindow2()
     VisibilityGraphWindow_ui=VisibilityGraphWindow()
+    MyAccess_ui=MyAccess()
+    Access_graph_ui=Access_graph()
     # MainWin2=MainWindow2()
     btn = myWin.pushButton
     btn.clicked.connect(child_ui.show)
@@ -627,7 +781,7 @@ if __name__ == '__main__':
 
     btn7 = GuishowChoice_ui.pushButton
 
-    btn7.clicked.connect(Graph_ui.show)
+    btn7.clicked.connect(Graph_ui.Get_graph)
 
     btn8 = GuishowChoice_ui.pushButton_3
 
@@ -635,11 +789,30 @@ if __name__ == '__main__':
 
     btn9 = GuishowChoice_ui.pushButton_4
 
-    btn9.clicked.connect(Access_ui.show)
+    btn9.clicked.connect(MyAccess_ui.show)
 
-    btn9 = Observer_time_report_ui.pushButton
 
-    btn9.clicked.connect(VisibilityGraphWindow.show)
+
+    #
+    # btn9 = Observer_time_report_ui.pushButton
+    #
+    # btn9.clicked.connect(VisibilityGraphWindow.Get_graph)
+
+    btn10 = Observer_time_report_ui.pushButton_2
+
+    btn10.clicked.connect(VisibilityGraphWindow_ui.Get_graph)
+
+
+
+
+
+    btn11 = MyAccess_ui.pushButton_2
+
+    btn11.clicked.connect(Access_graph_ui.Get_graph)
+
+
+
+
 
 
 

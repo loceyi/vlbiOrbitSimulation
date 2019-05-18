@@ -38,20 +38,3 @@ for i in range(0,length): #0~59,没有60
 
 plt.plot(time, Visibility)
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -20,9 +20,13 @@ class Ui_Dialog(object):
         self.label_12.setStyleSheet("font: 10pt \"Adobe 黑体 Std R\";")
         self.label_12.setObjectName("label_12")
         self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(450, 340, 131, 41))
+        self.pushButton.setGeometry(QtCore.QRect(260, 330, 131, 41))
         self.pushButton.setStyleSheet("font: 10pt \"Adobe 黑体 Std R\";")
         self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_2.setGeometry(QtCore.QRect(470, 330, 131, 41))
+        self.pushButton_2.setStyleSheet("font: 10pt \"Adobe 黑体 Std R\";")
+        self.pushButton_2.setObjectName("pushButton_2")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -34,4 +38,5 @@ class Ui_Dialog(object):
         self.Step_Size_2.setText(_translate("Dialog", "(1,1,1)"))
         self.label_12.setText(_translate("Dialog", "Observed Target Direction:"))
         self.pushButton.setText(_translate("Dialog", "Compute"))
+        self.pushButton_2.setText(_translate("Dialog", "Show"))
 
