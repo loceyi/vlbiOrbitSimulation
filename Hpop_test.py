@@ -23,21 +23,21 @@ def HPOP():
 
     #Load basic data
     # Start_time, Number_of_Steps, Step, Initial_Orbit_Elements
-    year=2015
+    year=2008
     month=1
     day=1
-    hour=0
+    hour=12
     minute=0
     second=0
     t_start_jd=Julian_date(year,month,day,hour,minute,second)
 
 
-    orbit_element = np.array([7000.0, 0.01, 45.0, 45.0, 45.0, 0.0]) #输入角度单位为度°
+    orbit_element = np.array([20878.137, 0.646609, 63.4, 193.24, 90.0, 0.0000001]) #输入角度单位为度°
 
     r0,v0 = orbit_element_to_rv(orbit_element)
 
     Y0=np.array([r0[0]*1e3,r0[1]*1e3,r0[2]*1e3,v0[0]*1e3,v0[1]*1e3,v0[2]*1e3]) #Y0单位为m,m/s
-    orbisgsdfgdf=rv_to_orbit_element(Y0[0:3], Y0[3:6], 398600.4418e9)
+    # orbisgsdfgdf=rv_to_orbit_element(Y0[0:3], Y0[3:6], 398600.4418e9)
     Mjd_UTC=t_start_jd-2400000.5
 
     Global_parameters.AuxParam['Mjd_UTC'] = Mjd_UTC
@@ -46,7 +46,7 @@ def HPOP():
     Global_parameters.AuxParam['sun'] = 0
     Global_parameters.AuxParam['moon'] = 0
     Global_parameters.AuxParam['planets'] = 0
-    Global_parameters.AuxParam['sRad'] = 0
+    Global_parameters.AuxParam['sRad'] = 1
     Global_parameters.AuxParam['drag'] = 0
     Global_parameters.AuxParam['SolidEarthTides'] = 0
     Global_parameters.AuxParam['OceanTides'] = 0
@@ -55,15 +55,15 @@ def HPOP():
     Global_parameters.AuxParam['Cd'] = 4
     Global_parameters.AuxParam['mass'] = 8000
     Global_parameters.AuxParam['area_drag']=62.5
-    Global_parameters.AuxParam['area_solar'] = 110.5
+    Global_parameters.AuxParam['area_solar'] = 100
 
 
 
     Mjd0 = Mjd_UTC
 
-    Step = 10#[s]
+    Step = 100#[s]
 
-    N_Step = 800 #26.47hours
+    N_Step = 8000 #26.47hours
 
     #shorten PC, eopdata, swdata, Cnm, and Snm
     num=int(N_Step*Step/86400)+2

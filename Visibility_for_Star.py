@@ -13,9 +13,9 @@ def Visibility_for_celestial_body (direction_vector,r,time):
   :return: 可观测时间段
 
     '''
-    R_earth=6371 #km
-    R_sun=6.955*(10**5) #km
-    R_moon=3476.28/2  #km
+    R_earth=6378.137 #km
+    R_sun=696000 #km
+    R_moon=1738 #km
     r=r/1000  #m化成km
     Distance_sat_EarthCenter=sqrt(r.dot(r))
 
@@ -139,9 +139,9 @@ def Visibility_for_celestial_body (direction_vector,r,time):
     # 切线与卫星——月心矢量角度，即月亮所占角度
     Vector_sat_moonCenter= Position_satellite_ECRF * (-1) + Position_moon_ECRF
     Distance_sat_moonCenter=sqrt(Vector_sat_moonCenter.dot(Vector_sat_moonCenter))
-    l = sqrt(R_sun ** 2 + Distance_sat_sunCenter ** 2)
+    l = sqrt(R_moon ** 2 + Distance_sat_moonCenter ** 2)
 
-    cos_angle = Distance_sat_sunCenter / l
+    cos_angle = Distance_sat_moonCenter / l
 
     angle_arc = arccos(cos_angle)
     angle_degree_moon_occupied = degrees(angle_arc)
