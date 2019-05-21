@@ -10,11 +10,11 @@ import matplotlib.pyplot as plt
 
 def GSAT():
 
-    Longitude=45
-    Latitude=45
-    MAX_ElevationAngle=15
+    Longitude=121.368
+    Latitude=31.1094
+    MAX_ElevationAngle=45
     Altitude =0
-    HPOP_Results = joblib.load('data.pkl')
+    HPOP_Results = joblib.load('Result_data/data_2.pkl')
     x = HPOP_Results[1, :]
     y = HPOP_Results[2, :]
     z = HPOP_Results[3, :]
@@ -22,10 +22,10 @@ def GSAT():
 
     # Start_Time = joblib.load('Start_Time.pkl')
 
-    year = 2015
+    year = 2008
     month = 1
     day = 1
-    hour = 0
+    hour = 12
     minute = 0
     second = 0
 
@@ -44,6 +44,16 @@ def GSAT():
                                 t, Latitude, Longitude, Altitude, MAX_ElevationAngle,MJD_UTC_Start))
 
         i=i+1
+
+    Visibility_GS_SAT = np.row_stack((time, Visibility_GS_SAT))
+
+    joblib.dump(Visibility_GS_SAT, 'Result_data/Visibility_GS_SAT_2.pkl')
+    # 加载x
+    # x = joblib.load('x.pkl')
+
+    np.savetxt('Result_data/Visibility_GS_SAT_2.csv', Visibility_GS_SAT, delimiter=',')
+    # np.savetxt('data_oe.csv', orbit_element_data, delimiter=',')
+
 
     plt.plot(time, Visibility_GS_SAT)
     plt.show()
