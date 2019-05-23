@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2922b152-4010-4ace-9865-d6192257d594" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ground_Station_Access_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ground_Station_Access_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hpop_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hpop_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Result_data/Visibility_GS_SAT_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Result_data/Visibility_GS_SAT_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/data.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_oe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data_oe.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Visibility_Graph_plot_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Visibility_Graph_plot_test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,13 +25,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo_gui_QT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="648" lean-forward="true" selection-start-line="648" selection-end-line="649" selection-end-column="24" />
+            <state relative-caret-position="336">
+              <caret line="648" selection-start-line="648" selection-end-line="649" selection-end-column="24" />
               <folding>
                 <element signature="e#200#233#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Visibility_Graph_plot_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="42" column="54" lean-forward="true" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
+              <folding>
+                <element signature="e#1#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -45,7 +52,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Ground_Station_Access.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1533">
+            <state relative-caret-position="471">
               <caret line="87" column="68" selection-start-line="87" selection-start-column="68" selection-end-line="87" selection-end-column="68" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -57,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Ground_Station_Access_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+            <state relative-caret-position="357">
+              <caret line="45" column="13" lean-forward="true" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
               <folding>
                 <element signature="e#4#40#0" expanded="true" />
               </folding>
@@ -172,7 +179,6 @@
         <option value="$PROJECT_DIR$/Result_Verify.py" />
         <option value="$PROJECT_DIR$/HPOP.py" />
         <option value="$PROJECT_DIR$/Visibility_Graph_plot.py" />
-        <option value="$PROJECT_DIR$/Visibility_Graph_plot_test.py" />
         <option value="$PROJECT_DIR$/Ground_Station_Access.py" />
         <option value="$PROJECT_DIR$/demo_gui_QT.py" />
         <option value="$PROJECT_DIR$/Visibility_for_Star.py" />
@@ -180,14 +186,15 @@
         <option value="$PROJECT_DIR$/../结果对比/2,20000km,no pb/Ground_Station_Access_test.py" />
         <option value="$PROJECT_DIR$/Hpop_test.py" />
         <option value="$PROJECT_DIR$/Ground_Station_Access_test.py" />
+        <option value="$PROJECT_DIR$/Visibility_Graph_plot_test.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1931" />
-    <option name="y" value="-11" />
-    <option name="width" value="1943" />
-    <option name="height" value="1043" />
+    <option name="x" value="-296" />
+    <option name="y" value="21" />
+    <option name="width" value="1944" />
+    <option name="height" value="1044" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -223,28 +230,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.demo_gui_QT">
-    <configuration name="Ground_Station_Access_test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="VLBIOrbit-Simulation" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../结果对比/2,20000km,no pb" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../结果对比/2,20000km,no pb/Ground_Station_Access_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.Visibility_Graph_plot_test">
     <configuration name="Ground_Station_Access_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VLBIOrbit-Simulation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -329,6 +315,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Visibility_Graph_plot_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="VLBIOrbit-Simulation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Visibility_Graph_plot_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="demo_gui_QT" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VLBIOrbit-Simulation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -354,17 +361,17 @@
       <item itemvalue="Python.OrbitElementsToRV" />
       <item itemvalue="Python.Ground_Station_Access_test" />
       <item itemvalue="Python.Hpop_test" />
-      <item itemvalue="Python.Ground_Station_Access_test (1)" />
       <item itemvalue="Python.HPOP" />
       <item itemvalue="Python.demo_gui_QT" />
+      <item itemvalue="Python.Visibility_Graph_plot_test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Visibility_Graph_plot_test" />
         <item itemvalue="Python.demo_gui_QT" />
         <item itemvalue="Python.HPOP" />
         <item itemvalue="Python.Ground_Station_Access_test" />
         <item itemvalue="Python.Hpop_test" />
-        <item itemvalue="Python.Ground_Station_Access_test (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -378,13 +385,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543982195569</updated>
-    </task>
-    <task id="LOCAL-00042" summary="2019/3/20/morning/work on iauNut00a">
-      <created>1553052649041</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1553052649041</updated>
     </task>
     <task id="LOCAL-00043" summary="2019/3/20/morning/work on iauNut00a">
       <created>1553052655180</created>
@@ -722,7 +722,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558410193862</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="2019/5/21/Morning/ 11:&#10;43/">
+      <created>1558603205986</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1558603205987</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TodoView">
@@ -735,7 +742,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1927" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.20064725" />
@@ -743,7 +750,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4988086" weight="0.48490232" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4988086" visible="true" weight="0.48490232" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39786857" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1046,32 +1053,12 @@
     <entry file="file://$PROJECT_DIR$/Visibility_GS_SAT.pkl">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Visibility_Graph_plot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Visibility_for_Star.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
           <folding>
             <element signature="e#1#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Visibility_Graph_plot_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="33" column="43" lean-forward="true" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-          <folding>
-            <element signature="e#1#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1163,26 +1150,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Ground_Station_Access.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1533">
-          <caret line="87" column="68" selection-start-line="87" selection-start-column="68" selection-end-line="87" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Ground_Station_Access_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding>
-            <element signature="e#4#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OrbitElementsToRV.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -1195,10 +1162,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/demo_gui_QT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="648" lean-forward="true" selection-start-line="648" selection-end-line="649" selection-end-column="24" />
+        <state relative-caret-position="336">
+          <caret line="648" selection-start-line="648" selection-end-line="649" selection-end-column="24" />
           <folding>
             <element signature="e#200#233#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Visibility_Graph_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Ground_Station_Access.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="87" column="68" selection-start-line="87" selection-start-column="68" selection-end-line="87" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Ground_Station_Access_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="45" column="13" lean-forward="true" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+          <folding>
+            <element signature="e#4#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Visibility_Graph_plot_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="42" column="54" lean-forward="true" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
+          <folding>
+            <element signature="e#1#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
