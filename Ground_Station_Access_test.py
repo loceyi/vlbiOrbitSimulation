@@ -14,7 +14,7 @@ def GSAT():
     Latitude=31.1094
     MAX_ElevationAngle=45
     Altitude =0
-    HPOP_Results = joblib.load('Result_data/data_2.pkl')
+    HPOP_Results = joblib.load('Result_data/data_6.pkl')
     x = HPOP_Results[1, :]
     y = HPOP_Results[2, :]
     z = HPOP_Results[3, :]
@@ -47,16 +47,16 @@ def GSAT():
 
     Visibility_GS_SAT = np.row_stack((time, Visibility_GS_SAT))
 
-    joblib.dump(Visibility_GS_SAT, 'Result_data/Visibility_GS_SAT_2.pkl')
+    joblib.dump(Visibility_GS_SAT, 'Result_data/Visibility_GS_SAT_6.pkl')
     # 加载x
     # x = joblib.load('x.pkl')
 
-    np.savetxt('Result_data/Visibility_GS_SAT_2.csv', Visibility_GS_SAT, delimiter=',')
+    np.savetxt('Result_data/Visibility_GS_SAT_6.csv', Visibility_GS_SAT, delimiter=',')
     # np.savetxt('data_oe.csv', orbit_element_data, delimiter=',')
 
 
-    plt.plot(time, Visibility_GS_SAT)
-    plt.show()
+    # plt.plot(time, Visibility_GS_SAT)
+    # plt.show()
 
 def test():
 
